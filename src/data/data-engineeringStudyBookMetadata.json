@@ -1,0 +1,114 @@
+{
+  "10.1007-978-1-4419-0176-7.pdf": {
+    "title": "INTERNATIONAL SERIES IN OPERATIONS",
+    "description": "RESEARCH AND MANAGEMENT SCIENCE Data Engineering Mining, Information and Intelligence Yupo Chan John Talburt Terry M. Talley Editors International Series in Operations Research & Management Science Volume 132 Series Editor Frederick S. Hillier Stanford University, CA, USA Series Editorial Consultant Camille Price Stephen F. Austin State University, TX, USA For further volumes: http://www.springer.com/series/6161 Data Engineering Mining, Information and Intelligence Edited by Yupo Chan"
+  },
+  "2015_Book_StatisticsAndDataAnalysisForFi.pdf": {
+    "title": "Springer Texts in Statistics",
+    "description": "David Ruppert David S. Matteson Statistics and Data Analysis for Financial Engineering with R examples Second Edition Springer Texts in Statistics Series Editors: R. DeVeaux S.E. Fienberg I. Olkin More information about this series at http://www.springer.com/series/417 David Ruppert • David S. Matteson Statistics and Data Analysis for Financial Engineering with R examples Second Edition 123 David Ruppert David S. Matteson Department of Statistical Department of Statistical Science Science and School of ORIE Department of Social Statistics"
+  },
+  "2024093032.pdf": {
+    "title": "T ex T book for C lass x I",
+    "description": "Rationalised 2023-24 11120 – C omputer S C ien C e Textbook for Class XI First Edition ALL RIGHTS RESERVED May 2019 Vaishakha 1941  No part of this publication may be reproduced, stored in a retrieval system or transmitted, in any form or by any means, Reprinted electronic, mechanical, photocopying, recording or otherwise without the prior permission of the publisher. June 2021 Jyeshtha 1943  This book is sold subject to the condition that it shall not, by November 2021 Agrahayana 1943 way of trade, be lent, re-sold, hired out or otherwise disposed of…"
+  },
+  "2710528_1_ruppert.pdf": {
+    "title": "Springer Texts in Statistics",
+    "description": "David Ruppert David S. Matteson Statistics and Data Analysis for Financial Engineering with R examples Second Edition Springer Texts in Statistics Series Editors: R. DeVeaux S.E. Fienberg I. Olkin More information about this series at http://www.springer.com/series/417 David Ruppert • David S. Matteson Statistics and Data Analysis for Financial Engineering with R examples Second Edition 123 David Ruppert David S. Matteson Department of Statistical Department of Statistical Science Science and School of ORIE Department of Social Statistics"
+  },
+  "546108_AdditionalFile_4a4a81dd.pdf": {
+    "title": "Thesis for The Degree of Doctor of Philosophy",
+    "description": "Data Engineering for Data-Driven Design Features, labels, and datasets for accelerated design evaluation Mohammad Arjomandi Rad Department of Industrial and Material Science Chalmers University of Technology Gothenburg, Sweden, 2025 Data Engineering for Data-Driven Design Features, labels, and datasets for accelerated design evaluation Mohammad Arjomandi Rad © Mohammad Arjomandi Rad, 2025 except where otherwise stated. All rights reserved. ISSN 0346-718X Doktorsavhandlingar vid Chalmers tekniska högskola Ny serie nr 5679. Department of Industrial and Ma…"
+  },
+  "9781800561328_ColorImages.pdf": {
+    "title": "Chapter 1 : Fundamentals of Data Engineering",
+    "description": "Chapter 2 : Big Data Capabilities on GCP"
+  },
+  "CE_2026_Syllabus.pdf": {
+    "title": "GATE 2026 IIT Guwahati | Organizing Institute",
+    "description": "CE Civil Engineering Section 1: Engineering Mathematics Linear Algebra: Matrix algebra; Systems of linear equations; eigenvalues and eigenvectors. Calculus: Functions of single variable; Limit, continuity and differentiability; Mean value theorems, local maxima and minima; Taylor series; Evaluation of definite and indefinite integrals, application of definite integral to obtain area and volume; Partial derivatives; Total derivative; Gradient, Divergence and Curl, Vector identities; Directional derivatives; Line, Surface and Volume integrals. Ordinary Di…"
+  },
+  "COMPUTER NETWORKS NOTES.pdf": {
+    "title": " Student can understand easily the concepts of network security, Mobile",
+    "description": "INDEX TOPIC PAGE NO UNIT NO INTRODUCTION TO NETOWRKS 1 TYPES OF NETWORKS, 4 I INTRODUCTION TO PYSICAL LAYER 18 COMPARISON OF OSI AND TCP/IP 25 PROTOCOLS DATA LINK LAYER DESIGN ISSUES 35 II SLIDI NG WINDOW PROTOCOLS 41 MULTIPLE ACCESS PROTOCOLS 49 NETWORK LAYER DESIGN ISSUES 78 III CONNECTION LESS AND CONNECTION 80 ORIENTED PROTOCOLS 81 ROUTING PROTOCOLS,IP ADDRESS TRANSPORT LAYER SERVICES 101 IV PROVIDED THE INTERNET TRANSPORT 130 PROTOCOLS APPLICATION LAYER SERVICES 249"
+  },
+  "CS_2026_Syllabus.pdf": {
+    "title": "GATE 2026 IIT Guwahati | Organizing Institute",
+    "description": "CS Computer Science and Information Technology Section 1: Engineering Mathematics Discrete Mathematics: Propositional and first order logic. Sets, relations, functions, partial orders and lattices. Monoids, Groups. Graphs: connectivity, matching, colouring. Combinatorics: counting, recurrence relations, generating functions. Linear Algebra: Matrices, determi nants, system of linear equations, eigenvalues and eigenvectors, LU decomposition. Calculus: Limits, continuity and differentiability, Maxima and minima, Mean value theorem, Integration. Probability…"
+  },
+  "DBMS.pdf": {
+    "title": "To understand the relational database design principles",
+    "description": "To become familiar with the basic issues of transaction processing and concurrency control To become familiar with database storage structures and access techniques UNIT I: Data base System Applications, Purpose of Database Systems, View of Data – Data Abstraction – Instances and Schemas – data Models – the ER Model – Relational Model – Other Models – Database Languages – DDL – DML – database A ccess for applications Programs – data base Users and Administrator – Transaction Management – data base Architecture – Storage Manager – the Query Processor Dat…"
+  },
+  "Data Engineering with Databricks (Verma, Sumit) (Z-Library).pdf": {
+    "title": "What is Databricks",
+    "description": "Use cases for Azure Databricks Build an enterprise data Lakehouse ETL and Data Engineering Machine learning, AI, and Data science Data warehousing, Analytics, and BI Large language models and generative AI Data governance DevOps, CI/CD, and task orchestration Real-time and streaming analytics Databricks Lakehouse Medallion Lakehouse Architecture Bronze layer Silver Layer Gold Layer Data objects in the Databricks Lakehouse Databricks architecture Load data Auto Loader External Data Delta Live Tables Delta Live Tables datasets Streaming table"
+  },
+  "Data Engineering with Python Work with massive datasets to design data models and automate data pipelines using Python (Crickard, Paul) (Z-Library).pdf": {
+    "title": "Paul Crickard is the author of Leaflet.js Essentials and co-author of Mastering Geospatial",
+    "description": "Analysis with Python , and is also the Chief Information Officer at the Second Judicial District Attorney’s Office in Albuquerque, New Mexico. With a master’s degree in political science and a background in community and regional planning, he combines rigorous social science theory and techniques to technology projects. He has presented at the New Mexico Big Data and Analytics Summit and the ExperienceIT NM Conference. He has given talks on data to the New Mexico Big Data Working Group, Sandia National Labs, and the New Mexico Geographic Information Cou…"
+  },
+  "Data-Engineering-and-Analytics-The-Best-Practices-and-Emerging-Technologies.pdf": {
+    "title": "Data Engineering and Analytics The Best Practices and Emerging Technologies",
+    "description": "Data Engineering study material (PDF)."
+  },
+  "Data-Reliability-Engineering-For-Dummies-Hitachi-Digital-Services-Edition_9781394202997.pdf": {
+    "title": "Hitachi Digital Services Edition",
+    "description": "by Senthil Ramachandran, Ramneek Jaitla, and Madhusudhanan Panchapakesan These materials are © 2025 John Wiley & Sons, Inc. Any dissemination, distribution, or unauthorized use is strictly prohibited. Data Reliability Engineering For Dummies ® , Hitachi Digital Services Edition Published by John Wiley & Sons, Inc. 111 River St. Hoboken, NJ 07030-5774 www.wiley.com Copyright © 2025 by John Wiley & Sons, Inc., Hoboken, New Jersey. All rights, including for text and data mining, AI training, and similar technologies, are reserved. No part of this publicati…"
+  },
+  "Data_Engineering_Cookbook.pdf": {
+    "title": "I Introduction 9",
+    "description": "1 How To Use This Cookbook 10 2 Data Engineer vs Data Scientists 11 2.1 Data Scientist . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11 2.2 Data Engineer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12 2.3 Who Companies Need . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13 II Basic Data Engineering Skills 14 3 Learn To Code 15 4 Get Familiar With Github 16 5 Agile Development – available 17 5.1 Why is agile so important? . . . . . . . . . . . . . . . . . . . . . . . . . . 17 5.2 Agile rules I learned ov…"
+  },
+  "Data_Engineering_Teams.pdf": {
+    "title": "Second Edition Preface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5",
+    "description": "1 Introduction 7 About This Book . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7 Warnings and Success Stories . . . . . . . . . . . . . . . . . . . . . . . . . 8 Who Should Read This Book . . . . . . . . . . . . . . . . . . . . . . . . . 9 Navigating the Book’s Chapters . . . . . . . . . . . . . . . . . . . . . . . . 9 Conventions Used in This Book . . . . . . . . . . . . . . . . . . . . . . . . 10 2 The Need for Data Engineering 11 Big Data . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11 Why Is Big Data …"
+  },
+  "Fundamentals-of-Data-Engineering-Concepts.pdf": {
+    "title": "Fundamentals of Data Engineering Concepts",
+    "description": "(ISBN: 978 - 93 - 48620 - 19 - 4 ) Editors Dr. Sumit Chopra Associate Professor , GNA University, Phagwara Er. Ramandeep Kaur M. Tech. Student, GNA University, Phagwara Er. Gagandeep Singh Assistant Professor, GNA University, Phagwara April 2025 Copyright Editors Title: Fundamentals of Data Engineering Concepts Editors: Dr. Sumit Chopra, Er. Ramandeep Kaur, Er. Gagandeep Singh First Edition: April 2025 All rights reserved. No part of this publication may be reproduced or transmitted, in any form or by any means, without permission. Any person who does a…"
+  },
+  "Fundamentals-of-Data-Engineering.pdf": {
+    "title": "Fundamentals of Data",
+    "description": "Engineering Plan and Build Robust Data Systems Joe Reis and Matt Housley Beijing Boston Farnham Sebastopol Tokyo Table of Contents Preface. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . xiii Part I. Foundation and Building Blocks 1. Data Engineering Described. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 What Is Data Engineering? 3 Data Engineering Defined 4 The Data Engineering Lifecycle 5 Evolution of the D…"
+  },
+  "IB_IAT_2026_ENG.pdf": {
+    "title": "INDIAN INSTITUTES OF SCIENCE",
+    "description": "EDUCATION AND RESEARCH IISER Aptitude Test (IAT) 2026 Information Brochure Admission to 5 - Year BS - MS (Dual Degree), 4 - Year BS and B.Tech Degree Programs 2026 Jurisdiction: Subject to the jurisdiction of the competent courts at Berhampur, Odisha only March 2026 Indian Institutes of Science Education and Research https://www.iiseradmission.in Organizing Institute : Indian Institute of Science Education and Research (IISER) Berhampur Contact Details: The Chairperson Joint Admissions Committee 2026 Indian Institute of Science Education and Research (I…"
+  },
+  "L-0019708899-pdf.pdf": {
+    "title": "Microsoft Certified Associate",
+    "description": "® Azure Data Engineer Study Guide MCA Microsoft Certified Associate ® Azure Data Engineer Study Guide Exam DP- 203 Benjamin Perkins"
+  },
+  "L-G-0014070534-0042190155.pdf": {
+    "title": "Official Google Cloud Certified P R A L",
+    "description": "O F E S S O N Professional Data Engineer Study Guide Includes interactive online learning environment and study tools: • 2 custom practice exams • More than 100 electronic flashcards • Searchable key term glossary DAN SULLIVAN Official Google Cloud Certified Professional Data Engineer Study Guide Official Google Cloud Certified Professional Data Engineer Study Guide Dan Sullivan"
+  },
+  "PYTHON PROGRAMMING NOTES.pdf": {
+    "title": "Introduction to Python and installation , data types: Int, float, Boolean, string, and list; variables,",
+    "description": "expressions, statements, precedence of operators, comments; modules, functions --- function and its use, flow of execut ion, parameters and arguments. UNIT II CONTROL FLOW, LOOPS Conditionals: Boolean values and operators, conditional (if), alternative (if - else), chained conditional (if - elif - else); Iteration: while, for, break, continue. UNIT III FUNCTIONS, ARRAYS Fruitf ul functions: return values, parameters, local and global scope, function composition, recursion; Strings: string slices, immutability, string functions and methods, string module…"
+  },
+  "SQL-Cheat-Sheet.pdf": {
+    "title": "SQL cheat sheet",
+    "description": "Comprehensive Data Manipulation Language DML Commands Command Description Syntax Example SELECT The SELECT command retrieves SELECT column1, column2 FROM SELECT first_name, last_name data from a database. table_name; FROM customers; INSERT The INSERT command adds new INSERT INTO table_name INSERT INTO customers records to a table. (column1, column2) VALUES (first_name, last_name) (value1, value2); VALUES ('Mary', 'Doe'); UPDATE The UPDATE command is used UPDATE table_name SET column1 UPDATE employees SET to modify existing records in a = value1, column2…"
+  },
+  "de-msc-handbook-2022.pdf": {
+    "title": "Study Program Handbook",
+    "description": "Data Engineering Master of Science Subject-specific Examination Regulations for Data Engineering The subject-specific examination regulations for Data Engineering are defined by this program handbook and are valid only in combination with the General Examination Regulations for Master degree programs (“General Master Policies”). This handbook also contains the program-specific Study and Examination Plan (Appendix 1). Upon graduation students in this program will receive a Master of Science (MSc) degree with a scope of 120 ECTS credit points (for specifi…"
+  },
+  "engineering_of_big_data_processing.pdf": {
+    "title": "This edition: 1.0, June 2022 (early access)",
+    "description": "Build number: 202206162324 While the author has used good faith efforts to ensure that the information and instructions contained in this work are accurate, the author disclaim all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in this work is at your own risk. The author makes no warranty, express or implied, with respect to the material contained herein. If any code samples, software or any other techno…"
+  },
+  "resume-and-cover-letter-examples.pdf": {
+    "title": "• Courses relevant to the position for which you are applying in art history.",
+    "description": "RESUMES/COVER LETTERS • Honors and GPA (if they are a strong selling point). Indicate GPA based • To apply decision and systems on a 4.0 scale. • Senior research/honors thesis title and brief description analysis to strategic planning • Freshmen and sophomores can include high school in the telecommunications industry. Experience List most recent experience first. You should include: • Title of the position • Name of the organization and location (city and state) • Dates, including month and year • Descriptions of responsibilities beginning with action …"
+  },
+  "tw_ebook_modern_data_engineering_playbook.pdf": {
+    "title": "Three delivery planning principles",
+    "description": "for iterating towards the right data product 19 Architecture for data systems: how to balance trade-offs for technology decisions 25 Quality is king: finding the value in your data test strategy 28 Shift left on security and privacy: why it’s critical to speed, quality and customer trust 32 © Thoughtworks, Inc. All Rights Reserved. 2 Modern data engineering playbook Introduction Data has been dubbed ‘the new oil’ – highly valuable, and able to power entire industries. But unless it’s handled carefully and strategically, it can be worthless or even detri…"
+  },
+  "uj_prospectus2027_24-march-2027-final.pdf": {
+    "title": "We offer dynamic first-year courses, ranging from",
+    "description": "African Experiences to Artificial Intelligence (AI) to an introduction to the SDGs, aimed at giving 4 UNIVERSITY OF JOHANNESBURG MOLAETŠA GO TŠWA GO MOTLATŠAMOKHANSELIRI LE HLOGO Ge o thoma ka leeto le le latelago, o lebagane le sephetho se boima eupša ke se bohlokwa sa moo o tla go ithuta gona le seo o tlago go kgetha go ithuta sona. Ge o dutše o ela dikgetho tša gago ka kelohloko, ke go netefaletša gore Yunibesithi ya Johannesburg (UJ) ke ye nngwe ya diyunibesithi tšeo di nago le bophelo kudu le go ba yeo e thabišago kudu ka mo Afrika Borwa. Le ge e l…"
+  }
+}

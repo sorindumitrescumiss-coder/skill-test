@@ -1,0 +1,18 @@
+# Keep CLI / serverless deployments under Vercel file-count and upload limits.
+# This repo vendors huge static trees (10k+ files each) that are not required for the
+# core app (dashboard, skill tests, profile, auth). Excluding them fixes:
+#   Error: Request body too large. Limit: 10mb
+# Studying pages that rely on these paths will 404 until you host them elsewhere or deploy via a slimmer branch.
+
+node_modules
+.next
+.vercel/output
+
+# ~19k files — main cause of deploy failure
+public/web-code/freeCodeCamp-main
+
+# ~14.5k files — server reads this at runtime for /studying/web-code-projects
+studying
+
+# ~14k files — linked from /studying/languages
+public/web-dev-for-beginners-main

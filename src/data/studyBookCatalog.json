@@ -1,0 +1,238 @@
+{
+  "0132272679_Woychowsky_book.pdf": {
+    "title": "Introduction to Ajax",
+    "description": "Prentice Hall guide to Ajax for enterprise developers: asynchronous requests, richer UIs, and patterns for updating pages without full reloads."
+  },
+  "2016_Ombeni-Thomas_WADC-5_OUT_Web-Programming-II(Server-Side-Scripting).pdf": {
+    "title": "Web Programming II (Server-Side Scripting)",
+    "description": "Open University of Tanzania course pack on server-side web programming: scripting languages, forms, sessions, and building dynamic sites."
+  },
+  "355cb8735ea34a71cf6765a723ff3a07388a.pdf": {
+    "title": "Development of Web Programming Learning Media Using Laravel",
+    "description": "Research article on building Laravel-based web-programming teaching tools with a project-based learning approach."
+  },
+  "55-Submission+180+pp-319-322.pdf": {
+    "title": "The importance of databases in web programming",
+    "description": "Journal article on SQL and databases in modern web applications: storage, queries, and how data layers fit into application architecture."
+  },
+  "9d09db9e-3328-4255-ad68-b9446b10d7f3.pdf": {
+    "title": "Udacity — Data Structures & Algorithms Nanodegree syllabus",
+    "description": "Program overview: Python-based DSA practice, interview-style challenges, and problem-solving foundations (Nanodegree promotional document)."
+  },
+  "Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf": {
+    "title": "Pattern Recognition and Machine Learning",
+    "description": "Christopher Bishop’s graduate text on probabilistic models, linear regression, neural networks, graphical models, and inference—classic ML reference."
+  },
+  "CDS4010.pdf": {
+    "title": "Web Programming for e-Business (CDS4010)",
+    "description": "Lingnan University syllabus: HTML/CSS/JavaScript, server-side basics, and building sites that support e-business workflows."
+  },
+  "CIT484.pdf": {
+    "title": "Website Design & Programming (CIT 484)",
+    "description": "NOUN course guide for designing and programming websites: layout, scripting, and publishing skills for distance learners."
+  },
+  "COMP7890.pdf": {
+    "title": "Dynamic Web Programming (COMP7890)",
+    "description": "Course outline covering HTML/CSS/JS, server-side scripting, databases, AJAX, APIs, and building interactive web applications."
+  },
+  "COP4807 Web Programming with Java.pdf": {
+    "title": "Web Programming with Java (COP4807)",
+    "description": "Upper-division course on Java web apps: MVC, servlets/JSP, JDBC/JPA, tiers, and web services."
+  },
+  "CS506 - Web Design and Development (Handouts).pdf": {
+    "title": "Web Design and Development (CS506)",
+    "description": "Virtual University handouts: Java foundations through web-oriented modules and lecture-aligned exercises."
+  },
+  "CST2309.pdf": {
+    "title": "Introduction to Web Programming (CST 2309)",
+    "description": "Online syllabus for HTML, JavaScript, forms, validation, and CSS for introductory web pages."
+  },
+  "DAC_School_TG_Web Programming Technologies (1).pdf": {
+    "title": "Web Programming Technologies — Teaching guidelines",
+    "description": "PG-DAC guide covering HTML, CSS, JavaScript, JSON, Ajax, Node/Express, React, and related lab objectives."
+  },
+  "DAC_School_TG_Web Programming Technologies.pdf": {
+    "title": "Web Programming Technologies — Teaching guidelines",
+    "description": "PG-DAC guide covering HTML, CSS, JavaScript, JSON, Ajax, Node/Express, React, and related lab objectives."
+  },
+  "DCAP202_FUNDAMENTALS_OF_WEB_PROGRAMMING.pdf": {
+    "title": "Fundamentals of Web Programming (DCAP202)",
+    "description": "Distance-education module introducing core web technologies and client/server basics for web applications."
+  },
+  "DCAP604_MODERN_WEB_PROGRAMMING_TOOLS_AND_TECHNIQUES_I.pdf": {
+    "title": "Modern Web Programming Tools and Techniques I (DCAP604)",
+    "description": "Editor-compiled course material on contemporary stacks, tooling, and techniques used in professional web development."
+  },
+  "FULLTEXT01 (1).pdf": {
+    "title": "Generative AI in frontend web development",
+    "description": "Thesis evaluating ChatGPT and AI-assisted workflows in frontend development versus traditional coding approaches."
+  },
+  "FULLTEXT01.pdf": {
+    "title": "Web Development Frameworks: Ruby on Rails vs Google Web Toolkit",
+    "description": "Undergraduate thesis comparing two framework ecosystems for building web applications."
+  },
+  "Final-typeset-chapter1.pdf": {
+    "title": "Web 2.0-Based E-Learning",
+    "description": "Edited volume chapter on social informatics, collaborative learning, and Web 2.0 tools in tertiary education."
+  },
+  "IT_S234_Free_courseware_1666.pdf": {
+    "title": "IT S234 — Web Site Design (open courseware)",
+    "description": "OUHK-style open materials on structuring sites, visual design basics, and publishing web pages."
+  },
+  "Intro-Internet.pdf": {
+    "title": "CSSE280: Introduction to Web Programming",
+    "description": "Course intro: Internet/WWW, HTML, front-end vs back-end, Node, databases, and REST-style APIs."
+  },
+  "Introduction to Machine Learning with Python ( PDFDrive.com )-min.pdf": {
+    "title": "Introduction to Machine Learning with Python",
+    "description": "Müller & Guido (O’Reilly-style): scikit-learn workflows, pipelines, text data, and practical ML for data scientists."
+  },
+  "Introduction to web designing.pdf": {
+    "title": "Introduction to Web Designing",
+    "description": "Introductory notes on browsers, pages, sites, and basic vocabulary for people new to the web."
+  },
+  "Introduction_to_web_programming (1).pdf": {
+    "title": "Introduction to Web Programming",
+    "description": "Introductory web-programming material (duplicate/copy in your library)."
+  },
+  "Introduction_to_web_programming.pdf": {
+    "title": "Introduction to Web Programming (GE4b/DSE)",
+    "description": "Course outline: HTML, CSS, and JavaScript for simple client-side sites and core web concepts."
+  },
+  "LWD5_InstructorsGuide.pdf": {
+    "title": "Learning Web Design (5th ed.) — Instructor’s Guide",
+    "description": "Teaching companion for Jennifer Robbins’ book: pacing, exercises, accessibility, and progressive enhancement."
+  },
+  "Learning Web Design PDF.pdf": {
+    "title": "Learning Web Design — Summary edition",
+    "description": "Condensed/summary material aligned with Learning Web Design topics (check Bookey/summary source inside PDF)."
+  },
+  "Learning-Web-App-Development.pdf": {
+    "title": "Learning Web App Development",
+    "description": "Practical introduction to building browser-based applications with HTML/CSS/JS and app-style structure."
+  },
+  "Learning-Web-Design-5th-Edition.pdf": {
+    "title": "Learning Web Design (5th Edition)",
+    "description": "Jennifer Niederst Robbins: HTML, CSS, JavaScript, and web graphics for beginners—visual, exercise-driven lessons."
+  },
+  "NEP_Final_English_0.pdf": {
+    "title": "National Education Policy 2020 (India)",
+    "description": "Government policy document on school and higher-education reform—not a web-dev textbook; included as reference material."
+  },
+  "PGDCA-202_slm.pdf": {
+    "title": "Web Application Development (PGDCA-202)",
+    "description": "Self-learning material on PHP and web application basics for the PGDCA track."
+  },
+  "Stanford-MakovskyWebCredStudy2002-prelim.pdf": {
+    "title": "Stanford–Makovsky Web Credibility Study (2002)",
+    "description": "Research report on how users judge trust and credibility on the web; foundational persuasive-technology reference."
+  },
+  "TEMJournalNovember2024_3286_3294.pdf": {
+    "title": "Architecture of web applications",
+    "description": "Journal article surveying layered web architectures, technologies, and survey-based findings from developer practice."
+  },
+  "UnderstandingDeepLearning_02_09_26_C.pdf": {
+    "title": "Understanding Deep Learning",
+    "description": "Simon J.D. Prince — comprehensive deep learning text (calculus/probability appendices, modern models; see udlbook.com for updates)."
+  },
+  "WEB-PROGRAMMING-DEVELOPMENT-APPLICATION-PACKET-Spring-2024.pdf": {
+    "title": "Web Programming & Development — Application packet (2024)",
+    "description": "MTECH admissions instructions: prerequisites, deadlines, and competency exam / Codecademy waiver paths."
+  },
+  "Web Programming - ASP.NET Core.pdf": {
+    "title": "Web Programming — ASP.NET Core",
+    "description": "Hans-Petter Halvorsen notes/blog-style material on ASP.NET Core web apps and related stack."
+  },
+  "WebDevelopment.pdf": {
+    "title": "Web Development endorsement — Application",
+    "description": "Utah-style teaching endorsement application listing authorized courses for web development educators."
+  },
+  "WebDevelopmentPathway2025.pdf": {
+    "title": "Utah CTE — Web Development pathway (2025–26)",
+    "description": "High-school pathway chart: explorer vs concentrator vs completer courses in the Web Development cluster."
+  },
+  "_OceanofPDF.com_Learning_Web_Design_6E_Final_-_Jennifer_Niederst_Robbins.pdf": {
+    "title": "Learning Web Design (6th Edition)",
+    "description": "Jennifer Niederst Robbins with Aaron Gustafson: HTML, CSS, JavaScript, responsive layout (Flexbox/Grid), and modern images/accessibility."
+  },
+  "a-practical-guide-to-developing-effective-web-based-learning-fycz60y1of.pdf": {
+    "title": "A Practical Guide to Developing Effective Web-Based Learning",
+    "description": "Medical-education review on designing effective online learning using adult-learning principles and the Web."
+  },
+  "dokumen.pub_web-development-learn-html-css-javascript-php-mysql-and-wordpress-a-8620884.pdf": {
+    "title": "Web Development — HTML, CSS, JavaScript, PHP, MySQL, WordPress",
+    "description": "Full-stack primer (filename/source suggests an all-in-one web stack guide). File may be corrupted if it fails to open—re-download if needed."
+  },
+  "hall03a.pdf": {
+    "title": "Core Servlets and JavaServer Pages — Overview",
+    "description": "Early chapter from Marty Hall: servlet/JSP role in three-tier web apps and comparison with related technologies."
+  },
+  "it-web-development-2024.pdf": {
+    "title": "Statewide Program of Study: Web Development",
+    "description": "Utah IT cluster overview: careers from developer to security; web dev strand focus and course stacking."
+  },
+  "js-next-a-managers-guide.pdf": {
+    "title": "JS.Next: A Manager’s Guide",
+    "description": "O’Reilly brief for managers on modern JavaScript ecosystem, tooling, and team literacy (2nd edition)."
+  },
+  "leaflet-tips-and-tricks-sample.pdf": {
+    "title": "Leaflet Tips and Tricks",
+    "description": "Malcolm Maclean — Leanpub book on interactive maps with Leaflet.js (sample/in-progress edition)."
+  },
+  "lecture07.pdf": {
+    "title": "CS193X — Web Programming Fundamentals (Lecture 7)",
+    "description": "Stanford-style lecture: JavaScript intro, language tour, and basic event handling."
+  },
+  "lecture25.pdf": {
+    "title": "CS193X — Web Programming Fundamentals (Lecture 25)",
+    "description": "Covers web app architecture, server rendering (Handlebars), routing/middleware, and SPA concepts."
+  },
+  "links-fmco06.pdf": {
+    "title": "Links: Web Programming Without Tiers",
+    "description": "Research paper on the Links language: single source for client, server, and database tiers with typed web programming."
+  },
+  "preview-9781491960172_A35680890.pdf": {
+    "title": "Learning Web Design (preview)",
+    "description": "O’Reilly preview of Jennifer Robbins’ HTML/CSS/JS/web graphics beginner guide—same family as the 5th edition."
+  },
+  "studieordning_web_cba-curriculum_2022-rev-24.pdf": {
+    "title": "Curriculum — Bachelor in Web Development",
+    "description": "Cphbusiness programme document: learning outcomes, exams, and structure for the web development bachelor’s degree."
+  },
+  "syllabus-nd256-6.0.22 (1).pdf": {
+    "title": "Udacity — Data Structures & Algorithms Nanodegree syllabus",
+    "description": "Official syllabus copy: program length, prerequisites, and skills taught in the DSA Nanodegree."
+  },
+  "syllabus-nd256-6.0.22.pdf": {
+    "title": "Udacity — Data Structures & Algorithms Nanodegree syllabus",
+    "description": "Official syllabus copy: program length, prerequisites, and skills taught in the DSA Nanodegree."
+  },
+  "textbook.pdf": {
+    "title": "Learning Web Design (textbook)",
+    "description": "Large consolidated PDF titled like Jennifer Robbins’ Learning Web Design—use alongside other editions for reference."
+  },
+  "the-missing-link-an-introduction-to-web-development-and-programming-pdf.pdf": {
+    "title": "The Missing Link: An Introduction to Web Development and Programming",
+    "description": "Michael Mendez (Open SUNY): browsers, HTTP, HTML/CSS/JS, and how pieces fit into full-stack thinking."
+  },
+  "web-developer-new-25-job-role-english-class-11.pdf": {
+    "title": "Web Developer — Class XI study material (India)",
+    "description": "PSSCIVE vocational textbook for the Web Developer job role (IT-ITeS), aligned to QP SSC/Q0503."
+  },
+  "web-programming-with-html5-css-and-javascript_compress.pdf": {
+    "title": "Programming with HTML5, CSS, and JavaScript",
+    "description": "John Dean (Jones & Bartlett): structured introduction to front-end web programming with HTML5 APIs and scripting."
+  },
+  "web-roadmap.pdf": {
+    "title": "The Complete Web Developer Roadmap",
+    "description": "Code With Mosh roadmap from zero to hireable: frontend/backend topics and suggested learning order."
+  },
+  "webdev-tutorial.pdf": {
+    "title": "WEBDEV — Tutorial summary",
+    "description": "PC SOFT WEBDEV tutorial overview and lesson index for their browser/server web platform."
+  },
+  "webprog_top.pdf": {
+    "title": "Web programming — Chapter 1 (overview)",
+    "description": "Introductory chapter on hypertext, links, and foundational web concepts from a longer web programming course."
+  }
+}

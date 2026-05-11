@@ -1,0 +1,158 @@
+{
+  "0000-Vitruvius-50BC-Ten-Books-of-Architecture.pdf": {
+    "title": "The Ten Books on Architecture",
+    "description": "Vitruvius’s classical Roman treatise on architecture and engineering—town planning, temples, the orders, proportion, materials, machines, and civil works. Widely read through later ages as a foundation for Western building theory (here in the Morgan translation with Harvard University Press front matter)."
+  },
+  "0226869393.pdf": {
+    "title": "Modern Architecture: A Guidebook for His Students to This Field of Art",
+    "description": "Otto Wagner’s landmark 1896 text (Getty Publications; trans. Harry Francis Mallgrave) criticizes historicist eclecticism and argues for a contemporary architecture suited to modern life. This edition follows the expanded 1902 German text with emendations from the 1896, 1898, and 1914 versions—covering style, composition, construction, and practice, with introductory essays on Wagner’s place in fin‑de‑siècle theory."
+  },
+  "03. Architect_s Data.pdf": {
+    "title": "Architects' Data",
+    "description": "Ernst Neufert’s canonical planning reference: standardized dimensions, ergonomics, spatial requirements, and technical layout data used daily in architectural offices—dimensions for housing, public buildings, accessibility, and services (international English edition)."
+  },
+  "10356_a_path_towards_autonomous_mach.pdf": {
+    "title": "A Path Towards Autonomous Machine Intelligence",
+    "description": "Version 0.9.2, 2022-06-27 Yann LeCun Courant Institute of Mathematical Sciences, New York University yann@cs.nyu.edu Meta - Fundamental AI Research yann@fb.com June 27, 2022 Abstract How could machines learn as efficiently as humans and animals? How could ma- chines learn to reason and plan? How could machines learn representations of percepts and action plans at multiple levels of abstraction, enabling them to reason, predict, and plan at multiple time horizons? This position paper proposes an architecture and training paradigms with which to construct…"
+  },
+  "18.pdf": {
+    "title": "The architecture student’s handbook of professional practice",
+    "description": "Student-focused AIA guide to entering practice in the United States: how firms operate, services and contracts, risk and insurance, disputes, information management, BIM, and professional expectations—structured as a companion for coursework and early career decisions."
+  },
+  "3764371900 Architecture.pdf": {
+    "title": "Constructing Architecture",
+    "description": "Edited handbook from ETH Zurich on how architectural design joins material choice and fabrication: materials, processes, and structural systems explained with built examples—bridging technical execution and design intent (Birkhäuser; Andrea Deplazes et al.)."
+  },
+  "4+1view-architecture.pdf": {
+    "title": "Architectural Blueprints—The “4+1” View",
+    "description": "Model of Software Architecture Philippe Kruchten Rational Software Corp. Abstract This article presents a model for describing the architecture of software-intensive systems, based on the use of multiple, concurrent views. This use of multiple views allows to address separately the concerns of the various ‘stakeholders’ of the architecture: end-user, developers, systems engineers, project managers, etc., and to handle separately the functional and non functional requirements. Each of the five views is described, together with a notation to capture it. T…"
+  },
+  "7Architecture-2.pdf": {
+    "title": "Introduction to Quality Architecture Design Documentation",
+    "description": "Software Architecture Factors Styles and Patterns 1 A Software Life-cycle Model 3 Maintenance Kristian Sandahl Which part will we talk about today? krisa@ida.liu.se Validate Requirements, Verify Specification Requirements Acceptance Test (Release testing) Verify System Design System Design System Testing (Architecture, (Integration testing of modules) High-level Design) Verify Module Design Module Design Module Testing (Program Design, (Integration testing of units) Detailed Design) Verify Implementation Implementation of Units (classes, procedures, Uni…"
+  },
+  "853_Structure and Architecture 2nd.pdf": {
+    "title": "Structure and Architecture",
+    "description": "Structure and Architecture Angus J. Macdonald Department of Architecture, University of Edinburgh Second edition Architectural Press OXFORD AUCKLAND BOSTON JOHANNESBURG MELBOURNE NEW DELHI Structure and Architecture Architectural Press An imprint of Butterworth-Heinemann Linacre House, Jordan Hill, Oxford OX2 8DP 225 Wildwood Avenue, Woburn, MA 01801-2041 A division of Reed Educational and Professional Publishing Ltd A member of the Reed Elsevier plc group First published 1994 Reprinted 1995, 1996, 1997 Second edition 2001 © Reed Educational and Profess…"
+  },
+  "Architectural Design Portable Handbook.pdf": {
+    "title": "Architectural",
+    "description": "Design Portable Handbook Architectural Design Portable Handbook A Guide to Excellent Practices Andy Pressman, NCARB, AIA McGRAW-HILL New York Chicago San Francisco Lisbon London Madrid Mexico CityMilan New Delhi San Juan Seoul Singapore Sydney Toronto Copyright © 2001 by Andy Pressman. All rights reserved. Manufactured in the United States of America. Except as permitted under the United States Copyright Act of 1976, no part of this publication may be reproduced or distributed in any form or by any means, or stored in a database or retrieval system, wit…"
+  },
+  "ArchitectureOfComplexity.HSimon1962.pdf": {
+    "title": "T H E ARCHITECTURE O F COMPLEXITY",
+    "description": "HERBERT A. SIMON* Professor of Administration, Carnegie Institute of Technology (Read April 26, 1962) A N U M B E R of proposals have been advanced in and to analyze adaptiveness in terms of the theory recent years for the development of \"general sys- of selective i n f ~ r m a t i o n . ~ T h e ideas of feedback tems theory\" which, abstracting from properties and information provide a frame of reference for peculiar to physical, biological, or social systems, viewing a wide range of situations, just as do the would be applicable to all of them.l IVe mi…"
+  },
+  "BAE 632-Architectural Design.pdf": {
+    "title": "ARCHITECTURE",
+    "description": "03 architectural design adj n relating to the art or a plan or drawing practice of designing and produced to show the constructing buildings look and function or workings of a building BASICS Jane Anderson ARCHITECTURE 03 architectural design An AVA Book Published by AVA Publishing SA Rue des Fontenailles 16 Case Postale 1000 Lausanne 6 Switzerland Tel: +41 786 005 109 Email: enquiries@avabooks.com"
+  },
+  "Basics_-Architecture_and_Dynamics_F._Ullmann_Springer_2011_BBS.pdf": {
+    "title": "Architecture and Dynamics",
+    "description": "SpringerWienNewYork for my parents Univ.Prof. Arch. Dipl.Ing. Franziska Ullmann Vienna/Stuttgart Printed with financial support of Bundesministerium für Wissenschaft und Forschung, Vienna This work is subject to copyright. All rights are reserved, whether the whole or part of the material is con- cerned, specifically those of translation, reprinting, re-use of illustrations, broadcasting, reproduction by photocopying machines or similar means, and storage in data banks. Product liability: The publisher can give no guarantee for the information contained…"
+  },
+  "CO.pdf": {
+    "title": "Book: M. Moris Mano (2006), Computer System Architecture, 3rd edition, Pearson/PHI,",
+    "description": "India: Unit-3 Pages: 67-91 REGISTER TRANSFER AND MICRO ‐ OPERATIONS: Register transfer language, register transfer, bus and memory transfers, arithmetic micro‐operations, logic micro‐operations, shift micro‐operations, arithmetic logic shift unit. Book: M. Moris Mano (2006), Computer System Architecture, 3rd edition, Pearson/PHI, India: Unit-3 Pages: 93-118 Computer Architecture: Computer Architecture deals with giving operational attributes of the computer or Processor to be specific. It deals with details like physical memory, ISA (Instruction Set Arc…"
+  },
+  "Clean Architecture A Craftsman's Guide to Software Structure and Design.pdf": {
+    "title": "Clean Architecture",
+    "description": "A C RAFTSMAN’S G UIDE TO S OFTWARE S TRUCTURE AND DESIGN Robert C. Martin Boston • Columbus • Indianapolis • New York • San Francisco • Amsterdam • Cape Town Dubai • London • Madrid • Milan • Munich • Paris • Montreal • Toronto • Delhi • Mexico City São Paulo • Sydney • Hong Kong • Seoul • Singapore • Taipei • Tokyo Many of the designations used by manufacturers and sellers to distinguish their products are claimed as trademarks. Where those designations appear in this book, and the publisher was aware of a trademark claim, the designations have been pr…"
+  },
+  "Information_Architecture_For_The_Web_And_Beyond_Fourth_Edition.pdf": {
+    "title": "Information architecture (IA) is far more challenging— I was one of the rare",
+    "description": "“ and necessary—than ever. With the glut of information people with the job title available today, anything your organization wants to share should be easy to find, navigate, and understand. ‘information architect’ But the experience you provide has to be familiar and when the first edition of coherent across multiple interaction channels, from this book came out. At the Web to smartphones, smart watches, and beyond. the time, it seemed like To guide you through this broad ecosystem, this popular a meaningful validation guide—now in its fourth edition—p…"
+  },
+  "Kristin-Oretorp_Booklet-curated_ARK258_211215.pdf": {
+    "title": "The sound of architecture",
+    "description": "Musical mapping in architecture ARK 258 | Matter Space Structure | Kristin Oretorp | 2021 2 Kristin Oretorp | 2021 | MSS3 Music is liquid architecture; architecture is frozen music. Johann Wolfgang von Goethe Sight isolates, whereas sound incorporates; vision is directional, whereas sound is omni-directional. The sense of sight implies exteriority, but sound creates an experience of interiority. I regard an object, but sound approaches me; the eye reaches, but the ear receives. Juhani Pallasmaa Kristin Oretorp | 2021 | MSS3 3 4 Kristin Oretorp | 2021 | …"
+  },
+  "L-G-0002521619-0003712131.pdf": {
+    "title": "Becoming a Green Building Professional",
+    "description": "Holley Henderson Becoming a Fashion Designer Lisa Springsteel Becoming a Graphic Designer, Fourth Edition Steven Heller, Teresa Fernandes Becoming a Digital Designer Steven Heller, David Womack Becoming a Construction Manager John J. McKeon Becoming a Landscape Architect Kelleann Foster Becoming an Urban Planner Michael Bayer, Nancy Frank, Jason Valerius Becoming an Interior Designer, Second Edition Christine M. Piotrowski T H E D E F I N I T I O N O F A N A R C H I T E C T iii T H I R D E D I T I O N Becoming an A R C H I T E C T A Guide to Careers in …"
+  },
+  "NIST.CSWP.29.pdf": {
+    "title": "auditors — to guide their cybersecurity-related decisions. Additionally, the CSF can be useful to",
+    "description": "those making and influencing policy (e.g., associations, professional organizations, regulators) who set and communicate priorities for cybersecurity risk management. Supplemental Content NIST will continue to build and host additional resources to help organizations implement the CSF, including Quick Start Guides and Community Profiles. All resources are made publicly available on the NIST CSF website . Suggestions for additional resources to reference on the NIST CSF website can always be shared with NIST at cyberframework@nist.gov . Note to Readers U…"
+  },
+  "NIST.SP.800-207.pdf": {
+    "title": "Zero Trust Architecture",
+    "description": "Scott Rose Oliver Borchert Stu Mitchell Sean Connelly This publication is available free of charge from: https://doi.org/10.6028/NIST.SP.800-207 C O M P U T E R S E C U R I T Y NIST Special Publication 800-207 Zero Trust Architecture Scott Rose Oliver Borchert Advanced Network Technologies Division Information Technology Laboratory Stu Mitchell Stu2Labs Stafford, VA Sean Connelly Cybersecurity & Infrastructure Security Agency Department of Homeland Security This publication is available free of charge from: https://doi.org/10.6028/NIST.SP.800-207 August…"
+  },
+  "Overview-Architecture-Website.pdf": {
+    "title": "These Are The 10 Best Architecture Website Designs Of 2020",
+    "description": "Are you looking for the best architecture website designs? Or do you want an architecture website template? Perhaps you already have a design in mind, and you’re just looking for a architecture website creator. In any case.. You came to the right place. See, many architects invest a lot of money to get the perfect architecture website. They hire the best designers and the best developers. Although that de nitely is a great strategy, I have a better one for you. The best part? It’s free. How to build a great architect website in 4 steps 1. Select a cheap…"
+  },
+  "Precedents-in-Architecture-Analytic-Diagrams-Formative-Ideas-and-Partis.pdf": {
+    "title": "Precedents in Architecture Analytic Diagrams Formative Ideas and Partis",
+    "description": "Architecture study material (PDF)."
+  },
+  "RhythmArchitecturePPdlF.pdf": {
+    "title": "Prieto De La Fuente, P. (2018). RHYTHM ARCHITECTURE: ON SEQUENTIAL ASPECTS OF MATERIALITIES",
+    "description": "2018 Document Version: Publisher's PDF, also known as Version of record Link to publication Citation for published version (APA): Prieto De La Fuente, P. (2018). RHYTHM ARCHITECTURE: ON SEQUENTIAL ASPECTS OF MATERIALITIES IN URBAN SPACE. Department of Architecture and Built Environment, Lund University. Total number of authors: 1 General rights Unless other specific re-use rights are stated the following general rights apply: Copyright and moral rights for the publications made accessible in the public portal are retained by the authors and/or other cop…"
+  },
+  "SITM.pdf": {
+    "title": "applied to a wide range of architectural and urban problems. The aim",
+    "description": "of this book is to assemble some of this work and show how it leads the way to a new type of theory of architecture: an ‘analytic’ theory in which understanding and design advance together. The success of configurational ideas in bringing to light the spatial logic of buildings and cities suggests that it might be possible to extend these ideas to other areas of the human sciences where problems of configuration and pattern are critical. Space is the machine Bill Hillier A configurational theory of architecture ‘ A house is a machine for living in…’ Le …"
+  },
+  "SystemArchitectureBook.pdf": {
+    "title": "System Architecture: The Silver",
+    "description": "Bullet? Unchangeable Specifications Avoid nasty Certainty Surprises Unchangeable Schedules Avoid risks 0.1 Introduction The expectation level with respect to processes in general and the system archi- tecture process in particular can vary from skeptical to blind faith. The skeptics have experienced that horrible specifications and designs can be pursued under the grand name of Architecture. The followers with blind faith are at the opposite end of the spectrum, their believe in processes inhibits them from seeing the limitations and constraints from th…"
+  },
+  "Understanding-Architecture-by-Hazel-Conway-and-Rowan-Roenisch.pdf": {
+    "title": "3111 Understanding Architecture is a comprehensive introduction to architecture and",
+    "description": "4 architectural history and exceptional in its holistic approach. It explores the 5 current practice of architecture in relation to its history and in relation to 6 the issues that are significant today. This new edition looks at the implica- 7 tions of sustainability, at conservation, landscape, and urban regeneration. 8 Its extended coverage includes China, the Middle East, India, Africa and 9 other parts of the world. 20111 Its aim is to help people make sense of the experience of architecture and 1 the built environment by introducing some of the co…"
+  },
+  "VSI_Architectural_Design_for_Traditional_Neighborhoods.pdf": {
+    "title": "ARCHITECTURAL DESIGN FOR",
+    "description": "TRADITIONAL NEIGHBORHOODS Korkut Onaran Fernando Pagés Ruiz Ronnie Pelusio Tom Lyon Foreword by Andrés Duany Afterword by Stephen A. Mouzon Published by Vinyl Siding Institute As advocates of New Urbanism and traditional neighborhood development (TND), designers often face the task of convincing their builder clients that true TND entails more than a few facade details slapped on production models in a suburban plat. Architectural Design for Traditional Neighborhoods offers simple concepts that will help developers and builders quickly grasp the basic i…"
+  },
+  "a-practical-guide-to-building-agents.pdf": {
+    "title": "a practical guide to building agents",
+    "description": "Architecture study material (PDF)."
+  },
+  "arch_thinking.pdf": {
+    "title": "The soul of architecture",
+    "description": "Photos by Pete Bouchard Music by Samuel Barber The Open Group | 9 January 2004 | dkjacks@us.ibm.com © 2003 2004 IBM Corporation IBM Software Sales Agenda Who we are The systems architect in the industry What we do The product of the systems architect is models How we do that thing we do The process breaks down large intractable problems into manageable chunks 3 Architectural Thinking | The Art of Architecting | The Open Group Conference © 2003 2004 IBM Corporation IBM Software Sales A word on resources nd The Art of Systems Architecting 2 Edition, Mark …"
+  },
+  "architecture_guide_un17_vol.2_optimized_for_web.pdf": {
+    "title": "AN ARCHITECTURE GUIDE",
+    "description": "to the UN 17 Sustainable Development Goals Volume 2 THE 17 GOALS In 2015, world leaders agreed to 17 goals for a better world by 2030. These goals have the power to end poverty, fight inequality and stop climate change. Guided by the goals, it is now up to all of us, governments, businesses, civil society and the general public to work together to build a better future for everyone. https:/ /www.globalgoals.org/ 12.c 3.c 9.a 1.b Næste GAME Streetmekka Folden Venligbolig Plus AN ARCHITECTURE GUIDE Denmark – p.172 Viborg, Denmark – p.50 Roskilde, Denmark …"
+  },
+  "bookv2-300dpi.pdf": {
+    "title": "Architectural Drawing A Grenfell-Baines Institute of Architecture Year One Guide",
+    "description": "Architectural Drawing A Grenfell-Baines Institute of Architecture Year One Guide Contact: author. the from writing in permission Compiled, designed and edited by the author, James Dyson. All drawings and text © 2016 James Dyson. No part of this publication may be reproduced or transmitted in any form or by any means, electronic or mechanical, including photocopy, recording or any information storage and retrieval system without jamesadyson@gmail.com Revised 2017 Grenfell-Baines Institute of Architecture, School of Art, Design and Fashion, University of …"
+  },
+  "ching-architecture_form_space_order.pdf": {
+    "title": "ARCHITECTURE",
+    "description": "Form, Space, & Order Third Edition ARCHITECTURE Form, Space, & Order Third Edition Francis D.K. Ching John Wiley & Sons, Inc. This book is printed on acid-free paper. ∞ Copyright © 2007 by John Wiley & Sons, Inc. All rights reserved Wiley Bicentennial Logo: Richard J. Pacifico Published by John Wiley & Sons, Inc., Hoboken, New Jersey Published simultaneously in Canada No part of this publication may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, electronic, mechanical, photocopying, recording, scanning, or other…"
+  },
+  "cpumemory.pdf": {
+    "title": "1 Introduction day these changes mainly come in the following forms:",
+    "description": "In the early days computers were much simpler. The var- • RAM hardware design (speed and parallelism). ious components of a system, such as the CPU, memory, mass storage, and network interfaces, were developed to- • Memory controller designs. gether and, as a result, were quite balanced in their per- • CPU caches. formance. For example, the memory and network inter- faces were not (much) faster than the CPU at providing • Direct memory access (DMA) for devices. data. This situation changed once the basic structure of com- For the most part, this documen…"
+  },
+  "has_fat.pdf": {
+    "title": "ARCHITECTURE FOR THE POOR",
+    "description": "HASAN FATHY 1 Prelude Dream and Reality Paradise Lost: The Countryside If you were given a million pounds, what would you do with them? A question they were always asking us when we were young, one that would start our imagination roaming and set us daydreaming. I had two possible answers: one, to buy a yacht, hire an orchestra, and sail round the world with my friends listening to Bach, Schumann, and Brahms; the other, to build a village where the fellaheen would follow the way of life that I would like them to. This second wish had deep roots, going b…"
+  },
+  "local_191006.pdf": {
+    "title": "NOTES ON ARCHITECTURE AS A MAKING DISCIPLINE",
+    "description": "AND MATERIAL PRACTICE Fredrik Nilsson Within contemporary developments in the field of architectural research and practice there are certain points of tension that trigger discussions, debates and create dynamics. One important notion here is the aspect of “ making ” – of actively doing, modelling, altering things in a mode which simultaneously engages thinking and ideas about future worlds as well as the practical transformation of present materials – which is a central aspect of architecture, both regarding the actual process of designing and regardin…"
+  },
+  "practicalbookofa00priciala.pdf": {
+    "title": "LIBRARY OF ARCHITECTURE AND",
+    "description": "ALLIED ARTS 453 South Spring Street Los Angeles, Calif. CARDS: No book will be issued or received without presentation of card. The person in whose name the card is issued is responsible for all books and plate* drawn on it. and for all fines accruing on the same. FINE: Five cents per day will be charged for books and plates kept overtime. 34 DAMAGES: Pencil marks, torn or defaced labels, book plates or card pockets or mutilation of the CM book or plate itself will be charged to the card ,57* owner. See that they are not issued to you with IJj such defe…"
+  },
+  "preview-9780429013805_A42366332.pdf": {
+    "title": "Architectural Type and Character: A Practical Guide to a History of Architecture is an excellent",
+    "description": "to history in architecture, reunifying architectural history and architectural design to reform architectural discourse and practice. Historians provide important material for ap- preciating buildings and guiding those who produce them. In current histories, a building is the product of a time, its form follows its function, irresistible influences produce it, and style, preferably novel, is its most important attribute. This book argues for an alternative. Through a two-part structure, the book first develops the theoretical foundations for this altern…"
+  },
+  "preview-9781482224610_A24097645.pdf": {
+    "title": "STRUCTURES AND ARCHITECTURE",
+    "description": "Concepts, Applications and Challenges Editor Paulo J.S. Cruz STRUCTURES AND ARCHITECTURE PROCEEDINGS OF THE SECOND INTERNATIONAL CONFERENCE ON STRUCTURES AND ARCHITECTURE, GUIMARÃES, PORTUGAL, 24–26 JULY 2013 Structures and Architecture Concepts, Applications and Challenges Editor Paulo J.S. Cruz School of Architecture, University of Minho, Guimarães, Portugal CRC Press Taylor & Francis Group 6000 Broken Sound Parkway NW, Suite 300 Boca Raton, FL 33487-2742 © 2013 by Taylor & Francis Group, LLC CRC Press is an imprint of Taylor & Francis Group, an Infor…"
+  },
+  "twenty-five_buildings_every_architect_should_understand_2nd_edition.pdf": {
+    "title": "books offer an introduction to the workings of architecture providing for the three aspects of learning: theory, examples and",
+    "description": "practice. Twenty-Five Buildings focusses on analysing examples using the methodology offered by Analysing Architecture , which operates primarily through the medium of drawing. In this second edition five further buildings have been added to the original twenty from an even wider geographical area, which now includes the USA, France, Italy, Mexico, Switzerland, Spain, Finland, Germany, Australia, Norway, Sweden, India and Japan. The underlying theme of Twenty-Five Buildings Every Architect Should Understand is the relationship of architecture to the hum…"
+  }
+}

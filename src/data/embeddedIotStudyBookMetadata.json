@@ -1,0 +1,126 @@
+{
+  "0243.Enet_IO Step by Step Example Slides.pdf": {
+    "title": "IoT Embedded Web Server",
+    "description": "• Import, compile, and debug an embedded web server • Control the evaluation board from a web browser • Learn how to use the Code Composer Studio (CCS) tools • Learn where to go next! • Time to build an embedded web server! • In this lab, we will: Hands On! your choice http://processors.wiki.ti.com/index.php/Download_CCS http://www.ti.com/tool/sw-tm4c – Download and Install Code Composer Studio or a supported compiler of – Install the complete TivaWare for C Series Package – Install LM Flash Programmer http://www.ti.com/tool/lmflashprogrammer – Install …"
+  },
+  "1822-b.e-ece-batchno-87.pdf": {
+    "title": "Border Security using IoT a nd Embedded systems",
+    "description": "Submitted in partial fulfillment of the requirements for the award of Bachelor of Engineering Degree in Electronics and Communication Engineering by Shaik Althaf (38130201) Koripalli Yaswanth (38130111) DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING Sathyabama Institute of S cience a nd Technology (DEEMED TO BE UNIVERSITY) Accredited with Grade “A” by NAAC JEPPIAAR NAGAR, RAJIV GANDHI SALAI, CHENNAI - 600 1 19 MARCH - 2022 i DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING BONAFIDE CERTIFICATE This is to certify that this Project Report …"
+  },
+  "9781119701255.excerpt.pdf": {
+    "title": "Internet of Things (IoT) Fundamentals",
+    "description": "LEARNING OBJECTIVES After studying this chapter, students will be able to: • describe the evolution of the IoT concept. • state the vision and definition of IoT. • explain the basic characteristics of IoT. • distinguish the IoT from other related technologies. • elaborate the IoT enablers. • explain the IoT architectures. • articulate the pros and cons of IoT. • apply the IoT architecture concepts for specific IoT applications. • understand the implementation aspect of IoT architecture. 1.1 Introduction In our daily lives, the augmented practice of Info…"
+  },
+  "CS3691 ESIOT Soft copy Notes.pdf": {
+    "title": "UNIT III IOT AND ARDUINO PROGRAMMING 9",
+    "description": "Introduction to the Concept of IoT Devices – IoT Devices Versus Computers – IoT Configurations – Basic Components – Introduction to Arduino – Types of Arduino – Arduino Toolchain – Arduino Programming Structure – Sketches – Pins – Input/Output From Pins Using Sketches – Introduction to Arduino Shields – Integration of Sensors and Actuators with Arduino. UNIT IV IOT COMMUNICATION AND OPEN PLATFORMS 9 IoT Communication Models and APIs – IoT Communication Protocols – Bluetooth – WiFi – ZigBee – GPS – GSM modules – Open Platform (like Raspberry Pi) – Archit…"
+  },
+  "CS3691-EMBEDDED-SYSTEM-AND-IOT.pdf": {
+    "title": "CS3691 - EMBEDDED SYSTEMS AND IO T",
+    "description": "UNIT I 8 - BIT EMBEDDED PROCESSOR 8 - Bit Microcontroller – Architecture – Instruction Set and Programming – Programming Parallel Ports – Timers and Serial Port – Interrupt Handling. PART – A 1. Define microcontroller ? and its applications. A microcontroller is a compact integrated circuit designed to govern a specific operation in an embedded system . A typical microcontroller includes a processor, memory and input/output (I/O) peripherals on a single chip. Application of Microcontroller  Light sensing & controlling devices.  Temperature sensing and…"
+  },
+  "CSPC702-Embedded_Systems_Internet.pdf": {
+    "title": "CSPC702 - EMBEDDED SYSTEMS",
+    "description": "AND INTERNET OF THINGS(IOT) UNIT – I Introduction to Embedded Systems S y l l a b u s - U n i t I In t r o d u c t i o n t o E m b e d d e d S y s t e m s ➢ Introduction to Embedded Systems ➢ Applications of embedded system ➢ Features and Attributes of Embedded System ➢ Challenges in Embedded System ➢ Selection of Processors ➢ Recent trends in embedded system ➢ Embedded Firmware design approaches and development languages ➢ Embedded development life cycle. In t r o d u c t i o n t o E m b e d d e d S y s t e m s Definition • It is an Electronic/Electro-…"
+  },
+  "DR jwc IOT.pdf": {
+    "title": "INTRODUCTION OF IOT",
+    "description": "IoT comprises things that have unique identities and are connected to internet. By 2020 there will be a total of 50 billion devices /things connected to internet. IoT is not limited to just connecting things to the internet but also allow things to communicate and exchange data. Definition: A dynamic global n/w infrastructure with self configuring capabilities based on standard and interoperable communication protocols where physical and virtual ― thing s‖ have identitie s, physical attributes and virtual personalities and use intelligent interfaces, an…"
+  },
+  "EMBEDDED CONTROL SYSTEMS & IOT Class notes.pdf": {
+    "title": "CSCSPC22 EMBEDDED CONTROL SYSTEMS AND INTERNET OF THINGS (IoT)",
+    "description": "L T P C EMBEDDED CONTROL SYSTEMS AND INTERNET OF THINGS CSCSPC22 (IoT) 3 0 0 3 COURSE OBJECTIVES: • To expose the students about the fundamentals of Embedded System. • To educate about Firmware design and development. • To discuss on aspects required in embedded system design techniques. • To understand the fundamentals of Internet of Things. • To build a small low cost embedded system using Arduino / Raspberry Pi or equivalent boards and to apply the concept of Internet of Things in the real world scenario. Embedded System Vs Ge neral Computing System …"
+  },
+  "EMBEDDED SYSTEMS DESIGN.pdf": {
+    "title": "EMBEDDED SYSTEMS DESIGN",
+    "description": "IV B. Tech I semester (R2 2 ) (202 5 - 2 6 ) Faculty Member Mr. M. Ramanjaneyulu Associate Professor ECE MALLA REDDY COLLEGE OF ENGINEERING AND TECHNOLOGY IV Year B.Tech. ECE - I I Sem EMBEDDED SYSTEMS DESIGN (R2 2 A042 6 ) COURSE OBJECTIVES: For embedded systems, the course will enable the students to: 1. Understand the basics of an embedded system. 2. Program an embedded system. 3. To learn the design process of embedded system applications. 4. To understands the RTOS and inter - process communication. 5. To understand different communication interfac…"
+  },
+  "ET3491-Embedded _ IoT Design.pdf": {
+    "title": "ET3491 EMBEDDED SYSTEM AND IOT DESIGN Unit-1",
+    "description": "UNIT – I 8 BIT EMBEDDED PROCESSOR Microcontrollers for an Embedded System – 8051 – Architectu re – Addressing Modes – Instruction Set – Program and Data Memory – Stacks – Interrupts – Timers/Counters – Serial Ports – Programming . Microcontrollers for Embedded system:  A Microcontroller is a single chip computer.  A CPU with all the peripherals like RAM, ROM, I/O Ports, Timers, and ADCs etc. on the same chip. For Ex: Motorola 6811, Intel 8051 , Zilog Z8 and PIC 16X etc… Microprocessor:  A CPU built into a single VLSI chip is called a microprocessor. …"
+  },
+  "Fast_and_Effective_Embedded_Systems_Design_from_bits_and_bytes_to.pdf": {
+    "title": "It is still not so long ago that designers of embedded systems had to be electronics experts,",
+    "description": "or software experts, or both. Nowadays, with user-friendly and sophisticated building blocks available for our use, both the specialist and the beginner can quickly engage in successful embedded system construction and design. One such building block was the Mbed , a self-contained microcontroller development board, launched in 2009 by the renowned computer giant Arm. The Mbed was the central theme of the first edition of this book, and through it all the main topics of embedded system design were introduced. Technology has continued its onward gallop s…"
+  },
+  "Hands-On_IoT_Wi-Fi_and_Embedded_Web_Development.pdf": {
+    "title": "Hands-On IoT:",
+    "description": "Wi-Fi and Embedded Web Development Developing with ESP32, Arduino, C/C++, HTML, CSS, and JavaScript by Examples Erwin Ouyang Help others achieve their dreams and you will achieve yours. — LES BROWN Downloading the Code The code for the examples shown in this book is available on my GitHub repository, https://github.com/yohanes-erwin/arduino- ml/tree/master/esp32_examples . Other Resources Visit the following sites for other tutorials: www.handsonembedded. com , aiotedge.tech Preface Rapid advances in IoT technology demand a lot of devices to be con- nec…"
+  },
+  "IJARCCE.2019.8430.pdf": {
+    "title": "process of security. Automation of security can be achieved b y designing an application on Raspberry Pi and ATmega",
+    "description": "328 microcontroller through various sensors such as motion sensor - PIR (Passive Infrared) sensors for detection of any intruder in the house, upon detection an alarm is raised and the owner of the house and notification messages are provided. When it comes to our house, this concept can be aptly incorporated to make it smarter, safer and automated. This project presents the overall design of Home Automation System (HAS) with low cost and wireless system. The smart home concept in the system improves the standard living at home. Whenever a person come i…"
+  },
+  "IOT_LECTURE_NOTEs.pdf": {
+    "title": "INTRODUCTION OF IOT",
+    "description": "IoT comprises things that have unique identities and are connected to internet. By 2020 there will be a total of 50 billion devices /things connected to internet. IoT is not limited to just connecting things to the internet but also allow things to communicate and exchange data. Definition: A dynamic global n/w infrastructure with self configuring capabilities based on standard and interoperable communication protocols where phy sica l and virtual ― thing s ‖ have identitie s, physical attributes and virtual personalities and use intelligent interfaces,…"
+  },
+  "Internet of Things_ Architectures, Protocols and Standards ( PDFDrive ).pdf": {
+    "title": "Internet of Things",
+    "description": "Internet of Things Architectures, Protocols and Standards Simone Cirani Caligoo Inc., Chicago, IL, USA Gianluigi Ferrari Department of Engineering and Architecture University of Parma, Parma (PR), Italy Marco Picone Caligoo Inc., Chicago, IL, USA Luca Veltri Department of Engineering and Architecture University of Parma, Parma (PR), Italy This edition first published 2019 © 2019 John Wiley & Sons Ltd All rights reserved. No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form or by any means, electronic, …"
+  },
+  "Internet-of-Things-1 (1).pdf": {
+    "title": "INTERNET OF THINGS",
+    "description": "Compiled by Mr. Bijay Kumar Gauda Lecturer, Department of Computer Science & Engineering, NMIET , Bhubaneswar CONTENTS S.NO CHAPTER NAME PAGE NO 1 Introduction to Internet of Things 1 - 9 2 IoT Networking 10 - 21 3 Connectivity Technologies 22 - 31 4 Wireless Sensor Networks 32 - 38 5 M2M Communication 39 - 43 6 Programming with Arduino 44 - 49 7 Programming with Raspberry Pi 50 - 55 8 Software defined Networking 56 - 60 9 Smart Homes 61 - 63 10 Smart Cities 64 - 69 11 Industrial IoT 79 - 73 Internet of Things UNIT - 1 Introduction to Internet of Things…"
+  },
+  "Internet-of-Things-1.pdf": {
+    "title": "INTERNET OF THINGS",
+    "description": "Compiled by Mr. Bijay Kumar Gauda Lecturer, Department of Computer Science & Engineering, NMIET , Bhubaneswar CONTENTS S.NO CHAPTER NAME PAGE NO 1 Introduction to Internet of Things 1 - 9 2 IoT Networking 10 - 21 3 Connectivity Technologies 22 - 31 4 Wireless Sensor Networks 32 - 38 5 M2M Communication 39 - 43 6 Programming with Arduino 44 - 49 7 Programming with Raspberry Pi 50 - 55 8 Software defined Networking 56 - 60 9 Smart Homes 61 - 63 10 Smart Cities 64 - 69 11 Industrial IoT 79 - 73 Internet of Things UNIT - 1 Introduction to Internet of Things…"
+  },
+  "Internet_of_things.pdf": {
+    "title": "What is IOT? 2",
+    "description": "❖ The Internet of Things is the network of physical objects or \"things\" embedded with electronics, software, sensors, and network connectivity, which enables these objects to collect and exchange data . ❖ It allows objects to be sensed and controlled remotely across existing network infrastructure, creating opportunities for more direct integration between the physical world and computer - based systems, and resulting in improved efficiency, accuracy and economic benefit . 3 ❖ \" Things ,\" in the IoT sense, can refer to a wide variety of devices such as …"
+  },
+  "IoT & Applications Digital Notes.pdf": {
+    "title": "INTERNET OF THINGS & ITS",
+    "description": "APPLICATIONS Lecture Notes B.TECH (2020 - 21) Prepared by: Mr.M.Anantha Guptha, Assistant Professor Department of Electrical & Electronics Engineering MALLA REDDY COLLEGE OF ENGINEERING & TECHNOLOGY (Autonomous Institution – UGC, Govt. of India) Recognized under 2(f) and 12 (B) of UGC ACT 1956 Affiliated to JNTUH, Hyderabad, Approved by AICTE - Accredited by NBA & NAAC – ‘A’ Grade - ISO 9001:2015 Certified) Maisammaguda, Dhulapally (Post Via. Kompally), Secunderabad – 500100, Telangana State, India B.Tech (EEE) R - 18 MALLA REDDY COLLEGE OF ENGINEERING …"
+  },
+  "IoT-SECOND.pdf": {
+    "title": "Introduction to the IoT",
+    "description": "(Internet of Things) Coursebook Second Edition RTU Press Riga 2025 Introduction to the IoT. Coursebook. Second Edition. Riga: RTU Press, 2025. 416 pp. This book and its offshoots have been prepared to provide comprehensive information about the Internet of Things. It is intended to introduce IoT to undergraduate and graduate students, technology enthusiasts, and engineers who want to expand their current knowledge with the latest hardware and software achievements in the field of IoT. This book is also intended for teachers and educators who want to pre…"
+  },
+  "L-G-0014327005-0050496274.pdf": {
+    "title": "IoT Projects with",
+    "description": "Arduino Nano 33 BLE Sense Step-By-Step Projects for Beginners — Agus Kurniawan IoT Projects with Arduino Nano 33 BLE Sense Step-By-Step Projects for Beginners Agus Kurniawan IoT Projects with Arduino Nano 33 BLE Sense: Step-By-Step Projects for Beginners Agus Kurniawan Faculty of Computer Science, Universitas Indonesia, Depok, Indonesia https://doi.org/10.1007/978-1-4842-6458-4 Copyright © 2021 by Agus Kurniawan This work is subject to copyright. All rights are reserved by the Publisher, whether the whole or part of the material is concerned, specifical…"
+  },
+  "LeeSeshia_DigitalV2_2.pdf": {
+    "title": "EMBEDDED SYSTEMS",
+    "description": "A CYBER-PHYSICAL SYSTEMS APPROACH Second Edition Modeling Design Analysis Copyright c © 2017 Edward Ashford Lee & Sanjit Arunkumar Seshia This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. Second Edition, Version 2.2 Please cite this book as: E. A. Lee and S. A. Seshia, Introduction to Embedded Systems - A Cyber-Physical Systems Approach , Second Edition, MIT Press, 2017. This book is dedicated to our families. Contents Preface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . …"
+  },
+  "R22B.Tech.ECECourseStructureSyllabus1.pdf": {
+    "title": "COURSE STRUCTURE & SYLLABUS (R22 Regulations)",
+    "description": "Applicable from AY 2022-23 Batch I Year I Semester S. No. Course Course Title L T P Credits Code 1. MA101BS Matrices and Calculus 3 1 0 4 2. PH102BS Applied Physics 3 1 0 4 3. EC103ES C Programming for Engineers 3 0 0 3 4. ME104ES Engineering Workshop 0 1 3 2.5 5. EN105HS English for Skill Enhancement 2 0 0 2 EC106ES Elements of Electronics and Communication 0 0 2 1 6. Engineering 7. PH107BS Applied Physics Laboratory 0 0 3 1.5 8. EC108ES C Programming for Engineers Laboratory 0 0 2 1 EN109HS English Language and Communication Skills 0 0 2 1 9. Laborato…"
+  },
+  "RealTime_Embedded_Systems.pdf": {
+    "title": "Real-Time Embedded Systems",
+    "description": "Real-Time Embedded Systems Special Issue Editor s Christos Koulamas Mihai T. Lazarescu MDPI • Basel • Beijing • Wuhan • Barcelona • Belgrade Special Issue Editor s Christos Koulamas Industrial Systems Institute Greece Mihai T. Lazarescu Politecnico di Torino Italy Editorial Office MDPI St. Alban-Anlage 66 4052 Basel, Switzerland This is a reprint of articles from the Special Issue published online in the open access journal Electronics (ISSN 2079-9292) from 2017 to 2018 (available at: https://www.mdpi.com/journal/electronics/ special issues/embedded sys…"
+  },
+  "SM_6th-Sem__Cse_Internet-of-Things.pdf": {
+    "title": "INTERNET OF THINGS",
+    "description": "Compiled by Mr. Abhaya Kumar Panda Lecturer , Department of Computer Science & Engineering, KIIT Polytechnic , B hubaneswar KIIT POLYTECHNIC CONTENTS S.NO CHAPTER NAME PAGE NO 1 Introduction to Internet of Things 1 - 9 2 IoT Networking 10 - 21 3 Connectivity Technologies 22 - 3 1 4 Wireless Sensor Networks 32 - 3 8 5 M2M Communication 3 9 - 43 6 Programming with Arduino 44 - 49 7 Programming with Raspberry Pi 50 - 55 8 Software defined Networking 56 - 6 0 9 Smart Homes 61 - 6 3 10 Smart Cities 64 - 69 11 Industrial IoT 79 - 73 Internet of Things Abhaya …"
+  },
+  "b3c227835e20f023cffb2cf08c9b6789bb17.pdf": {
+    "title": "association. Web of Things (IoT) is a rising development that is innovative answers for distinctive parts of existence. The",
+    "description": "making our world increasingly savvy. Associate d world can't be idea of Internet of factors(IoT)creates a system of items imagined without IoT. An IoT based Smart Home is one such which could convey, associate and collaborate collectively model. In IoT engaged Smart Home condition various things, for instance, lighting, home contraptions, PCs, observation to reach a shared goal [1]. IoT gadgets can improve our camera, etc all are related with the Internet and empowering ordinary lives, as each device stops performing as a solitary c ustomer to screen an…"
+  },
+  "communication-technologies-for-iot.pdf": {
+    "title": "IOT SYSTEM DESIGN",
+    "description": "TECHNOLOGIES & PROTOCOLS FOR IOT Dr . T. DEEPA , Associate Professor, Department of Electronics and Communication Engineering, SRM Institute of Science and Technology (SRM IST), Kattankulathur - 603203 . Chengalpattu District, Tamil Nadu. https://www.srmist.edu.in/engineering/ece/faculty/dr - t - deepa 16 - 02 - 2021 T.DEEPA / ECE 1 Topics : • Communication Technologies & Protocols • Short range IoT Solutions • Long range IoT Solutions 16 - 02 - 2021 T.DEEPA / ECE 2 Communication Protocols for IoT The following communication protocols have immediate imp…"
+  },
+  "dl12-10_Adesto-Embedded-IoT-for-Aspencore-Event-12Dec-English-v2.pdf": {
+    "title": "Bringing IoT to Legacy",
+    "description": "Industrial Systems Without Breaking the Bank Eric Sun, Country Manager, China December 2019 3600 Peterson Way • Santa Clara, California 95054 www.adestotech.com Adesto Overview Leading Provider of Application - Specific Semiconductors and Embedded Systems for the IoT Our customers embed our innovative technologies into their solutions to enable seamless access to data and control of things in the connected world. R E V E N U E $83M Founded: 2006, Long - term Silicon Valley, CA. Supplier to NASDAQ: IOTS Tier - 1 OEMs $56M $44M Focused on Over 5,000 High …"
+  },
+  "internet-of-things-pdf-free-download.pdf": {
+    "title": "The internet of things, or IoT, is a network of interrelated devices that connect and exchange data",
+    "description": "with other IoT devices and the cloud. IoT devices are typically embedded with technology such as sensors and software and can include mechanical and digital machines and consumer objects. A thing in the internet of things can be a person with a heart monitor implant, a farm animal with a biochip transponder, an automobile that has built-in sensors to alert the driver when tire pressure is low, or any other natural or man-made object that can be assigned an Internet Protocol address and is able to transfer data over a network. internet of things pdf free…"
+  },
+  "kecs101.pdf": {
+    "title": "Input Output » Introduction to",
+    "description": "Control Unit Device (CU) Device Computer System » Evolution of Arithmetic Logic Computer Unit (ALU) » Computer Memory Central Processing Unit (CPU) » Data Transfer Figure 1.1: Components of a computer system between Memory and CPU 1.1.1 Central Processing Unit (CPU) » Data and It is the electronic circuitry of a computer that carries Information out the actual processing and usually referred as the » Microprocessors brain of the computer. It is commonly called processor » Software also. Physically, a CPU can be placed on one or more » Operating System m…"
+  },
+  "manual Internet of Things I.pdf": {
+    "title": "( INTERNET OF THINGS )",
+    "description": "ESTABLISHMENT OF ADVANCED LABORATORY FOR CYBER SECURITY TRAINING TO TECHNICAL TEACHERS DEPARTMENT OF INFORMATION MANAGEMENT AND EMERGING ENGINEERING MINISTRY OF ELECTRONICS AND INFORMATION TECHNOLOGY GOVERNMENT OF INDIA Principal Investigator: Prof. Mai treyee Dutta Co Investigator: Prof. Shyam Sundar Pattnaik PREPARED BY: Prof. Maitreyee Dutta and Ms. Nitika Khurana ( MSA ) Table of Contents Internet of Things ( IOT) ................................ ................................ ........................... 3 Characteristics of the IOT ..............…"
+  }
+}

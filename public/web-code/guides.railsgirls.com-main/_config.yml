@@ -1,0 +1,23 @@
+permalink: pretty
+markdown: kramdown
+include:
+  - _pages
+exclude:
+  - ".rvmrc"
+  - ".rbenv-version"
+  - ".ruby-version"
+  - "CNAME"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "README.md"
+  - "node_modules/"
+  - "vendor/bundle/"
+  - "vendor/cache/"
+  - "vendor/gems/"
+  - "vendor/ruby/"
+url: https://guides.railsgirls.com
+source_url: https://github.com/railsgirls/guides.railsgirls.com/blob/main/
+plugins:
+  - jekyll-redirect-from
+site_title: "Rails Girls Guides"
+default_page_description: "Learn how to make your own web apps with the Rails Girls guides."

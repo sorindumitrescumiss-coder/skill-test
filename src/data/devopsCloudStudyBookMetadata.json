@@ -1,0 +1,90 @@
+{
+  "2023KS_Narasimhan-A_Beginner's_Handbook_to_DevOps.pdf": {
+    "title": "WHAT IS DEVOPS",
+    "description": "HISTORY OF DEVOPS ..................................................................................................................................... 6 TIMELINE OF DEVOPS .................................................................................................................................... 8 LIFECYCLE OF DEVOPS ................................................................................................................................. 9 BENEFITS OF DEVOPS ................................................................................…"
+  },
+  "2024_final_dora_report.pdf": {
+    "title": "State of DevOps",
+    "description": "Gold Sponsors 10 A decade with DORA Contents Executive summary 3 Final thoughts 83 Software delivery performance 9 Acknowledgements 85 Artificial intelligence: Authors 87 Adoption and attitudes 17 Demographics and Exploring the downstream firmographics 91 impact of AI 27 Methodology 99 Platform engineering 47 Models 113 Developer experience 57 Recommended reading 117 Leading transformations 69 A decade with DORA 77 2 Contents v. 2024.3 Executive summary"
+  },
+  "9780134049847.pdf": {
+    "title": "DevOps : a software architect’s perspective / Len Bass, Ingo Weber, Liming Zhu.—First [edition].",
+    "description": "pages cm.—(The SEI series in software engineering) 1. Software architecture. 2. Computer software—Development. 3. Operating systems (Computers) I. Weber, Ingo M. II. Zhu, Liming, 1975- III. Title. QA76.76.D47B377 2015 005.1 ′ 2—dc23 2015007093 Copyright © 2015 Pearson Education, Inc. All rights reserved. Printed in the United States of America. This publication is protected by copyright, and permission must be obtained from the publisher prior to any prohibited reproduction, storage in a retrieval system, or transmission in any form or by any means, ele…"
+  },
+  "DevOps 101 eBook Single Page.pdf": {
+    "title": "What is DevOps? 01",
+    "description": "DevOps and Atlassian 05 Building Products, DevOps Style 07 Continuous Delivery for Infrastructure 15 Handling Incidents at Atlassian 23 Being Proactive and Staying Ahead of the Game 29 Are You Ready for DevOps? 35 1 01 What is DevOps? Five years ago, Marc Andreesen proclaimed that software is eating the world. After all, what company isn’t a software company? Case in point: MODERN CARS CONTAIN HUNDREDS OF MILLIONS OF LINES OF CODE Far more than all of Facebook, from Zuckerberg’s dorm years to today. PIZZA DELIVERY HAS GONE HIGH TECH With advanced mobile…"
+  },
+  "DevOps For Dummies.pdf": {
+    "title": "IBM Limited Edition",
+    "description": "These materials are the copyright of John Wiley & Sons, Inc. and any dissemination, distribution, or unauthorized use is strictly prohibited. These materials are the copyright of John Wiley & Sons, Inc. and any dissemination, distribution, or unauthorized use is strictly prohibited. DevOps IBM Limited Edition by Sanjeev Sharma These materials are the copyright of John Wiley & Sons, Inc. and any dissemination, distribution, or unauthorized use is strictly prohibited."
+  },
+  "DevOps(R22A0521).pdf": {
+    "title": "Introduction: Introduction, Agile development model, DevOps, and ITIL. DevOps process and",
+    "description": "Continuous Delivery, Release management, Scrum, Kanban, delivery pipeline, bottlenecks, examples UNIT - II Software development models and DevOps: DevOps Lifecycle for Business Agility, DevOps, and Continuous Testing. DevOps influence on Architecture: Introducing software architecture, The monolithic scenario, Architecture rules of thumb, The separation of concerns, Handling database migrations, Micro services, and the data tier, DevOps, architecture, and resilience. UNIT - III Introduction to project management: The need for source code control, the hi…"
+  },
+  "DevOps_Course_Syllabus.pdf": {
+    "title": "Our DevOps courses focus on practical knowledge; in class exercises,",
+    "description": "homework assignments and learning in small groups which allows for personal attention and better understanding of the material. COMPANIES We offer customized DevOps courses and workshops according to your company needs. Course materials are suited to your everyday tasks and training requirements. “FIND WORK” We can provide career assistance by reviewing your resume, teaching social media networking and defining LinkedIn content for professional “branding” as well as refer you to relevant positions. Beit Silver (9th floor), Abba Hillel 7, Ramat Gan | 052…"
+  },
+  "Effective_DevOps.pdf": {
+    "title": "With your Azure free account, you get:",
+    "description": "• 12 months of popular free services DevOps to • A $200 credit to explore any Azure service for 30 days • More than 25 always-free services Azure Use Azure to: • Practice cloud-based CI/CD • Get full-stack monitoring • Use the toolchain of your choice Learn more > Praise for Effective DevOps “Excellent reading for anyone interested in understanding devops and how to foster a devops culture.” —James Turnbull, CTO at Kickstarter “Devops is not another “tech movement” that can be deferred and discarded; it has tentacles throughout the organization from con…"
+  },
+  "KodeKloud - DevOps for Absolute Beginners Guide.pdf": {
+    "title": "DevOps for Absolute",
+    "description": "Beginners D ev Op s fo r Ab s o l ut e B eginners After coding, testers will check the application to ensure it works. At the end of the day, c reating your soft w are is The primary objective of IT companies is to create j ust the b eginning. Y o u sti ll need to de l iver it to soft w are app l ications / prod u cts t h at y o u r end u sers so t h e y can u se it . I t's meet t h e needs of u sers and solve their problems. that sim p le. Once the application is tested, you must build and package your application into a format that can run on the serv…"
+  },
+  "Lab10.1 - Getting started with embedded RTOS (freeRTOS).pdf": {
+    "title": "USING CLOUD COMPUTING",
+    "description": "Unit 10 .1 TRAINING MANUAL Unit 10: Getting started with SPI Bus Embedded System Programming Time allocation: Week 10 Objectives The aim of this module is to get immersed into embedded programming on a real hardware. To complete the basic workflow, simple applications are developed, implemented, and demonstrated in an Embedded System work environment. Experiment(s) in this module are conducted using Real-Time OS (RTOS) to demonstrate some of the most common practical applications. Resources Desktop PC / Laptop Software development Tools Embedded Kit (AR…"
+  },
+  "Learning DevOps.pdf": {
+    "title": "A comprehensive guide to accelerating DevOps",
+    "description": "culture adoption with Terraform, Azure DevOps, Kubernetes, and Jenkins Mikael Krief BIRMINGHAM—MUMBAI Learning DevOps Second Edition Copyright © 2022 Packt Publishing All rights reserved . No part of this book may be reproduced, stored in a retrieval system, or transmitted in any form or by any means, without the prior written permission of the publisher, except in the case of brief quotations embedded in critical articles or reviews. Every effort has been made in the preparation of this book to ensure the accuracy of the information presented. However,…"
+  },
+  "Marton-Kodok-Google-Cloud-Platform-Solutions-for-DevOp-Engineers-min.pdf": {
+    "title": "Google Cloud Platform Solutions",
+    "description": "for DevOps Engineers Márton Kodok / @martonkodok Google Developer Expert at REEA.net - Targu Mures March 2019 - Vilnius, Lithuania About me ● Geek. Hiker. Do-er. ● Among the Top3 romanians on Stackoverflow 130k reputation ● Google Developer Expert on Cloud technologies ● Crafting Web/Mobile backends at REEA.net ● BigQuery/Redis and database engine expert ● Active in mentoring and IT community StackOverflow: pentium10 GitHub: pentium10 Slideshare: martonkodok Twitter: @martonkodok GCP Solutions for DevOps Engineers @martonkodok Agenda 1. Application deve…"
+  },
+  "Microsoft_Press_eBook_Building_Cloud_Apps_with Microsoft_Azure_PDF (1).pdf": {
+    "title": "Microsoft Press Guided Tours app.",
+    "description": "The Microsoft Press Guided Tours app provide s insightful tours by Microsoft Press authors of new and evolving Microsoft technologies. • Share text, code, illustrations, videos, and links with peers and friends • Create and manage highlights and notes • View resources and download code samples • Tag resources as favorites or to read later • Watch explanatory videos • Copy complete code listings and scripts Download from Download from Windows Store Windows Store PUBLISHED BY Microsoft Press A Division of Microsoft Corporation One Microsoft Way Redmond, W…"
+  },
+  "Microsoft_Press_eBook_Building_Cloud_Apps_with Microsoft_Azure_PDF.pdf": {
+    "title": "Microsoft Press Guided Tours app.",
+    "description": "The Microsoft Press Guided Tours app provide s insightful tours by Microsoft Press authors of new and evolving Microsoft technologies. • Share text, code, illustrations, videos, and links with peers and friends • Create and manage highlights and notes • View resources and download code samples • Tag resources as favorites or to read later • Watch explanatory videos • Copy complete code listings and scripts Download from Download from Windows Store Windows Store PUBLISHED BY Microsoft Press A Division of Microsoft Corporation One Microsoft Way Redmond, W…"
+  },
+  "Ramp-Up_Guide_DevOps.pdf": {
+    "title": "AWS Ramp - Up Guide: DevOps Engineer",
+    "description": "These are the most salient learning resources from our classrooms, digital curricula, video library, and AWS Lab Environment, that relate to pursuing the role of DevOps Engineer . This g uide is not intended to be consumed entirely. Different sections tack le different objectives. Some resources will be less relevant to you today. The guide will help you decide where you want to start your learning journey, and which step should be your next . Share your opinion of this Ramp - Up Guide with us! Learn the Fundamentals of the AWS Cloud Learning Resource D…"
+  },
+  "StateOfDevOpsTools_v13.pdf": {
+    "title": "the DevOps tools market, isn’t meant to be a definitive guide",
+    "description": "fascinating to watch. The second reason is its rapid growth. According to a recent report from by KBV Research, the global DevOps market will hit $8.8 billion by 2023, growing at a compound annual rate of 18 percent. That far outpaces the growth of the broader IT market. And, according to Forrester Research, 50 percent of organizations have implemented DevOps, reaching what Forrester calls “Escape Velocity.” This report, designed to be a primer on the current state of the DevOps tools market, isn’t meant to be a definitive guide to every DevOps tool ava…"
+  },
+  "a-hands-on-introduction-to-embedded-systems-iot.pdf": {
+    "title": "A Hands-on Introduction to Embedded Systems & IOT",
+    "description": "Dr. James Peyton Jones, Villanova University James Peyton Jones is a professor of electrical and computer engineering, and a member of the Center for Nonlinear Dynamics and Control at Villanova University. © c American Society for Engineering Education, 2020 A Hands-on Introduction to Embedded Systems & IOT J.C. Peyton Jones Department of Electrical & Computer Engineering, Villanova University, Villanova PA 19085 Abstract Traditional curricula often teach low-level fundamentals of digital logic before introducing students to the ‘higher-level’ topics of…"
+  },
+  "awsmp-gim-aitw-adhoc-mpd-devops-cloud-native-devops-ebook.pdf": {
+    "title": "and best practices on AWS",
+    "description": "Understand the capabilities and tools that are essential for success © 2024, Amazon Web Services, Inc. or its affiliates. All rights reserved. 1 C L O U D - N A T I V E D E V O P S : A G U I D E T O I M P L E M E N T A T I O N A N D B E S T P R A C T I C E S O N A W S Table of contents – Chapters 1 - 4 Chapter 1: Architecting your cloud - native journey with AWS Why enterprises need to modernize their application development strategy ………………… 6 Starting on your cloud - native journey …………….……………………..………..……..……….… 8 Where is your organization in its clou…"
+  },
+  "devops-roadmap.pdf": {
+    "title": "DEVOPS ENGINEER ROADMAP",
+    "description": "Go From Zero to a DevOps Engineer in 12 Months Mosh Hamedani 2 Hi! I am Mosh Hamedani, a software engineer with over 20 years of experience. Over the past 10 years, I ’ ve had the privilege of teaching millions of people how to code and become professional software engineers through my YouTube channel and online courses. It ’ s my mission to make software engineering accessible to everyone. Join me on this journey and unlock your potential in the world of coding! https://codewithmosh.com Copyright 2024 Code with Mosh codewithmosh.com DevOps Roadmap 3 Ta…"
+  },
+  "devops-using-spirateam-jenkins-and-taravault.pdf": {
+    "title": "Inflectra White Paper Series: DevOps",
+    "description": "Inflectra: Software Built For You Our one goal is to help you DevOps in Seven succeed. We care deeply about giving you the best quality service and support you’ve ever had. As many users, projects, tests, Easy Steps releases, items, API calls as you want. All pricing is based on concurrent users. Flexible options to make your life easier. Use on desktop or mobile; your servers or our cloud, sensible add-ons, fairly priced. DevOps With Inflectra 7 Elements of Effective DevOps • Plan : SpiraPlan ® offers a turnkey solution for managing your The marriage o…"
+  },
+  "eBook_DevOps_for-Dummies.pdf": {
+    "title": "DevOps For Dummies ® , 3rd IBM Limited Edition",
+    "description": "Published by John Wiley & Sons, Inc. 111 River St. Hoboken, NJ 07030-5774 www.wiley.com Copyright © 2017 by John Wiley & Sons, Inc. No part of this publication may be reproduced, stored in a retrieval system or transmitted in any form or by any means, electronic, mechanical, photocopying, recording, scanning or otherwise, except as permitted under Sections 107 or 108 of the 1976 United States Copyright Act, without the prior written permission of the Publisher. Requests to the Publisher for permission should be addressed to the Permissions Department, J…"
+  },
+  "teaching-embedded-systems-in-the-context-of-internet-of-things-iot.pdf": {
+    "title": "course at Seattle University, for two consecutive years. In the first iteration, the course included a",
+    "description": "two - week long project that had students work in teams of two to build a voice - based control system using custom Alexa skills, in other words, a DIY Amazon Alexa device for voice - controlled robots. Over the duration of this project, students encountered concepts related to wireless communication, computer networking, cl oud computing, and network security, among many others. In the second iteration, computer vision and image processing, in addition to t he above - mentioned concepts were used to implem ent a hand - gesture - based control system. S…"
+  }
+}

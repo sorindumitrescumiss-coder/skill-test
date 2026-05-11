@@ -1,0 +1,23 @@
+.vercel
+
+# Env with secrets — do not commit (`.env.example` is safe to commit)
+.env
+.env.*
+!.env.example
+
+# Dependencies & build (standard Next.js)
+/node_modules
+/.next/
+/out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Large vendored study trees — do not commit (keeps repo & GitHub push under limits; see `.vercelignore` for deploy).
+/studying
+/public/web-code/freeCodeCamp-main
+/public/web-dev-for-beginners-main
+/public/30-seconds-of-code-master
+/public/ultimate-web-development-resources-main

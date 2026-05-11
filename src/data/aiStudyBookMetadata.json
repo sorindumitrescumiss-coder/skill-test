@@ -1,0 +1,186 @@
+{
+  "(R17A1204) Artificial Intelligence.pdf": {
+    "title": "Problem Solving by Search-I: Introduction to AI, Intelligent Agents Problem Solving by Search – II:",
+    "description": "Problem-Solving Agents, Searching for Solutions,Uninformed Search Strategies: Breadth-first search, Uniform cost search, Depth-first search,Iterative deepening Depth-first search, Bidirectional search, Informed (Heuristic) SearchStrategies: Greedy best-first search, A* search, Heuristic Functions, Beyond Classical Search: Hill-climbing search, Simulated annealing search, Local Search in Continuous Spaces, Searching with Non-Deterministic Actions, Searching with Partial Observations, Online Search Agents and Unknown Environment . UNIT-II Problem Solving …"
+  },
+  "2024-wttc-introduction-to-ai.pdf": {
+    "title": "INTRODUCTION TO AI",
+    "description": "INTRODUCTION TO ARTIFICIAL INTELLIGENCE (AI) TECHNOLOGY GUIDE FOR TRAVEL & TOURISM LEADERS January 2024 World Travel & Tourism Council < Contents | 1 INTRODUCTION TO AI CONTENTS FOREWORD ...........................................................................................................3 INTRODUCTION ..................................................................................................4 Brief history of Artificial Intelligence (AI) 4 What is Artificial Intelligence & Why There is Global Interest Now 7 Algorithms : The Brains of AI 8"
+  },
+  "271_AI Lect Notes.pdf": {
+    "title": "Matching, Control Knowledge.Symbolic Reasoning Under Uncertainty: Introduction to Nonmonotonic",
+    "description": "Reasoning, Logics for Nonmonotonic Reasoning, Implementation Issues, Augmenting a Problem - solver, Depth - first Search, Breadthfirst Sea rch.Weak and Strong Slot - and - Filler Structures: Semantic Nets, Frames, Conceptual Dependency Scripts, CYC. Module 2 10Hrs Game Playing: The Minimax Search Procedure, Adding Alpha - beta Cutoffs, Iterative Deepening.Planning: The Blocks World, Components of a Planning System, Goal Stack Planning, Nonlinear Planning Using Constraint Posting, Hierarchical PlanningOther Planning Techniques.Understanding: What is Unde…"
+  },
+  "843_AI_Student_HandbookXI.pdf": {
+    "title": "STUDENT HANDBOOK",
+    "description": "INTELLIGENCE INTELLIGENCE INTELLIGENCE Class XI STUDENT HANDBOOK Subject Code:843"
+  },
+  "AI & ML DIGITAL NOTES.pdf": {
+    "title": "1. To train the students to understand different types of AI agents.",
+    "description": "2. To understand various AI search algorithms. 3. Fundamentals of knowledge representation, building of simple knowledge-based systems and to apply knowledge representation. 4. To introduce the basic concepts and techniques of machine learning and the need for Machine learning techniques for real world problem 5. To provide understanding of various Machine learning algorithms and the way to evaluate the performance of ML algorithms UNIT - I: Introduction: AI problems, Agents and Environments, Structure of Agents, Problem Solving Agents Basic Search Stra…"
+  },
+  "AI for Everyone.pdf": {
+    "title": "AI For Everyone",
+    "description": "Om Prabhu 19D170018 Undergraduate, Department of Energy Science and Engineering Indian Institute of Technology Bombay Last updated January 31, 2021 NOTE: This document is a brief compilation of my notes taken during the ‘AI For Everyone’ course by deeplearning.ai . You are free to read and modify it for personal use. You may check out the course here: https://www.coursera.org/learn/ai-for-everyone . Contents 1 Introduction 3 1.1 About myself . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 1.2 About this co…"
+  },
+  "AI-Short-Course-Sample-Material.pdf": {
+    "title": "Short C o urse in Artificial Intelligence",
+    "description": "Sample Materials AI Short C o urs e – Sample Materials Title Here 1. C o urse Overview and Objec tives T his A r tificial I nte lligence (AI) short course will provide learn ers with th e f ou ndat ion and branches of A rtifi cial I ntelligence, such as search strat egies, knowledge representation and re asoning techniques. This course will also introduce a range of well - known techniques and applicatio ns in artificial intelligence, suc h as fuzz y l ogic mac hine learning , expert syst e ms, natural language processing, and in telligent agents. At th…"
+  },
+  "AI.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "A Modern Approach Third Edition"
+  },
+  "AI_Complete_handouts_for_Printing.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "By Dr Zafar. M. Alvi Artificial Intelligence (CS607) Table of Contents: 1 Introduction............................................................................................................................................ 4 1.1 What is Intelligence? .................................................................................................................... 4 1.2 Intelligent Machines ..................................................................................................................... 7 1.3 Formal Definitions for Artificial In…"
+  },
+  "AI_FreeBook.pdf": {
+    "title": "1 - Introduction to Machine Learning",
+    "description": "2 - The Bayesian Approach to Machine Learning 3 - A Revealing Introduction to Hidden Markov Models 4 - Introduction to Reinforcement Learning 5 - Deep Learning for Feature Representation 6 - Neural Networks and Deep Learning 7 - AI-Completeness: The Problem Domain of Super-intelligent Machines"
+  },
+  "AI_Student_HandbookXII.pdf": {
+    "title": "STUDENT HANDBOOK",
+    "description": "INTELLIGENCE INTELLIGENCE INTELLIGENCE CLASS XII STUDENT HANDBOOK Subject Code:843"
+  },
+  "A_Brief_Introduction_To_AI.pdf": {
+    "title": "A Brief Introduction to Artificial Intelligence",
+    "description": "What is AI and how is it going to shape the future By Dibbyo Saha, Undergraduate Student, Computer Science, Ryerson University What is Artificial Intelligence? Image by Gerd Altmann from Pixabay Generally speaking, Artificial Intelligence is a computing concept that helps a machine think and solve complex problems as we humans do with our intelligence. For example, we perform a task, make mistakes and learn from our mistakes (At least the wise ones of us do!). Likewise, an AI or Artificial Intelligence is supposed to work on a problem, make some mistake…"
+  },
+  "Americas-AI-Action-Plan.pdf": {
+    "title": "AI ACTION PLAN",
+    "description": "JULY 2025 AMERICA’S AI ACTION PLAN “Today, a new frontier of scientific discovery lies before us, defined by transformative technologies such as artificial intelligence… Breakthroughs in these fields have the potential to reshape the global balance of power, spark entirely new industries, and revolutionize the way we live and work. As our global competitors race to exploit these technologies, it is a national security imperative for the United States to achieve and maintain unquestioned and unchallenged global technological dominance. To secure our futu…"
+  },
+  "Artificial Intelligence For Dummies.pdf": {
+    "title": "Artificial Intelligence For Dummies",
+    "description": "AI study material (PDF)."
+  },
+  "Artificial Intelligence by Thomas P. Trappenberg.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "Thomas P. Trappenberg Dalhousie University 2009 Acknowledgements These lecture notes are mostly based on lecture nodes by Andrew Ng from Stanford University. Specifically, we follow basically his lecture notes of ‘CS221: Artificial Intelligence: Principles and Techniques’ from winter 2009, and some notes from his course ‘CS229: Machine Learning’ from fall 2008. The full set of these lecture notes are available on his web site ( http://robotics.stanford.edu/ ∼ ang ). Videos of Andrew’s lectures on machine learning are also available on his web site, and …"
+  },
+  "Artificial Intelligence, Machine Learning, and Deep Learning.pdf": {
+    "title": "A rtifici A l i ntelligence",
+    "description": "M A chine l e A rning A nd d eep l e A rning"
+  },
+  "Artificial Intelligence.pdf": {
+    "title": "Course Objectives: To train the students to understand different types of AI agents,",
+    "description": "various AI search algorithms, fundamentals of knowledge representation, building of simple knowledge-based systems and to apply knowledge representation, reasoning. Study of Markov Models enable the student ready to step into applied AI. UNIT - I Introduction: AI problems, Agents and Environments, Structure of Agents, Problem Solving Agents Basic Search Strategies : Problem Spaces, Uninformed Search (Breadth- First, Depth-First Search, Depth-first with Iterative Deepening), Heuristic Search (Hill Climbing, Generic Best-First, A*), Constraint Satisfactio…"
+  },
+  "Artificial Intelligence_ The Basics ( PDFDrive ).pdf": {
+    "title": "JEFFREY WAINWRIGHT",
+    "description": "BUDDHISM CATHY CANTWELL POLITICS (FOURTH EDITION) STEPHEN TANSEY AND NIGEL JACKSON CRIMINAL LAW JONATHAN HERRING THE QUR’AN CRIMINOLOGY (SECOND EDITION) MASSIMO CAMPANINI SANDRA WALKLATE RELIGION (SECOND EDITION) ECONOMICS (SECOND EDITION) MALORY NYE TONY CLEAVER RELIGION AND SCIENCE EDUCATION PHILIP CLAYTON KAY WOOD RESEARCH METHODS EVOLUTION NICHOLAS WALLIMAN"
+  },
+  "BartoSutton.pdf": {
+    "title": "Reinforcement",
+    "description": "Learning An Introduction second edition Richard S. Sutton and Andrew G. Barto Adaptive Computation and Machine Learning Francis Bach A complete list of books published in the Adaptive Computation and Machine Learning series appears at the back of this book. The cover design is based on the trajectories of a simulated bicycle controlled by a reinforcement learning system developed by Jette Randløv."
+  },
+  "Beginners-Guide-to-Artificial-Intelligence.pdf": {
+    "title": "Introduction: Welcome, objectives, and format of the session. Overview of what AI is and why it is relevant",
+    "description": "for academic work. (5 minutes) Part 1: De fi ning some of the various forms of AI that exist, such as machine learning, natural language processing, computer vision, etc. Examples of how each form can be applied in di ff erent disciplines and domains. (10 minutes) Part 2: How AI can be used in academic work, such as conducting research, analyzing data, creating content, enhancing teaching and learning, etc. Demonstration of some of the tools and platforms that are available for faculty and sta ff to use AI in their work. (15 minutes) Part 3: Exploring h…"
+  },
+  "Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf": {
+    "title": "Information Science and Statistics",
+    "description": "Series Editors: M. Jordan J. Kleinberg B. Scho ¨lkopf"
+  },
+  "Book_2023_Chap2.pdf": {
+    "title": "AI and Machine Learning: The Basics",
+    "description": "Nicolas Duchateau, Esther Puyol-Antón, Bram Ruijsink, Andrew King To cite this version: Nicolas Duchateau, Esther Puyol-Antón, Bram Ruijsink, Andrew King. AI and Machine Learning: The Basics. AI and Big Data in Cardiology, Springer International Publishing, pp.11-33, 2023, ⟨10.1007/978-3-031-05071- 8_2⟩. ⟨hal-04212045⟩ HAL Id: hal-04212045 https://hal.science/hal-04212045v1 Submitted on 25 Mar 2024 HAL is a multi-disciplinary open access archive L’archive ouverte pluridisciplinaire HAL , est des- for the deposit and dissemination of scientific re- tinée…"
+  },
+  "CIT478.pdf": {
+    "title": "COURSE TITLE: ARTIFICIAL INTELLIGENCE",
+    "description": "CIT478 COURSE GUIDE COURSE GUIDE CIT478 ARTIFICIAL INTELLIGENCE Course Team Dr. J.N. Ndunagu (Developer/Writer) - NOUN Dr. J.N. Ndunagu (Coordinator) - NOUN ii"
+  },
+  "CS8691-ARTIFICIAL INTELLIGENCE-642246959-CS8691-AI.pdf": {
+    "title": "What is Artificial Intelligence?",
+    "description": "1. INTELLIGENCE  The capacity to learn and solve problems.  In particular,  the ability to solve novel problems (i.e solve new problems)  the ability to act rationally (i.e act based on reason)  the ability to act like humans 1.1 What is involved in intelligence? • Ability to interact with the real world – to perceive, understand, and act – e.g., speech recognition and understanding and synthesis – e.g., image understanding – e.g., ability to take actions, have an effect • Reasoning and Planning – modeling the external world, given input"
+  },
+  "ES (AI Module) Student Workbook - Year 1 (English).pdf": {
+    "title": "ARTIFICIAL INTELLIGENCE (AI)",
+    "description": "Student Workbook Year 1 | 2024 Total : 7.5 Hours 1 Student AI Workbook Index MODULE 13 Acknowledgements 02 Welcome Page 04 Content Index 05 1 1"
+  },
+  "GitHub® For Dummies®, 2nd Edition.pdf": {
+    "title": "GitHub® For Dummies®, 2nd Edition",
+    "description": "AI study material (PDF)."
+  },
+  "Introduction to Machine Learning with Python ( PDFDrive.com )-min.pdf": {
+    "title": "Introduction to",
+    "description": "Machine Learning with Python A GUIDE FOR DATA SCIENTISTS Andreas C. Müller & Sarah Guido"
+  },
+  "Introduction-to-AI-and-Basic-Concepts.pdf": {
+    "title": "Introduction to Artificial Intelligence and",
+    "description": "Fundamental Concepts Dr. Melike PALSÜ KURT What Will We Learn ? • What is Artificial Intelligence ? • Can Machines Think , and How Can They Think ? • Turing Test • Chinese Room • The AI Lifecycle • What Can Artificial Intelligence Do? • What Can Artificial Intelligence Not Do? • Fundamental Concepts • Types of Data • Data Preprocessing • Feature Engineering"
+  },
+  "L-0024835779-pdf.pdf": {
+    "title": "for a Corporate AI Journey",
+    "description": "Ralf T. Kreutzer Understanding Artificial Intelligence Fundamentals, Use Cases and Methods for a Corporate AI Journey Future of Business and Finance"
+  },
+  "Lecture-AI.pdf": {
+    "title": "Introduction to Artificial Intelligence",
+    "description": "Marc Toussaint February 4, 2019 The majority of slides on search, CSP and logic are adapted from Stuart Russell . This is a direct concatenation and reformatting of all lecture slides and exercises from the Artificial Intelligence course (winter term 2018/19, U Stuttgart), including indexing to help prepare for exams. Double-starred** sections and slides are not relevant for the exam. Contents 1 Introduction 6 2 Search 13 Motivation & Outline 2.1 Problem Formulation & Examples . . . . . . . . . . . . . . . . . . . . 13 Example: Romania (2:3) Problem Def…"
+  },
+  "Lets_learn_AI_Base_Module.pdf": {
+    "title": "Let's Learn Artificial Intelligence - Base Module",
+    "description": "LET’S LEARN ARTIFICIAL INTELLIGENCE FEBRUARY 2020 | BASE MODULE 1"
+  },
+  "Machine Learning For Absolute Beginners.pdf": {
+    "title": "Machine Learning For Absolute",
+    "description": "Beginners Oliver Theobald"
+  },
+  "MachineLearningTomMitchell.pdf": {
+    "title": "Machine Learning",
+    "description": "Tom M. Mitchell Product Details • Hardcover: 432 pages ; Dimensions (in inches): 0.75 x 10.00 x 6.50 • Publisher: McGraw-Hill Science/Engineer ing/Math; (March 1, 1997) • ISBN: 0070428077 • Average Customer Review: Based on 16 reviews. • Amazon.com Sales Rank: 42,816 • Popular in: Redmond, WA (#17) , Ithaca, NY (#9) Editorial Reviews From Book News, Inc. An introductory text on primary approaches to machine learning and the study of computer algorithms that improve automatically through experience. Introduce basics concepts from statistics, artificial i…"
+  },
+  "OnLogic-AI-Crash-Course-eBook-EN.pdf": {
+    "title": "Getting Started with an AI Solution - a Step by Step Guide 12",
+    "description": "Hardware for artificial intelligence solutions 13 Key Takeaways 15 Glossary of AI terms 16 2"
+  },
+  "R20CSE3122-Artificial-Intelligence.pdf": {
+    "title": "Problem Solving by Search - I: Introduction to AI, Intelligent Agents Problem Solving by Search – II: Problem -",
+    "description": "Solving Agents, Searching for Solutions, Uninformed Search Strategies: Breadth - first search, Uniform cost search, Depth - first search, Iterative deepening Depth - first search, Bidirectional search, Informed (Heuristic) Search Strategies: Greedy best - first search, A* search, Heuristic Functions, Beyond Classical Search: Hill - climbing search, Simulated annealing search, Local Search in Continuous Spaces, Searching with Non - Deterministic Actions, Searching wih Partial Observations, Online Search Agents and Unknown Envir onment Introduction:  Art…"
+  },
+  "Student-Guide-Module-1-Fundamentals-of-AI.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "Module 1 Table of Contents Introduction ................................ ................................ ................................ ................................ .................... 4 Learning Outcomes ................................ ................................ ................................ ................................ ....... 6 Overview of AI ................................ ................................ ................................ ................................ ................ 7 Artificial Intelligence ..............…"
+  },
+  "Student-Guide-to-AI-2025.pdf": {
+    "title": "www.studentguidetoAI.org",
+    "description": "AI-U Student Guide to Artificial Intelligence 2025 1 www.studentguidetoAI.org AI-U Contents The AI revolution AI is transforming our world, often in ways we may not fully realize. This guide Working with artificial 3 empowers students to navigate the age intelligence of AI – academically, professionally and What does AI mean for ethically. Understanding AI isn’t just useful; 4"
+  },
+  "SuttonBartoIPRLBook2ndEd.pdf": {
+    "title": "Reinforcement Learning:",
+    "description": "An Introduction Second edition, in progress Richard S. Sutton and Andrew G. Barto © c 2014, 2015 A Bradford Book The MIT Press Cambridge, Massachusetts London, England ii In memory of A. Harry Klopf"
+  },
+  "ai-report.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "and the Future of Teaching and Learning Insights and Recommendations May 2023 1 Artificial Intelligence and the Future of Teaching and Learning Miguel A. Cardona, Ed.D. Secretary , U.S. Department of Education Roberto J. Rodríguez Assistant Secretary , Office of Planning, Evaluation, and Policy Development Kristina Ishmael Deputy Director, Office of Educational Technolog y May 2023 Examples Are Not Endorsements"
+  },
+  "aipython.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "Foundations of Computational Agents David L. Poole and Alan K. Mackworth Version 0.9.18 of April 15, 2026. https://aipython.org https://artint.info ©David L Poole and Alan K Mackworth 2017-2025. All code is licensed under a Creative Commons Attribution-NonCommercial- ShareAlike 4.0 International License. See: https://creativecommons.org/licenses/ by-nc-sa/4.0/deed.en This document and all the code can be downloaded from https://artint.info/AIPython/ or from https://aipython.org The authors and publisher of this book have used their best efforts in prepa…"
+  },
+  "artificial_intelligence_tutorial.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "About the Tutorial This tutorial provides introductory knowledge on A rtificial Intelligence. It would come to a great help if you are about to select Artificial Intelligence as a course subject. You can briefly know about the areas of AI in which researc h is prospering. Audience This tutorial is prepared for the students at beginner level who aspir e to learn Artificial Intelligence. Prerequisites The basic knowledge of Computer Science is mandatory. The knowledge of Mathematics, L anguages, Science , Mechanical or Electrical engineering is a plus. Di…"
+  },
+  "book.pdf": {
+    "title": "Artificial Intelligence and Games",
+    "description": "Artificial Intelligence and Games January 26, 2018 Springer"
+  },
+  "efdd4d1d4c2087fe1cbe03d9ced67f34.pdf": {
+    "title": "Artificial Intelligence",
+    "description": "A Modern Approach Fourth Edition Global Edition PEARSON SERIES IN ARTIFICIAL INTELLIGENCE Stuart Russell and Peter Norvig, Editors F ORSYTH & P ONCE Computer Vision: A Modern Approach, 2nd ed. G RAHAM ANSI Common Lisp J URAFSKY & M ARTIN Speech and Language Processing, 2nd ed. N EAPOLITAN Learning Bayesian Networks R USSELL & N ORVIG Artificial Intelligence: A Modern Approach, 4th ed."
+  },
+  "ko-introduction_to_ai_and_machine_learning_with_altair_data_analytics-pdf.pdf": {
+    "title": "Introduction to Artificial Intelligence and Machine",
+    "description": "Learning with TM Altair Knowledge Works st 1 Edition December 2020"
+  },
+  "max-tegmark-life-30-being-human-in-the-age-of-artificial-intelligence-alfred-a-knopf-2017-aTvn.pdf": {
+    "title": "Also by Max Tegmark",
+    "description": "Our Mathematical Universe"
+  },
+  "rest.pdf": {
+    "title": "rest",
+    "description": "AI study material (PDF)."
+  }
+}

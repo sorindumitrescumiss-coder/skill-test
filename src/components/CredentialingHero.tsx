@@ -1,0 +1,338 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { CalendarClock, Gift, Workflow } from 'lucide-react';
+import HeroBackgroundVideo from '@/components/HeroBackgroundVideo';
+
+const DEFAULT_EYEBROW = 'Credentialing & assessment';
+const DEFAULT_TITLE = 'Global leader in AI-powered skill certification';
+const DEFAULT_DESCRIPTION = (
+  <>
+    A new standard for professional credibility: rigorous assessments, secure credentials, and verification at scale—for
+    individuals and organizations alike.
+    <span className="ml-1 font-semibold text-amber-100">Trusted. Scalable. Verifiable.</span>
+  </>
+);
+
+const STATS = [
+  { value: '5,400+', label: 'Research Articles' },
+  { value: '500+', label: 'Certifications' },
+  { value: '1M+', label: 'Global Learners' },
+  { value: '145+', label: 'Countries' },
+] as const;
+
+export type CollageItem = {
+  src: string;
+  alt: string;
+  transform: string;
+  z: number;
+};
+
+/** Default four stock figures around the certificate (dashboard). */
+export const DEFAULT_COLLAGE_ITEMS: CollageItem[] = [
+  {
+    src: '/hero-side-team-1.png',
+    alt: 'Team discussion in meeting room',
+    transform: 'translate(-50%, -50%) translate(-138px, -102px) rotate(-8deg)',
+    z: 12,
+  },
+  {
+    src: '/hero-side-team-2.png',
+    alt: 'Professional handshake in office',
+    transform: 'translate(-50%, -50%) translate(138px, -102px) rotate(8deg)',
+    z: 10,
+  },
+  {
+    src: '/hero-side-celebration.png',
+    alt: 'Celebration moment after certification',
+    transform: 'translate(-50%, -50%) translate(-138px, 102px) rotate(-8deg)',
+    z: 8,
+  },
+  {
+    src: '/hero-side-meeting.png',
+    alt: 'Business meeting and planning',
+    transform: 'translate(-50%, -50%) translate(138px, 102px) rotate(8deg)',
+    z: 10,
+  },
+];
+
+/** Study / Learning World: three education photos (order: top-left, top-right, bottom center in `triangle` layout). */
+export const STUDY_PAGE_COLLAGE: CollageItem[] = [
+  {
+    src: '/study/figure-remote-session.png',
+    alt: 'Instructor with headphones teaching online with tablet and grammar lesson board',
+    transform: 'translate(-50%, -50%) translate(-138px, -102px) rotate(-8deg)',
+    z: 12,
+  },
+  {
+    src: '/study/figure-collaboration.png',
+    alt: 'Team collaborating at a whiteboard with charts and sticky notes',
+    transform: 'translate(-50%, -50%) translate(138px, -102px) rotate(8deg)',
+    z: 10,
+  },
+  {
+    src: '/study/figure-grammar-study.png',
+    alt: 'Learner reviewing English grammar and parts of speech on a clipboard',
+    transform: 'translate(-50%, -50%) translate(0, 118px) rotate(0deg)',
+    z: 9,
+  },
+];
+
+export type CredentialingHeroProps = {
+  eyebrow?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  primaryCta?: { href: string; label: string };
+  secondaryCta?: { href: string; label: string };
+  tertiaryCta?: { href: string; label: string } | null;
+  /** Photo collage around the certificate; defaults to four marketing images. */
+  collageItems?: CollageItem[];
+  /**
+   * `orbit` — absolute “scattered” cards (dashboard default).
+   * `triangle` — 2 photos on top row, 1 centered below (Learning World, 3 images).
+   */
+  collageLayout?: 'orbit' | 'triangle';
+  /** Extra space under the app bar; use on Learning World so the hero does not sit flush with the nav. */
+  relaxedTop?: boolean;
+  /** Set false to show copy-only hero (no side photos or center certificate). */
+  showCollage?: boolean;
+  /** Single right-column photo when collage is off (ignored if `showCollage` is true). */
+  heroImage?: { src: string; alt: string };
+  /** Stat tiles + campaign cards under the hero row (off for Learning World). @default true */
+  showMetricsAndCampaigns?: boolean;
+};
+
+/**
+ * Full-bleed hero (video, optional collage + certificate, optional stats/campaigns) — dashboard top band.
+ * Override copy/CTAs when embedding on Learning World or other routes.
+ */
+export default function CredentialingHero({
+  eyebrow = DEFAULT_EYEBROW,
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  primaryCta = { href: '/skill-test', label: 'Explore certifications' },
+  secondaryCta = { href: '/job-board', label: 'For organizations' },
+  tertiaryCta = { href: '/candidates', label: 'Browse verified candidates' },
+  collageItems = DEFAULT_COLLAGE_ITEMS,
+  collageLayout = 'orbit',
+  relaxedTop = false,
+  showCollage = true,
+  heroImage,
+  showMetricsAndCampaigns = true,
+}: CredentialingHeroProps) {
+  const hasRightVisual = showCollage || Boolean(heroImage);
+
+  const contentShell = relaxedTop
+    ? 'relative z-10 mx-auto max-w-[1200px] px-5 pt-6 pb-5 sm:px-6 md:px-7 md:pt-11 md:pb-9 lg:px-8'
+    : 'relative z-10 mx-auto -mt-4 max-w-[1200px] px-5 pt-0 pb-5 sm:px-6 md:-mt-6 md:px-7 md:pt-1 md:pb-9 lg:px-8';
+
+  return (
+    <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden text-white">
+      <HeroBackgroundVideo src="/hero-bg-video.mp4" playbackRate={0.5} />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(118deg,rgba(72,56,46,0.82),rgba(107,83,68,0.76),rgba(92,72,56,0.82))]" />
+      <div className={contentShell}>
+        <div
+          className={`grid items-center gap-6 lg:gap-8 ${hasRightVisual ? 'lg:grid-cols-[1.05fr_0.95fr]' : ''} ${relaxedTop ? 'mt-2 md:mt-3' : 'mt-5'}`}
+        >
+          <div
+            className={`max-w-xl ${hasRightVisual ? (heroImage ? 'lg:max-w-none' : 'lg:max-w-2xl') : 'lg:max-w-3xl'}`}
+          >
+            <p className="mb-3 animate-hero-eyebrow text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-100/95 opacity-0 drop-shadow-[0_1px_12px_rgba(251,191,36,0.25)]">
+              {eyebrow}
+            </p>
+            <h1
+              className={`relative animate-hero-title font-script text-[2.1rem] font-semibold leading-[1.2] tracking-wide opacity-0 sm:text-4xl md:text-[2.75rem] md:leading-[1.15] lg:text-[2.95rem] ${
+                heroImage
+                  ? 'max-w-[min(100%,44rem)] text-balance md:leading-[1.2]'
+                  : 'max-w-2xl'
+              }`}
+            >
+              <span className="relative z-10 bg-gradient-to-br from-amber-50 via-[#fffef9] to-amber-200/90 bg-clip-text text-transparent drop-shadow-[0_4px_28px_rgba(253,230,138,0.22)]">
+                {title}
+              </span>
+            </h1>
+            <p className="mt-6 max-w-xl animate-hero-body text-base leading-relaxed text-[#f5ebe0]/95 opacity-0 md:mt-8 md:text-lg md:leading-relaxed [&_span]:font-semibold [&_span]:text-amber-100 [&_span]:drop-shadow-[0_0_12px_rgba(251,191,36,0.2)]">
+              {description}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3 opacity-0 animate-hero-cta">
+              <Link
+                href={primaryCta.href}
+                className="rounded-sm border border-parchment-300/80 bg-parchment-50 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-parchment-950 shadow-sm transition-all duration-200 hover:border-parchment-400 hover:shadow-md"
+              >
+                {primaryCta.label}
+              </Link>
+              <Link
+                href={secondaryCta.href}
+                className="rounded-sm border border-parchment-300/70 bg-white/10 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-parchment-50 shadow-sm backdrop-blur-[2px] transition hover:border-parchment-300/90 hover:bg-white/15"
+              >
+                {secondaryCta.label}
+              </Link>
+              {tertiaryCta ? (
+                <Link
+                  href={tertiaryCta.href}
+                  className="text-[13px] font-semibold uppercase tracking-[0.06em] text-amber-100/95 underline decoration-amber-400/50 underline-offset-4 transition hover:text-amber-50 hover:decoration-amber-200/80"
+                >
+                  {tertiaryCta.label}
+                </Link>
+              ) : null}
+            </div>
+          </div>
+          {showCollage ? (
+            <div
+              className={
+                collageLayout === 'triangle' && collageItems.length === 3
+                  ? 'relative flex min-h-[min(400px,52vh)] w-full items-center justify-center py-2'
+                  : 'relative h-[400px] sm:h-[440px] md:h-[500px]'
+              }
+            >
+              {collageLayout === 'triangle' && collageItems.length === 3 ? (
+                <div className="mx-auto w-full max-w-[460px] space-y-3 sm:max-w-[500px] md:max-w-[520px]">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    <figure className="group -rotate-[7deg] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(63,52,42,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(63,52,42,0.28)]">
+                      <img
+                        src={collageItems[0].src}
+                        alt={collageItems[0].alt}
+                        className="aspect-[4/3] h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                      />
+                    </figure>
+                    <figure className="group rotate-[7deg] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(63,52,42,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(63,52,42,0.28)]">
+                      <img
+                        src={collageItems[1].src}
+                        alt={collageItems[1].alt}
+                        className="aspect-[4/3] h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                      />
+                    </figure>
+                  </div>
+                  <div className="flex justify-center px-2 pt-1">
+                    <figure className="group w-full max-w-[280px] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(63,52,42,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(63,52,42,0.28)] sm:max-w-[300px]">
+                      <img
+                        src={collageItems[2].src}
+                        alt={collageItems[2].alt}
+                        className="aspect-[4/3] h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                      />
+                    </figure>
+                  </div>
+                </div>
+              ) : (
+                collageItems.map((image, idx) => (
+                  <div
+                    key={`${image.src}-${idx}`}
+                    className="group absolute left-1/2 top-[48%] w-[188px] transition-transform duration-500 hover:z-40 hover:-translate-y-3 hover:scale-105 md:w-[218px]"
+                    style={{ transform: image.transform, zIndex: image.z }}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="h-[124px] w-full rounded-sm border border-parchment-200/40 bg-parchment-950/10 object-cover shadow-[0_12px_36px_rgba(63,52,42,0.14)] transition-all duration-500 [image-rendering:auto] group-hover:scale-[1.03] group-hover:shadow-[0_18px_42px_rgba(63,52,42,0.18)] sm:h-[134px] md:h-[152px]"
+                    />
+                  </div>
+                ))
+              )}
+
+              <img
+                src="/hero-certificate-center.png"
+                alt="Certificate of achievement"
+                className="pointer-events-none absolute left-1/2 top-[48%] z-30 h-[168px] w-[168px] -translate-x-1/2 -translate-y-1/2 object-contain shadow-[0_0_30px_rgba(250,204,21,0.25)] sm:h-[184px] sm:w-[184px] md:h-[206px] md:w-[206px]"
+              />
+            </div>
+          ) : heroImage ? (
+            <div className="relative flex w-full justify-center py-2 sm:py-3 lg:justify-end">
+              <figure className="group relative w-full max-w-[min(100%,440px)] isolate [mask-image:radial-gradient(ellipse_120%_120%_at_50%_48%,#000_0%,#000_14%,rgba(0,0,0,0.94)_26%,rgba(0,0,0,0.72)_40%,rgba(0,0,0,0.48)_54%,rgba(0,0,0,0.28)_68%,rgba(0,0,0,0.12)_82%,rgba(0,0,0,0.04)_92%,transparent_100%)] [mask-mode:alpha] [-webkit-mask-image:radial-gradient(ellipse_120%_120%_at_50%_48%,#000_0%,#000_14%,rgba(0,0,0,0.94)_26%,rgba(0,0,0,0.72)_40%,rgba(0,0,0,0.48)_54%,rgba(0,0,0,0.28)_68%,rgba(0,0,0,0.12)_82%,rgba(0,0,0,0.04)_92%,transparent_100%)] [mask-repeat:no-repeat] [mask-size:100%_100%]">
+                {/* Large corner radius + clip = soft, un-angular silhouette before the outer fade */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2.5rem] sm:rounded-[2.75rem] md:rounded-[3.25rem]">
+                  {/* Full-frame blur — visible wherever the sharp layer fades out */}
+                  <img
+                    src={heroImage.src}
+                    alt=""
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-0 h-full w-full scale-[1.18] object-cover blur-[22px] transition duration-500 group-hover:scale-[1.2]"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  {/* Duotone “split” — warm / cool offsets, strongest in outer ring (where alpha falls off) */}
+                  <img
+                    src={heroImage.src}
+                    alt=""
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-[1] h-full w-full -translate-x-1.5 -translate-y-0.5 scale-[1.12] object-cover opacity-60 mix-blend-screen blur-[0.5px] transition duration-500 [filter:saturate(1.45)_hue-rotate(32deg)_brightness(1.08)] [mask-image:radial-gradient(ellipse_96%_94%_at_50%_48%,transparent_0%,transparent_36%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.75)_68%,#000_100%)] [mask-mode:alpha] [-webkit-mask-image:radial-gradient(ellipse_96%_94%_at_50%_48%,transparent_0%,transparent_36%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.75)_68%,#000_100%)] group-hover:-translate-x-2 group-hover:opacity-70"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <img
+                    src={heroImage.src}
+                    alt=""
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-[1] h-full w-full translate-x-1.5 translate-y-0.5 scale-[1.12] object-cover opacity-60 mix-blend-screen blur-[0.5px] transition duration-500 [filter:saturate(1.15)_hue-rotate(215deg)_brightness(1.05)] [mask-image:radial-gradient(ellipse_96%_94%_at_50%_48%,transparent_0%,transparent_36%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.75)_68%,#000_100%)] [mask-mode:alpha] [-webkit-mask-image:radial-gradient(ellipse_96%_94%_at_50%_48%,transparent_0%,transparent_36%,rgba(0,0,0,0.2)_48%,rgba(0,0,0,0.75)_68%,#000_100%)] group-hover:translate-x-2 group-hover:opacity-70"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  {/* Sharp center — radial mask blends into blurred layer beneath */}
+                  <img
+                    src={heroImage.src}
+                    alt={heroImage.alt}
+                    className="relative z-[2] h-full w-full object-cover transition duration-500 [mask-image:radial-gradient(ellipse_58%_56%_at_50%_48%,#000_0%,#000_28%,rgba(0,0,0,0.5)_52%,rgba(0,0,0,0.18)_74%,transparent_100%)] [mask-mode:alpha] [-webkit-mask-image:radial-gradient(ellipse_58%_56%_at_50%_48%,#000_0%,#000_28%,rgba(0,0,0,0.5)_52%,rgba(0,0,0,0.18)_74%,transparent_100%)] group-hover:scale-[1.02]"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+              </figure>
+            </div>
+          ) : null}
+        </div>
+
+        {showMetricsAndCampaigns ? (
+          <>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-lg border border-[#ebe4d8]/35 bg-[rgba(250,244,232,0.14)] p-4 backdrop-blur-[2px]"
+                >
+                  <p className="font-serif text-xl font-semibold tabular-nums text-parchment-50">{s.value}</p>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[#ebe4d8]/75">{s.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <aside className="mt-6 p-0">
+              <div className="grid gap-3 lg:grid-cols-3">
+                <div className="group rounded-lg border border-parchment-200/80 bg-parchment-100/95 p-4 shadow-[0_8px_18px_rgba(33,24,17,0.16)] transition-all duration-200 hover:border-parchment-300 hover:shadow-[0_12px_24px_rgba(33,24,17,0.2)]">
+                  <div className="flex items-center gap-2">
+                    <CalendarClock size={15} className="text-parchment-800" />
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">Campaign window</p>
+                  </div>
+                  <div className="mt-2 flex items-center gap-2">
+                    <p className="font-serif text-base font-semibold text-parchment-950">Now live</p>
+                    <span className="rounded-sm border border-emerald-700/25 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-800">
+                      Active
+                    </span>
+                  </div>
+                  <p className="mt-1 text-xs text-stone-600">Registrations and submissions are open.</p>
+                </div>
+                <div className="group rounded-lg border border-parchment-200/80 bg-parchment-100/95 p-4 shadow-[0_8px_18px_rgba(33,24,17,0.16)] transition-all duration-200 hover:border-parchment-300 hover:shadow-[0_12px_24px_rgba(33,24,17,0.2)]">
+                  <div className="flex items-center gap-2">
+                    <Gift size={15} className="text-parchment-800" />
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">Reward type</p>
+                  </div>
+                  <p className="mt-2 font-serif text-lg font-semibold text-parchment-950">NFT skill credentials</p>
+                  <p className="mt-1 text-xs text-stone-600">Mint eligible credentials after verified pass.</p>
+                </div>
+                <div className="group rounded-lg border border-parchment-200/80 bg-parchment-100/95 p-4 shadow-[0_8px_18px_rgba(33,24,17,0.16)] transition-all duration-200 hover:border-parchment-300 hover:shadow-[0_12px_24px_rgba(33,24,17,0.2)]">
+                  <div className="flex items-center gap-2">
+                    <Workflow size={15} className="text-parchment-800" />
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">Flow</p>
+                  </div>
+                  <p className="mt-2 text-sm font-medium leading-snug text-parchment-950">
+                    Register → Test → AI grade → NFT eligibility
+                  </p>
+                  <p className="mt-1 text-xs text-stone-600">One pipeline from learning to credential.</p>
+                </div>
+              </div>
+            </aside>
+          </>
+        ) : null}
+      </div>
+    </section>
+  );
+}

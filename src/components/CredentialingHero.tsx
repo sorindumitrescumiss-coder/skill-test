@@ -11,7 +11,7 @@ const DEFAULT_DESCRIPTION = (
   <>
     A new standard for professional credibility: rigorous assessments, secure credentials, and verification at scale—for
     individuals and organizations alike.
-    <span className="ml-1 font-semibold text-amber-100">Trusted. Scalable. Verifiable.</span>
+    <span className="ml-1 font-semibold text-indigo-200">Trusted. Scalable. Verifiable.</span>
   </>
 );
 
@@ -129,8 +129,8 @@ export default function CredentialingHero({
 
   return (
     <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden text-white">
-      <HeroBackgroundVideo src="/hero-bg-video.mp4" playbackRate={0.5} />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(118deg,rgba(72,56,46,0.82),rgba(107,83,68,0.76),rgba(92,72,56,0.82))]" />
+      <HeroBackgroundVideo src="/hero-side-video.mp4" playbackRate={0.5} />
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(118deg,rgba(15,23,42,0.88),rgba(49,46,129,0.82),rgba(30,41,59,0.9))]" />
       <div className={contentShell}>
         <div
           className={`grid items-center gap-6 lg:gap-8 ${hasRightVisual ? 'lg:grid-cols-[1.05fr_0.95fr]' : ''} ${relaxedTop ? 'mt-2 md:mt-3' : 'mt-5'}`}
@@ -138,7 +138,7 @@ export default function CredentialingHero({
           <div
             className={`max-w-xl ${hasRightVisual ? (heroImage ? 'lg:max-w-none' : 'lg:max-w-2xl') : 'lg:max-w-3xl'}`}
           >
-            <p className="mb-3 animate-hero-eyebrow text-[11px] font-semibold uppercase tracking-[0.28em] text-amber-100/95 opacity-0 drop-shadow-[0_1px_12px_rgba(251,191,36,0.25)]">
+            <p className="mb-3 animate-hero-eyebrow text-[11px] font-semibold uppercase tracking-[0.28em] text-indigo-200/95 opacity-0 drop-shadow-[0_1px_12px_rgba(129,140,248,0.35)]">
               {eyebrow}
             </p>
             <h1
@@ -148,11 +148,11 @@ export default function CredentialingHero({
                   : 'max-w-2xl'
               }`}
             >
-              <span className="relative z-10 bg-gradient-to-br from-amber-50 via-[#fffef9] to-amber-200/90 bg-clip-text text-transparent drop-shadow-[0_4px_28px_rgba(253,230,138,0.22)]">
+              <span className="relative z-10 bg-gradient-to-br from-white via-slate-100 to-indigo-200/90 bg-clip-text text-transparent drop-shadow-[0_4px_28px_rgba(129,140,248,0.25)]">
                 {title}
               </span>
             </h1>
-            <p className="mt-6 max-w-xl animate-hero-body text-base leading-relaxed text-[#f5ebe0]/95 opacity-0 md:mt-8 md:text-lg md:leading-relaxed [&_span]:font-semibold [&_span]:text-amber-100 [&_span]:drop-shadow-[0_0_12px_rgba(251,191,36,0.2)]">
+            <p className="mt-6 max-w-xl animate-hero-body text-base leading-relaxed text-slate-200/95 opacity-0 md:mt-8 md:text-lg md:leading-relaxed [&_span]:font-semibold [&_span]:text-indigo-200 [&_span]:drop-shadow-[0_0_12px_rgba(129,140,248,0.2)]">
               {description}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 opacity-0 animate-hero-cta">
@@ -189,14 +189,14 @@ export default function CredentialingHero({
               {collageLayout === 'triangle' && collageItems.length === 3 ? (
                 <div className="mx-auto w-full max-w-[460px] space-y-3 sm:max-w-[500px] md:max-w-[520px]">
                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                    <figure className="group -rotate-[7deg] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(63,52,42,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(63,52,42,0.28)]">
+                    <figure className="group -rotate-[7deg] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(30,41,59,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(30,41,59,0.28)]">
                       <img
                         src={collageItems[0].src}
                         alt={collageItems[0].alt}
                         className="aspect-[4/3] h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
                       />
                     </figure>
-                    <figure className="group rotate-[7deg] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(63,52,42,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(63,52,42,0.28)]">
+                    <figure className="group rotate-[7deg] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(30,41,59,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(30,41,59,0.28)]">
                       <img
                         src={collageItems[1].src}
                         alt={collageItems[1].alt}
@@ -205,7 +205,7 @@ export default function CredentialingHero({
                     </figure>
                   </div>
                   <div className="flex justify-center px-2 pt-1">
-                    <figure className="group w-full max-w-[280px] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(63,52,42,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(63,52,42,0.28)] sm:max-w-[300px]">
+                    <figure className="group w-full max-w-[280px] overflow-hidden rounded-lg border border-parchment-200/45 bg-parchment-950/15 shadow-[0_12px_36px_rgba(30,41,59,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(30,41,59,0.28)] sm:max-w-[300px]">
                       <img
                         src={collageItems[2].src}
                         alt={collageItems[2].alt}
@@ -224,7 +224,7 @@ export default function CredentialingHero({
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="h-[124px] w-full rounded-sm border border-parchment-200/40 bg-parchment-950/10 object-cover shadow-[0_12px_36px_rgba(63,52,42,0.14)] transition-all duration-500 [image-rendering:auto] group-hover:scale-[1.03] group-hover:shadow-[0_18px_42px_rgba(63,52,42,0.18)] sm:h-[134px] md:h-[152px]"
+                      className="h-[124px] w-full rounded-sm border border-parchment-200/40 bg-parchment-950/10 object-cover shadow-[0_12px_36px_rgba(30,41,59,0.14)] transition-all duration-500 [image-rendering:auto] group-hover:scale-[1.03] group-hover:shadow-[0_18px_42px_rgba(30,41,59,0.18)] sm:h-[134px] md:h-[152px]"
                     />
                   </div>
                 ))
@@ -287,19 +287,19 @@ export default function CredentialingHero({
               {STATS.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-lg border border-[#ebe4d8]/35 bg-[rgba(250,244,232,0.14)] p-4 backdrop-blur-[2px]"
+                  className="rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur-[2px]"
                 >
-                  <p className="font-serif text-xl font-semibold tabular-nums text-parchment-50">{s.value}</p>
-                  <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-[#ebe4d8]/75">{s.label}</p>
+                  <p className="font-serif text-xl font-semibold tabular-nums text-white">{s.value}</p>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-300/90">{s.label}</p>
                 </div>
               ))}
             </div>
 
             <aside className="mt-6 p-0">
               <div className="grid gap-3 lg:grid-cols-3">
-                <div className="group rounded-lg border border-parchment-200/80 bg-parchment-100/95 p-4 shadow-[0_8px_18px_rgba(33,24,17,0.16)] transition-all duration-200 hover:border-parchment-300 hover:shadow-[0_12px_24px_rgba(33,24,17,0.2)]">
+                <div className="group rounded-lg border border-white/20 bg-white/95 p-4 shadow-[0_8px_18px_rgba(15,23,42,0.12)] transition-all duration-200 hover:border-indigo-200 hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)]">
                   <div className="flex items-center gap-2">
-                    <CalendarClock size={15} className="text-parchment-800" />
+                    <CalendarClock size={15} className="text-indigo-600" />
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">Campaign window</p>
                   </div>
                   <div className="mt-2 flex items-center gap-2">
@@ -310,17 +310,17 @@ export default function CredentialingHero({
                   </div>
                   <p className="mt-1 text-xs text-stone-600">Registrations and submissions are open.</p>
                 </div>
-                <div className="group rounded-lg border border-parchment-200/80 bg-parchment-100/95 p-4 shadow-[0_8px_18px_rgba(33,24,17,0.16)] transition-all duration-200 hover:border-parchment-300 hover:shadow-[0_12px_24px_rgba(33,24,17,0.2)]">
+                <div className="group rounded-lg border border-white/20 bg-white/95 p-4 shadow-[0_8px_18px_rgba(15,23,42,0.12)] transition-all duration-200 hover:border-indigo-200 hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)]">
                   <div className="flex items-center gap-2">
-                    <Gift size={15} className="text-parchment-800" />
+                    <Gift size={15} className="text-indigo-600" />
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">Reward type</p>
                   </div>
                   <p className="mt-2 font-serif text-lg font-semibold text-parchment-950">NFT skill credentials</p>
                   <p className="mt-1 text-xs text-stone-600">Mint eligible credentials after verified pass.</p>
                 </div>
-                <div className="group rounded-lg border border-parchment-200/80 bg-parchment-100/95 p-4 shadow-[0_8px_18px_rgba(33,24,17,0.16)] transition-all duration-200 hover:border-parchment-300 hover:shadow-[0_12px_24px_rgba(33,24,17,0.2)]">
+                <div className="group rounded-lg border border-white/20 bg-white/95 p-4 shadow-[0_8px_18px_rgba(15,23,42,0.12)] transition-all duration-200 hover:border-indigo-200 hover:shadow-[0_12px_24px_rgba(79,70,229,0.15)]">
                   <div className="flex items-center gap-2">
-                    <Workflow size={15} className="text-parchment-800" />
+                    <Workflow size={15} className="text-indigo-600" />
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-500">Flow</p>
                   </div>
                   <p className="mt-2 text-sm font-medium leading-snug text-parchment-950">

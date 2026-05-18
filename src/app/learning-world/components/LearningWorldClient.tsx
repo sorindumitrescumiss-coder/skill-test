@@ -13,7 +13,7 @@ export default function LearningWorldClient() {
     <div id="learning-tracks" className="mx-auto max-w-7xl scroll-mt-24 space-y-8 font-serif text-ink">
       <header className="relative space-y-3 border-b border-parchment-300/60 pb-8">
         <div className="absolute -left-1 top-0 hidden h-12 w-1 rounded-full bg-gradient-to-b from-violet-500/70 to-parchment-600 sm:block" aria-hidden />
-        <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[#6b5344]">Learning World</p>
+        <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-[#4f46e5]">Learning World</p>
         <h1 className="max-w-3xl font-serif text-3xl font-semibold italic leading-[1.15] tracking-tight text-ink sm:text-[2.15rem]">
           Learn by track
         </h1>

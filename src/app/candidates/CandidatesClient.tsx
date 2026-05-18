@@ -55,7 +55,7 @@ function CandidateCard({
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-xl border border-parchment-300/80 bg-parchment-150/95 shadow-[0_8px_28px_-12px_rgba(63,52,42,0.18)] transition hover:border-[#6b5344]/45 hover:shadow-[0_12px_36px_-14px_rgba(63,52,42,0.22)]">
+    <article className="group flex flex-col overflow-hidden rounded-xl border border-parchment-300/80 bg-parchment-150/95 shadow-[0_8px_28px_-12px_rgba(30,41,59,0.18)] transition hover:border-[#4f46e5]/45 hover:shadow-[0_12px_36px_-14px_rgba(30,41,59,0.22)]">
       <div className="relative aspect-video w-full bg-stone-900">
         <video
           ref={videoRef}
@@ -92,7 +92,7 @@ function CandidateCard({
           className="pointer-events-auto absolute inset-0 flex items-center justify-center bg-black/0 transition group-hover:bg-black/25"
           aria-label={`Open profile for ${c.fullName}`}
         >
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-[#5c4033] shadow-lg opacity-95 ring-2 ring-white/80 transition group-hover:scale-105">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-[#1e293b] shadow-lg opacity-95 ring-2 ring-white/80 transition group-hover:scale-105">
             <Play size={28} className="ml-1" fill="currentColor" />
           </span>
         </button>
@@ -123,7 +123,7 @@ function CandidateCard({
         <p className="mt-2 line-clamp-2 font-sans text-xs leading-relaxed text-ink-muted">{c.selfIntroduction}</p>
         <div className="mt-auto flex items-end justify-between gap-2 border-t border-parchment-300/60 pt-3">
           <span className="font-sans text-[11px] text-ink-soft">{c.experience.split('·')[0]?.trim()}</span>
-          <span className="shrink-0 rounded-full bg-[#291c15]/[0.08] px-2.5 py-1 font-sans text-xs font-bold tabular-nums text-[#5c4033]">
+          <span className="shrink-0 rounded-full bg-[#0f172a]/[0.08] px-2.5 py-1 font-sans text-xs font-bold tabular-nums text-[#1e293b]">
             {c.score}/100
           </span>
         </div>
@@ -185,7 +185,7 @@ function DetailModal({
               src={c.recordingUrl}
             />
           </div>
-          <p className="font-sans text-xs font-semibold uppercase tracking-wide text-[#6b5344]">Full session recording</p>
+          <p className="font-sans text-xs font-semibold uppercase tracking-wide text-[#4f46e5]">Full session recording</p>
           <dl className="grid gap-3 font-sans text-sm">
             <div>
               <dt className="text-[11px] font-semibold uppercase tracking-wide text-ink-soft">Credential / ID</dt>
@@ -281,12 +281,12 @@ export default function CandidatesClient() {
   }, []);
 
   const selectClass =
-    'inline-flex items-center gap-1 rounded-full border border-parchment-400/80 bg-parchment-100/95 px-3 py-2 font-sans text-xs font-semibold text-ink shadow-sm outline-none ring-offset-2 focus:ring-2 focus:ring-[#8b7355]/40';
+    'inline-flex items-center gap-1 rounded-full border border-parchment-400/80 bg-parchment-100/95 px-3 py-2 font-sans text-xs font-semibold text-ink shadow-sm outline-none ring-offset-2 focus:ring-2 focus:ring-[#6366f1]/40';
 
   return (
     <div className="space-y-6 font-serif text-ink">
       <header className="space-y-2">
-        <p className="font-sans text-xs font-semibold uppercase tracking-wide text-[#6b5344]">Verified talent</p>
+        <p className="font-sans text-xs font-semibold uppercase tracking-wide text-[#4f46e5]">Verified talent</p>
         <h1 className="text-2xl font-semibold italic tracking-tight text-ink sm:text-3xl">Candidates who passed</h1>
         <p className="max-w-3xl font-sans text-sm leading-relaxed text-ink-muted">
           Browse professionals who completed the TrueAssess AI skill test. Each profile includes identity, assessment context, pass criteria,

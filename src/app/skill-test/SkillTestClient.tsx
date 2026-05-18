@@ -451,6 +451,11 @@ export default function SkillTestClient() {
   const [difficulty, setDifficulty] = useState<Difficulty>('intermediate');
   const [phase, setPhase] = useState<Phase>('idle');
   const [err, setErr] = useState<string | null>(null);
+  const [stripePaymentRequired, setStripePaymentRequired] = useState(false);
+  const [examFeeLabel, setExamFeeLabel] = useState('$19');
+  const [paymentCreditId, setPaymentCreditId] = useState<string | null>(null);
+  const [paymentBusy, setPaymentBusy] = useState(false);
+  const [paymentStatusLoading, setPaymentStatusLoading] = useState(false);
   const [attemptId, setAttemptId] = useState<string | null>(null);
   const [mcqQuestions, setMcqQuestions] = useState<MCQQuestion[]>([]);
   const [openQuestions, setOpenQuestions] = useState<OpenQuestion[]>([]);
@@ -1081,6 +1086,89 @@ export default function SkillTestClient() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTestPart, mcqQuestions, openQuestions, correctingQuestions, practicalQuestions]);
 
+  const refreshPaymentCredit = useCallback(async () => {
+    setPaymentStatusLoading(true);
+    try {
+      const [configRes, creditsRes] = await Promise.all([
+        fetch('/api/stripe/config'),
+        fetch('/api/stripe/credits'),
+      ]);
+      const config = (await configRes.json().catch(() => ({}))) as {
+        paymentRequired?: boolean;
+        formattedPrice?: string;
+      };
+      setStripePaymentRequired(Boolean(config.paymentRequired));
+      if (config.formattedPrice) setExamFeeLabel(config.formattedPrice);
+
+      const credits = (await creditsRes.json().catch(() => ({}))) as {
+        credit?: { id: string } | null;
+        paymentRequired?: boolean;
+      };
+      if (credits.paymentRequired === false) {
+        setPaymentCreditId('free');
+        return;
+      }
+      setPaymentCreditId(credits.credit?.id ?? null);
+    } catch {
+      /* keep previous state */
+    } finally {
+      setPaymentStatusLoading(false);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    void refreshPaymentCredit();
+  }, [refreshPaymentCredit]);
+
+  React.useEffect(() => {
+    if (setupStep !== 5) return;
+    void refreshPaymentCredit();
+  }, [setupStep, refreshPaymentCredit]);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+    if (!sessionId) return;
+    void (async () => {
+      await fetch('/api/stripe/verify-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId }),
+      });
+      await refreshPaymentCredit();
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.delete('session_id');
+      window.history.replaceState({}, '', nextUrl.toString());
+    })();
+  }, [refreshPaymentCredit]);
+
+  const beginCheckout = async () => {
+    if (!selectedField || paymentBusy) return;
+    setPaymentBusy(true);
+    setErr(null);
+    try {
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fieldId: selectedField }),
+      });
+      const j = (await res.json().catch(() => ({}))) as { error?: string; url?: string };
+      if (!res.ok || !j.url) {
+        setErr(j.error ?? 'Could not start checkout.');
+        return;
+      }
+      window.location.href = j.url;
+    } catch {
+      setErr('Could not connect to payment service.');
+    } finally {
+      setPaymentBusy(false);
+    }
+  };
+
+  const hasExamPaymentCredit =
+    !stripePaymentRequired || paymentCreditId === 'free' || Boolean(paymentCreditId);
+
   const start = async (
     overrides?: {
       fieldId?: string;
@@ -1104,6 +1192,10 @@ export default function SkillTestClient() {
       setErr('Please choose at least one language.');
       return;
     }
+    if (stripePaymentRequired && !hasExamPaymentCredit) {
+      setErr(`Pay the exam fee (${examFeeLabel}) before entering the exam room.`);
+      return;
+    }
     if (!opts?.preserveActiveRecording) {
       sessionRecording.dispose();
     }
@@ -1116,7 +1208,15 @@ export default function SkillTestClient() {
     const res = await fetch('/api/skill-test/start', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ topic, difficulty, contentFocus }),
+      body: JSON.stringify({
+        topic,
+        difficulty,
+        contentFocus,
+        paymentId:
+          stripePaymentRequired && paymentCreditId && paymentCreditId !== 'free'
+            ? paymentCreditId
+            : undefined,
+      }),
     });
     const j = (await res.json().catch(() => ({}))) as
       | {
@@ -1131,9 +1231,17 @@ export default function SkillTestClient() {
       | Record<string, unknown>;
     if (!res.ok) {
       setPhase('idle');
+      const code = (j as { code?: string }).code;
+      if (res.status === 402 || code === 'PAYMENT_REQUIRED') {
+        setPaymentCreditId(null);
+        void refreshPaymentCredit();
+      }
       setErr(typeof j.error === 'string' ? j.error : 'Failed to start test');
       sessionRecording.dispose();
       return;
+    }
+    if (stripePaymentRequired && paymentCreditId && paymentCreditId !== 'free') {
+      setPaymentCreditId(null);
     }
     setAttemptId((j as { attemptId: string }).attemptId);
     setMcqQuestions((j as { mcq: MCQQuestion[] }).mcq ?? []);
@@ -1383,7 +1491,7 @@ export default function SkillTestClient() {
       <div className="w-full border-l-2 border-stone-400 bg-transparent py-4 pl-5 font-sans text-sm text-stone-700">
         <p className="mb-2 font-semibold text-ink">Sign in to take a graded skill test</p>
         <p className="mb-4 text-ink-soft">Your account is required so results can be stored securely in the database.</p>
-        <Link href="/sign-up-login-screen" className="text-[#6b5344] font-semibold hover:underline">
+        <Link href="/sign-up-login-screen" className="text-[#4f46e5] font-semibold hover:underline">
           Go to sign in / create account
         </Link>
       </div>
@@ -1392,13 +1500,13 @@ export default function SkillTestClient() {
 
   if (phase === 'done' && result) {
     return (
-      <div className="w-full space-y-3 border-l-2 border-[#5c4033]/35 bg-transparent py-4 pl-5 font-serif">
+      <div className="w-full space-y-3 border-l-2 border-[#1e293b]/35 bg-transparent py-4 pl-5 font-serif">
         <h2 className="font-serif text-lg font-semibold italic text-ink">Results</h2>
         <p className="font-sans text-ink-muted">
-          <span className="text-[#6b5344]">Score:</span> <strong>{result.score}</strong> / 100
+          <span className="text-[#4f46e5]">Score:</span> <strong>{result.score}</strong> / 100
         </p>
         <p className="font-sans">
-          <span className="text-[#6b5344]">Passed:</span>{' '}
+          <span className="text-[#4f46e5]">Passed:</span>{' '}
           <strong className={result.passed ? 'text-emerald-600' : 'text-red-600'}>
             {result.passed ? 'Yes' : 'No'}
           </strong>
@@ -1414,7 +1522,7 @@ export default function SkillTestClient() {
               type="button"
               onClick={claimCredential}
               disabled={claimStatus === 'loading' || (claimStatus === 'done' && alreadyClaimed)}
-              className="rounded-md bg-stone-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-stone-900 disabled:opacity-60"
+              className="rounded-md bg-parchment-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-parchment-900 disabled:opacity-60"
             >
               {claimStatus === 'loading' ? 'Claiming...' : claimStatus === 'done' && alreadyClaimed ? 'Already Claimed' : 'Claim Certificate'}
             </button>
@@ -1423,7 +1531,7 @@ export default function SkillTestClient() {
             )}
             {claimedCredentialId && <p className="text-xs text-ink-soft">Credential ID: {claimedCredentialId}</p>}
             {claimStatus === 'done' && (
-              <Link href="/certificates" className="inline-block text-xs font-semibold text-[#6b5344] hover:underline">
+              <Link href="/certificates" className="inline-block text-xs font-semibold text-[#4f46e5] hover:underline">
                 Go to Certificates page
               </Link>
             )}
@@ -1476,7 +1584,7 @@ export default function SkillTestClient() {
           <button
             type="button"
             onClick={goToDashboard}
-            className="inline-flex items-center rounded-md border border-[#5c4033]/35 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-ink-soft transition hover:border-[#6b5344]/55 hover:text-ink"
+            className="inline-flex items-center rounded-md border border-[#1e293b]/35 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-ink-soft transition hover:border-[#4f46e5]/55 hover:text-ink"
           >
             Go to Dashboard
           </button>
@@ -1496,9 +1604,9 @@ export default function SkillTestClient() {
             </p>
 
             <div className="mt-8 space-y-8">
-              <section className="border-l-2 border-[#5c4033]/35 pl-5">
+              <section className="border-l-2 border-[#1e293b]/35 pl-5">
                 <h3 className="text-lg font-semibold italic text-ink">What this test includes</h3>
-                <ul className="mt-3 list-inside list-disc space-y-2 text-ink-muted marker:text-[#6b5344]">
+                <ul className="mt-3 list-inside list-disc space-y-2 text-ink-muted marker:text-[#4f46e5]">
                   <li>
                     <strong className="font-semibold text-ink">Part 1 — Multiple choice (25):</strong> Select the best answer for each
                     question.
@@ -1523,7 +1631,7 @@ export default function SkillTestClient() {
                 </p>
               </section>
 
-              <section className="border-l-2 border-[#8b7355]/45 pl-5">
+              <section className="border-l-2 border-[#6366f1]/45 pl-5">
                 <h3 className="text-lg font-semibold italic text-ink">Rules</h3>
                 <p className="mt-2 font-sans text-sm text-ink-soft">
                   Read each rule and check the box beside it. You can continue to setup only after every rule is acknowledged.
@@ -1537,8 +1645,8 @@ export default function SkillTestClient() {
                         key={rule.id}
                         className={`flex cursor-pointer gap-3 rounded-md border px-3 py-3 font-sans transition-colors sm:px-4 ${
                           checked
-                            ? 'border-[#6b5344]/55 bg-[#291c15]/[0.05]'
-                            : 'border-[#5c4033]/25 bg-transparent hover:border-[#6b5344]/35 hover:bg-[#291c15]/[0.03]'
+                            ? 'border-[#4f46e5]/55 bg-[#0f172a]/[0.05]'
+                            : 'border-[#1e293b]/25 bg-transparent hover:border-[#4f46e5]/35 hover:bg-[#0f172a]/[0.03]'
                         }`}
                       >
                         <input
@@ -1550,7 +1658,7 @@ export default function SkillTestClient() {
                               [rule.id]: !prev[rule.id],
                             }))
                           }
-                          className="mt-1 h-4 w-4 shrink-0 rounded border-[#5c4033]/55 text-[#6b5344] focus:ring-2 focus:ring-[#6b5344]/40"
+                          className="mt-1 h-4 w-4 shrink-0 rounded border-[#1e293b]/55 text-[#4f46e5] focus:ring-2 focus:ring-[#4f46e5]/40"
                         />
                         <span className="text-sm leading-relaxed text-ink-muted">{rule.text}</span>
                       </label>
@@ -1570,7 +1678,7 @@ export default function SkillTestClient() {
           <div className="w-full">
             <div className="w-full border-0 bg-transparent p-0 shadow-none sm:p-1">
               <div className="grid gap-8 lg:grid-cols-[minmax(0,220px)_1fr]">
-                <aside className="border-b border-[#5c4033]/25 pb-6 md:border-b-0 md:border-r md:pb-0 md:pr-8">
+                <aside className="border-b border-[#1e293b]/25 pb-6 md:border-b-0 md:border-r md:pb-0 md:pr-8">
                   <h3 className="text-2xl font-semibold italic text-ink">Skill Test</h3>
                   <p className="mt-1 text-xl font-semibold text-stone-800">Step {setupStep} of {SETUP_STEPS.length}</p>
                   <div className="mt-6 space-y-4">
@@ -1582,7 +1690,7 @@ export default function SkillTestClient() {
                           <div
                             className={`flex h-7 w-7 items-center justify-center rounded-full border text-xs ${
                               isDone
-                                ? 'border-[#6b5344] bg-[#6b5344] text-white'
+                                ? 'border-[#4f46e5] bg-[#4f46e5] text-white'
                                 : isCurrent
                                   ? 'border-slate-900 bg-slate-900 text-white'
                                   : 'border-stone-300 bg-parchment-50 text-slate-500'
@@ -1590,7 +1698,7 @@ export default function SkillTestClient() {
                           >
                             {isDone ? '✓' : step.id}
                           </div>
-                          <span className={isCurrent ? 'font-sans font-semibold text-ink underline decoration-[#8b7355] underline-offset-4' : 'font-sans text-ink-soft'}>
+                          <span className={isCurrent ? 'font-sans font-semibold text-ink underline decoration-[#6366f1] underline-offset-4' : 'font-sans text-ink-soft'}>
                             {step.label}
                           </span>
                         </div>
@@ -1599,7 +1707,7 @@ export default function SkillTestClient() {
                   </div>
                 </aside>
 
-                <div className="border-l-2 border-[#8b7355]/40 pl-6 lg:pr-0">
+                <div className="border-l-2 border-[#6366f1]/40 pl-6 lg:pr-0">
                   <p className="text-sm leading-7 text-ink-soft">
                     Complete this quick setup to generate a personalized AI skill test.
                   </p>
@@ -1616,10 +1724,10 @@ export default function SkillTestClient() {
                           return (
                             <label
                               key={opt.value}
-                              className={`flex cursor-pointer gap-4 rounded-sm border px-4 py-3.5 font-sans outline-none ring-offset-2 ring-offset-white transition-colors focus-within:ring-2 focus-within:ring-[#8b7355]/50 sm:items-center ${
+                              className={`flex cursor-pointer gap-4 rounded-sm border px-4 py-3.5 font-sans outline-none ring-offset-2 ring-offset-white transition-colors focus-within:ring-2 focus-within:ring-[#6366f1]/50 sm:items-center ${
                                 selected
-                                  ? 'border-[#6b5344] bg-[#291c15]/[0.06] shadow-[inset_3px_0_0_0_#6b5344]'
-                                  : 'border-[#5c4033]/30 bg-transparent hover:border-[#6b5344]/45 hover:bg-[#291c15]/[0.03]'
+                                  ? 'border-[#4f46e5] bg-[#0f172a]/[0.06] shadow-[inset_3px_0_0_0_#4f46e5]'
+                                  : 'border-[#1e293b]/30 bg-transparent hover:border-[#4f46e5]/45 hover:bg-[#0f172a]/[0.03]'
                               }`}
                             >
                               <input
@@ -1632,7 +1740,7 @@ export default function SkillTestClient() {
                               />
                               <span
                                 className={`mt-0.5 flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-[3px] border-2 sm:mt-0 ${
-                                  selected ? 'border-[#6b5344] bg-[#6b5344]' : 'border-[#5c4033]/70 bg-parchment-50/90'
+                                  selected ? 'border-[#4f46e5] bg-[#4f46e5]' : 'border-[#1e293b]/70 bg-parchment-50/90'
                                 }`}
                                 aria-hidden
                               >
@@ -1682,10 +1790,10 @@ export default function SkillTestClient() {
                             return (
                               <label
                                 key={field.id}
-                                className={`group flex cursor-pointer flex-col rounded-xl border px-3 py-3 font-sans shadow-sm outline-none ring-offset-2 ring-offset-white transition focus-within:ring-2 focus-within:ring-[#8b7355]/50 sm:px-3.5 sm:py-3.5 ${
+                                className={`group flex cursor-pointer flex-col rounded-xl border px-3 py-3 font-sans shadow-sm outline-none ring-offset-2 ring-offset-white transition focus-within:ring-2 focus-within:ring-[#6366f1]/50 sm:px-3.5 sm:py-3.5 ${
                                   selected
-                                    ? 'border-[#6b5344] bg-[#291c15]/[0.07] shadow-[0_2px_12px_rgba(45,36,28,0.08)]'
-                                    : 'border-[#5c4033]/28 bg-parchment-50/50 hover:border-[#6b5344]/55 hover:bg-[#291c15]/[0.04]'
+                                    ? 'border-[#4f46e5] bg-[#0f172a]/[0.07] shadow-[0_2px_12px_rgba(15,23,42,0.08)]'
+                                    : 'border-[#1e293b]/28 bg-parchment-50/50 hover:border-[#4f46e5]/55 hover:bg-[#0f172a]/[0.04]'
                                 }`}
                               >
                                 <input
@@ -1763,7 +1871,7 @@ export default function SkillTestClient() {
                           const checked = selectedTopics.includes(topic);
                           const hint = currentSubtopicHints?.[topic];
                           return (
-                            <label key={topic} className="flex cursor-pointer items-start gap-2.5 rounded-sm border border-[#5c4033]/35 bg-transparent px-3 py-2 text-sm text-ink-muted hover:border-[#6b5344]/55 hover:bg-[#291c15]/[0.04]">
+                            <label key={topic} className="flex cursor-pointer items-start gap-2.5 rounded-sm border border-[#1e293b]/35 bg-transparent px-3 py-2 text-sm text-ink-muted hover:border-[#4f46e5]/55 hover:bg-[#0f172a]/[0.04]">
                               <input
                                 type="radio"
                                 name="selected-subtopic"
@@ -1802,8 +1910,8 @@ export default function SkillTestClient() {
                         })}
                       </div>
                       {selectedSubtopic && selectedSubtopicHint && (
-                        <div className="mt-3 overflow-hidden rounded-md border border-[#5c4033]/30 bg-[#291c15]/[0.02]">
-                          <div className="grid grid-cols-1 border-b border-[#5c4033]/25 bg-[#291c15]/[0.04] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-ink-soft sm:grid-cols-[200px_1fr] sm:px-4">
+                        <div className="mt-3 overflow-hidden rounded-md border border-[#1e293b]/30 bg-[#0f172a]/[0.02]">
+                          <div className="grid grid-cols-1 border-b border-[#1e293b]/25 bg-[#0f172a]/[0.04] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-ink-soft sm:grid-cols-[200px_1fr] sm:px-4">
                             <span>Role Category</span>
                             <span>Specific Programs / Tools</span>
                           </div>
@@ -1831,10 +1939,10 @@ export default function SkillTestClient() {
                             return (
                               <label
                                 key={language}
-                                className={`flex min-h-[2.5rem] cursor-pointer gap-2.5 rounded-sm border px-3 py-2 font-sans outline-none ring-offset-2 ring-offset-white transition-colors focus-within:ring-2 focus-within:ring-[#8b7355]/50 sm:items-center ${
+                                className={`flex min-h-[2.5rem] cursor-pointer gap-2.5 rounded-sm border px-3 py-2 font-sans outline-none ring-offset-2 ring-offset-white transition-colors focus-within:ring-2 focus-within:ring-[#6366f1]/50 sm:items-center ${
                                   selected
-                                    ? 'border-[#6b5344] bg-[#291c15]/[0.07] shadow-[inset_3px_0_0_0_#6b5344]'
-                                    : 'border-[#5c4033]/22 bg-parchment-50/85 hover:border-[#6b5344]/42 hover:bg-[#291c15]/[0.03]'
+                                    ? 'border-[#4f46e5] bg-[#0f172a]/[0.07] shadow-[inset_3px_0_0_0_#4f46e5]'
+                                    : 'border-[#1e293b]/22 bg-parchment-50/85 hover:border-[#4f46e5]/42 hover:bg-[#0f172a]/[0.03]'
                                 }`}
                               >
                                 <input
@@ -1879,7 +1987,7 @@ export default function SkillTestClient() {
                           })}
                         </div>
                       </div>
-                      <div className="animate-flow-left-right mt-8 border-l-2 border-[#6b5344]/40 pl-5 text-base leading-8 text-ink-muted">
+                      <div className="animate-flow-left-right mt-8 border-l-2 border-[#4f46e5]/40 pl-5 text-base leading-8 text-ink-muted">
                         <p>
                           Degrees don&apos;t prove skill - performance does.
                           <br />
@@ -1904,30 +2012,30 @@ export default function SkillTestClient() {
                         </p>
                       </div>
 
-                      <section className="rounded-md border border-[#5c4033]/35 bg-[#291c15]/[0.03] p-3">
+                      <section className="rounded-md border border-[#1e293b]/35 bg-[#0f172a]/[0.03] p-3">
                         <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">Selected elements</p>
                         <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
-                          <div className="rounded-sm border border-[#5c4033]/25 bg-parchment-50 px-3 py-1.5">
+                          <div className="rounded-sm border border-[#1e293b]/25 bg-parchment-50 px-3 py-1.5">
                             <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-soft">Difficulty</p>
                             <p className="mt-0.5 text-sm font-semibold text-ink">
                               {DIFFICULTY_OPTIONS.find((opt) => opt.value === difficulty)?.label ?? difficulty}
                             </p>
                           </div>
-                          <div className="rounded-sm border border-[#5c4033]/25 bg-parchment-50 px-3 py-1.5">
+                          <div className="rounded-sm border border-[#1e293b]/25 bg-parchment-50 px-3 py-1.5">
                             <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-soft">Field</p>
                             <p className="mt-0.5 text-sm font-semibold text-ink">{selectedFieldConfig?.label ?? '-'}</p>
                           </div>
-                          <div className="rounded-sm border border-[#5c4033]/25 bg-parchment-50 px-3 py-1.5">
+                          <div className="rounded-sm border border-[#1e293b]/25 bg-parchment-50 px-3 py-1.5">
                             <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-soft">Subtopic</p>
                             <p className="mt-0.5 text-sm font-semibold text-ink">{selectedSubtopic ?? '-'}</p>
                           </div>
-                          <div className="rounded-sm border border-[#5c4033]/25 bg-parchment-50 px-3 py-1.5">
+                          <div className="rounded-sm border border-[#1e293b]/25 bg-parchment-50 px-3 py-1.5">
                             <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-soft">Languages</p>
                             <p className="mt-0.5 text-sm font-semibold text-ink">
                               {selectedLanguages.length > 0 ? selectedLanguages.join(', ') : '-'}
                             </p>
                           </div>
-                          <div className="rounded-sm border border-[#5c4033]/25 bg-parchment-50 px-3 py-1.5 sm:col-span-2">
+                          <div className="rounded-sm border border-[#1e293b]/25 bg-parchment-50 px-3 py-1.5 sm:col-span-2">
                             <p className="text-[11px] font-semibold uppercase tracking-wide text-ink-soft">Session length</p>
                             <p className="mt-0.5 text-sm font-semibold text-ink">
                               {formatSessionDuration(SESSION_DURATION_MINUTES)}
@@ -1936,9 +2044,38 @@ export default function SkillTestClient() {
                         </div>
                       </section>
 
-                      <section className="rounded-md border border-[#5c4033]/35 bg-transparent p-3">
+                      {stripePaymentRequired ? (
+                        <section className="rounded-md border border-[#1e293b]/45 bg-[#0f172a]/[0.04] p-4">
+                          <h5 className="text-lg font-semibold italic text-ink">Exam fee</h5>
+                          <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+                            Each attempt costs <strong className="text-ink">{examFeeLabel}</strong> (per track on the
+                            dashboard). Payment is processed securely by Stripe.
+                          </p>
+                          {paymentStatusLoading ? (
+                            <p className="mt-3 text-sm text-ink-soft">Checking payment status…</p>
+                          ) : hasExamPaymentCredit ? (
+                            <p className="mt-3 rounded-md border border-emerald-300/70 bg-emerald-50/90 px-3 py-2 text-sm font-medium text-emerald-900">
+                              Payment confirmed — you can enter the exam room.
+                            </p>
+                          ) : (
+                            <div className="mt-3 space-y-2">
+                              <p className="text-sm text-amber-900">Pay before starting your timed session.</p>
+                              <button
+                                type="button"
+                                onClick={() => void beginCheckout()}
+                                disabled={paymentBusy}
+                                className="inline-flex rounded-md border border-parchment-800 bg-parchment-800 px-4 py-2 text-sm font-semibold text-parchment-50 transition hover:bg-parchment-900 disabled:opacity-60"
+                              >
+                                {paymentBusy ? 'Redirecting to Stripe…' : `Pay ${examFeeLabel} with Stripe`}
+                              </button>
+                            </div>
+                          )}
+                        </section>
+                      ) : null}
+
+                      <section className="rounded-md border border-[#1e293b]/35 bg-transparent p-3">
                         <h5 className="text-lg font-semibold italic text-ink">Examination briefing</h5>
-                        <ul className="mt-2 list-inside list-disc space-y-1 text-sm leading-relaxed text-ink-muted marker:text-[#6b5344]">
+                        <ul className="mt-2 list-inside list-disc space-y-1 text-sm leading-relaxed text-ink-muted marker:text-[#4f46e5]">
                           <li>
                             <strong className="font-semibold text-ink">Allocated time:</strong>{' '}
                             {formatSessionDuration(SESSION_DURATION_MINUTES)} for the full assessment (all five parts).
@@ -1987,7 +2124,7 @@ export default function SkillTestClient() {
                   title={
                     allIntroRulesAcknowledged ? undefined : 'Check the box next to each rule in the Rules section to continue.'
                   }
-                  className="inline-flex w-full items-center justify-center rounded-lg bg-stone-800 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-900 disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto"
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-parchment-800 px-6 py-3 text-sm font-semibold text-white transition hover:bg-parchment-900 disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto"
                 >
                   Continue to setup
                 </button>
@@ -1996,7 +2133,7 @@ export default function SkillTestClient() {
               <div className="flex items-center justify-between gap-3">
                 <button
                   type="button"
-                  className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06]"
+                  className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06]"
                   onClick={() => {
                     if (setupStep === 1) {
                       setErr(null);
@@ -2012,14 +2149,14 @@ export default function SkillTestClient() {
                   {SETUP_STEPS.map((step) => (
                     <span
                       key={step.id}
-                      className={`h-2.5 w-2.5 rounded-full ${setupStep === step.id ? 'bg-[#6b5344]' : 'bg-slate-300'}`}
+                      className={`h-2.5 w-2.5 rounded-full ${setupStep === step.id ? 'bg-[#4f46e5]' : 'bg-slate-300'}`}
                     />
                   ))}
                 </div>
                 {setupStep < 5 ? (
                   <button
                     type="button"
-                    className="rounded-md bg-stone-800 px-5 py-2 text-sm font-semibold text-white transition hover:bg-stone-900"
+                    className="rounded-md bg-parchment-800 px-5 py-2 text-sm font-semibold text-white transition hover:bg-parchment-900"
                     onClick={() => {
                       if (setupStep === 2 && !selectedField) {
                         setErr('Please choose a field.');
@@ -2042,6 +2179,10 @@ export default function SkillTestClient() {
                 ) : (
                   <button
                     type="button"
+                    disabled={
+                      stripePaymentRequired &&
+                      (paymentStatusLoading || !hasExamPaymentCredit)
+                    }
                     onClick={() => {
                       void (async () => {
                         setErr(null);
@@ -2049,7 +2190,7 @@ export default function SkillTestClient() {
                         await start(undefined, { preserveActiveRecording: true });
                       })();
                     }}
-                    className="rounded-md bg-stone-800 px-5 py-2 text-sm font-semibold text-white transition hover:bg-stone-900"
+                    className="rounded-md bg-parchment-800 px-5 py-2 text-sm font-semibold text-white transition hover:bg-parchment-900 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     Enter exam room
                   </button>
@@ -2098,14 +2239,14 @@ export default function SkillTestClient() {
               className={`rounded-xl border px-4 py-3 font-sans sm:flex sm:items-center sm:justify-between sm:gap-4 ${
                 remainingSeconds <= 300
                   ? 'border-red-400/70 bg-red-50/95 shadow-sm'
-                  : 'border-[#5c4033]/35 bg-parchment-150/90'
+                  : 'border-[#1e293b]/35 bg-parchment-150/90'
               }`}
               role="timer"
               aria-live="polite"
               aria-atomic="true"
             >
               <div className="min-w-0">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#6b5344]">Session time remaining</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#4f46e5]">Session time remaining</p>
                 <p className="mt-1 text-[11px] leading-snug text-ink-soft sm:text-xs">
                   When time runs out, your answers are submitted automatically for grading. Session limit:{' '}
                   {formatSessionDuration(SESSION_DURATION_MINUTES)}. Finish all parts before then if you can.
@@ -2120,9 +2261,9 @@ export default function SkillTestClient() {
               </p>
             </div>
           )}
-          <div className="rounded-xl border border-[#5c4033]/35 bg-parchment-150/90 px-3 py-3 sm:flex sm:items-center sm:justify-between sm:gap-4 sm:px-4">
+          <div className="rounded-xl border border-[#1e293b]/35 bg-parchment-150/90 px-3 py-3 sm:flex sm:items-center sm:justify-between sm:gap-4 sm:px-4">
             <div className="min-w-0 space-y-1">
-              <p className="font-sans text-xs font-semibold uppercase tracking-wide text-[#6b5344]">Session screen recording</p>
+              <p className="font-sans text-xs font-semibold uppercase tracking-wide text-[#4f46e5]">Session screen recording</p>
               <p className="font-sans text-[11px] leading-snug text-ink-soft sm:text-xs">
                 Capture starts automatically when you enter the exam room (browser will ask you to share this tab or your screen). Upload runs in
                 the background after you submit. Stop sharing from the browser when you finish if needed.
@@ -2160,10 +2301,10 @@ export default function SkillTestClient() {
           </div>
 
           <nav
-            className="flex flex-nowrap items-center gap-2 border-0 border-b border-[#5c4033]/30 bg-transparent px-0 pb-4 pt-1 sm:gap-3"
+            className="flex flex-nowrap items-center gap-2 border-0 border-b border-[#1e293b]/30 bg-transparent px-0 pb-4 pt-1 sm:gap-3"
             aria-label="Test parts"
           >
-            <span className="shrink-0 text-xs font-sans font-semibold uppercase tracking-wide text-[#6b5344]/85">
+            <span className="shrink-0 text-xs font-sans font-semibold uppercase tracking-wide text-[#4f46e5]/85">
               Parts
             </span>
             <div className="flex min-w-0 flex-1 flex-nowrap items-center gap-1.5 overflow-x-auto overscroll-x-contain pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-2 [&::-webkit-scrollbar]:hidden">
@@ -2182,10 +2323,10 @@ export default function SkillTestClient() {
                     title={`Part ${p}: ${subtitle}`}
                     className={`shrink-0 whitespace-nowrap rounded-full px-2.5 py-1.5 text-xs font-semibold transition sm:px-3 ${
                       active
-                        ? 'bg-gradient-to-r from-[#5c4033] to-[#a07856] text-white shadow-sm'
+                        ? 'bg-gradient-to-r from-[#1e293b] to-[#a07856] text-white shadow-sm'
                         : unlocked
-                          ? 'border border-[#5c4033]/40 bg-transparent text-ink hover:border-[#6b5344]/60 hover:bg-[#291c15]/[0.04]'
-                          : 'cursor-not-allowed border border-[#5c4033]/20 bg-transparent/30 text-ink-soft'
+                          ? 'border border-[#1e293b]/40 bg-transparent text-ink hover:border-[#4f46e5]/60 hover:bg-[#0f172a]/[0.04]'
+                          : 'cursor-not-allowed border border-[#1e293b]/20 bg-transparent/30 text-ink-soft'
                     }`}
                   >
                     <span className="sm:hidden">P{p}</span>
@@ -2200,7 +2341,7 @@ export default function SkillTestClient() {
               type="button"
               onClick={goToDashboard}
               title="Go to Dashboard"
-              className="ml-1 shrink-0 inline-flex items-center rounded-md border border-[#5c4033]/35 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-soft transition hover:border-[#6b5344]/55 hover:text-ink sm:ml-2 sm:px-3 sm:text-xs"
+              className="ml-1 shrink-0 inline-flex items-center rounded-md border border-[#1e293b]/35 px-2.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-soft transition hover:border-[#4f46e5]/55 hover:text-ink sm:ml-2 sm:px-3 sm:text-xs"
             >
               Dashboard
             </button>
@@ -2230,7 +2371,7 @@ export default function SkillTestClient() {
                 </div>
                 <div
                   key={mcqQuestions[mcqStepIndex].id}
-                  className="animate-slide-up rounded-xl border border-[#5c4033]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(40,30,24,0.42)] sm:p-5"
+                  className="animate-slide-up rounded-xl border border-[#1e293b]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(15,23,42,0.42)] sm:p-5"
                 >
                   <p className="font-serif text-lg font-semibold text-ink">Question {mcqStepIndex + 1}</p>
                   <p className="mt-2 select-none font-serif text-base leading-8 text-ink-muted">
@@ -2240,7 +2381,7 @@ export default function SkillTestClient() {
                     {mcqQuestions[mcqStepIndex].options.map((opt, optIdx) => (
                       <label
                         key={`${mcqQuestions[mcqStepIndex].id}-${optIdx}`}
-                        className="flex cursor-pointer items-start gap-2 rounded-sm border border-[#5c4033]/40 bg-parchment-950/[0.05] px-3 py-2.5 font-serif text-sm leading-snug text-ink-muted transition hover:border-[#6b5344]/60 hover:bg-[#291c15]/[0.07] sm:text-base sm:leading-snug"
+                        className="flex cursor-pointer items-start gap-2 rounded-sm border border-[#1e293b]/40 bg-parchment-950/[0.05] px-3 py-2.5 font-serif text-sm leading-snug text-ink-muted transition hover:border-[#4f46e5]/60 hover:bg-[#0f172a]/[0.07] sm:text-base sm:leading-snug"
                       >
                         <input
                           type="radio"
@@ -2271,14 +2412,14 @@ export default function SkillTestClient() {
                     type="button"
                     disabled={mcqStepIndex === 0}
                     onClick={() => setMcqStepIndex((i) => Math.max(0, i - 1))}
-                    className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
+                    className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     ← Previous question
                   </button>
                 </div>
               </>
             )}
-            <div className="flex flex-wrap items-center justify-end gap-3 border-t border-[#5c4033]/25 pt-6">
+            <div className="flex flex-wrap items-center justify-end gap-3 border-t border-[#1e293b]/25 pt-6">
               <p className="mr-auto font-sans text-sm text-ink-soft">
                 {part1Complete
                   ? 'All multiple-choice questions answered. Continue when ready.'
@@ -2292,7 +2433,7 @@ export default function SkillTestClient() {
                   setActiveTestPart(2);
                   setErr(null);
                 }}
-                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Next: Part 2 →
               </button>
@@ -2324,7 +2465,7 @@ export default function SkillTestClient() {
                 </div>
                 <div
                   key={openQuestions[openStepIndex].id}
-                  className="animate-slide-up rounded-xl border border-[#5c4033]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(40,30,24,0.42)] sm:p-5"
+                  className="animate-slide-up rounded-xl border border-[#1e293b]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(15,23,42,0.42)] sm:p-5"
                 >
                   <label className="mb-2 block font-serif text-xl font-semibold text-ink">
                     Question {openStepIndex + 1}
@@ -2333,7 +2474,7 @@ export default function SkillTestClient() {
                     {openQuestions[openStepIndex].text}
                   </p>
                   <textarea
-                    className="input-field min-h-[180px] w-full select-text rounded-sm border-[#5c4033]/40 bg-parchment-150/95 font-serif text-lg leading-8 text-ink placeholder:text-stone-600 backdrop-blur-[1px]"
+                    className="input-field min-h-[180px] w-full select-text rounded-sm border-[#1e293b]/40 bg-parchment-150/95 font-serif text-lg leading-8 text-ink placeholder:text-stone-600 backdrop-blur-[1px]"
                     value={openAnswers[openQuestions[openStepIndex].id] ?? ''}
                     onChange={(e) =>
                       setOpenAnswers((a) => ({ ...a, [openQuestions[openStepIndex].id]: e.target.value }))
@@ -2346,7 +2487,7 @@ export default function SkillTestClient() {
                     type="button"
                     disabled={openStepIndex === 0}
                     onClick={() => setOpenStepIndex((i) => Math.max(0, i - 1))}
-                    className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
+                    className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     ← Previous question
                   </button>
@@ -2360,7 +2501,7 @@ export default function SkillTestClient() {
                         const idx = openStepIndex;
                         window.setTimeout(() => setOpenStepIndex(idx + 1), 400);
                       }}
-                      className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       Save &amp; next question
                     </button>
@@ -2374,14 +2515,14 @@ export default function SkillTestClient() {
                 </div>
               </>
             )}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#5c4033]/25 pt-6">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#1e293b]/25 pt-6">
               <button
                 type="button"
                 onClick={() => {
                   setActiveTestPart(1);
                   setErr(null);
                 }}
-                className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:opacity-50"
+                className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:opacity-50"
               >
                 ← Part 1
               </button>
@@ -2398,7 +2539,7 @@ export default function SkillTestClient() {
                   setActiveTestPart(3);
                   setErr(null);
                 }}
-                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Next: Part 3 →
               </button>
@@ -2430,7 +2571,7 @@ export default function SkillTestClient() {
                   </div>
                   <div
                     key={correctingQuestions[correctingStepIndex].id}
-                    className="animate-slide-up rounded-xl border border-[#5c4033]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(40,30,24,0.42)] sm:p-5"
+                    className="animate-slide-up rounded-xl border border-[#1e293b]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(15,23,42,0.42)] sm:p-5"
                   >
                     <label className="mb-2 block font-serif text-xl font-semibold text-ink">
                       Correcting mistakes {correctingStepIndex + 1}
@@ -2439,7 +2580,7 @@ export default function SkillTestClient() {
                       {correctingQuestions[correctingStepIndex].text}
                     </p>
                     <textarea
-                      className="input-field min-h-[180px] w-full select-text rounded-sm border-[#5c4033]/40 bg-parchment-150/95 font-serif text-lg leading-8 text-ink placeholder:text-stone-600 backdrop-blur-[1px]"
+                      className="input-field min-h-[180px] w-full select-text rounded-sm border-[#1e293b]/40 bg-parchment-150/95 font-serif text-lg leading-8 text-ink placeholder:text-stone-600 backdrop-blur-[1px]"
                       value={correctingAnswers[correctingQuestions[correctingStepIndex].id] ?? ''}
                       onChange={(e) =>
                         setCorrectingAnswers((a) => ({
@@ -2455,7 +2596,7 @@ export default function SkillTestClient() {
                       type="button"
                       disabled={correctingStepIndex === 0}
                       onClick={() => setCorrectingStepIndex((i) => Math.max(0, i - 1))}
-                      className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
+                      className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       ← Previous item
                     </button>
@@ -2471,7 +2612,7 @@ export default function SkillTestClient() {
                           const idx = correctingStepIndex;
                           window.setTimeout(() => setCorrectingStepIndex(idx + 1), 400);
                         }}
-                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         Save &amp; next item
                       </button>
@@ -2485,14 +2626,14 @@ export default function SkillTestClient() {
                   </div>
                 </>
               )}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#5c4033]/25 pt-6">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#1e293b]/25 pt-6">
                 <button
                   type="button"
                   onClick={() => {
                     setActiveTestPart(2);
                     setErr(null);
                   }}
-                  className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:opacity-50"
+                  className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:opacity-50"
                 >
                   ← Part 2
                 </button>
@@ -2509,7 +2650,7 @@ export default function SkillTestClient() {
                     setActiveTestPart(4);
                     setErr(null);
                   }}
-                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Next: Part 4 →
                 </button>
@@ -2541,7 +2682,7 @@ export default function SkillTestClient() {
                   </div>
                   <div
                     key={practicalQuestions[practicalStepIndex].id}
-                    className="animate-slide-up rounded-xl border border-[#5c4033]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(40,30,24,0.42)] sm:p-5"
+                    className="animate-slide-up rounded-xl border border-[#1e293b]/35 bg-parchment-200/95 p-4 shadow-[0_10px_28px_-18px_rgba(15,23,42,0.42)] sm:p-5"
                   >
                     <label className="mb-2 block font-serif text-xl font-semibold text-ink">
                       Practical question {practicalStepIndex + 1}
@@ -2550,7 +2691,7 @@ export default function SkillTestClient() {
                       {practicalQuestions[practicalStepIndex].text}
                     </p>
                     <textarea
-                      className="input-field min-h-[190px] w-full select-text rounded-sm border-[#5c4033]/40 bg-parchment-150/95 font-serif text-lg leading-8 text-ink placeholder:text-stone-600 backdrop-blur-[1px]"
+                      className="input-field min-h-[190px] w-full select-text rounded-sm border-[#1e293b]/40 bg-parchment-150/95 font-serif text-lg leading-8 text-ink placeholder:text-stone-600 backdrop-blur-[1px]"
                       value={practicalAnswers[practicalQuestions[practicalStepIndex].id] ?? ''}
                       onChange={(e) =>
                         setPracticalAnswers((a) => ({
@@ -2566,7 +2707,7 @@ export default function SkillTestClient() {
                       type="button"
                       disabled={practicalStepIndex === 0}
                       onClick={() => setPracticalStepIndex((i) => Math.max(0, i - 1))}
-                      className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
+                      className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       ← Previous challenge
                     </button>
@@ -2582,7 +2723,7 @@ export default function SkillTestClient() {
                           const idx = practicalStepIndex;
                           window.setTimeout(() => setPracticalStepIndex(idx + 1), 400);
                         }}
-                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         Save &amp; next challenge
                       </button>
@@ -2596,14 +2737,14 @@ export default function SkillTestClient() {
                   </div>
                 </>
               )}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#5c4033]/25 pt-6">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#1e293b]/25 pt-6">
                 <button
                   type="button"
                   onClick={() => {
                     setActiveTestPart(3);
                     setErr(null);
                   }}
-                  className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:opacity-50"
+                  className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:opacity-50"
                 >
                   ← Part 3
                 </button>
@@ -2620,7 +2761,7 @@ export default function SkillTestClient() {
                     setActiveTestPart(5);
                     setErr(null);
                   }}
-                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Next: Part 5 →
                 </button>
@@ -2636,7 +2777,7 @@ export default function SkillTestClient() {
                   Voice interview (camera optional)
                 </span>
               </div>
-              <div className="space-y-4 rounded-2xl border border-[#5c4033]/30 bg-parchment-50/80 p-4 shadow-[0_10px_30px_-18px_rgba(45,34,26,0.45)] md:p-5">
+              <div className="space-y-4 rounded-2xl border border-[#1e293b]/30 bg-parchment-50/80 p-4 shadow-[0_10px_30px_-18px_rgba(45,34,26,0.45)] md:p-5">
                 {typeof window !== 'undefined' && !window.isSecureContext ? (
                   <div className="rounded-lg border border-amber-400/80 bg-amber-50/95 p-3 font-sans text-sm leading-relaxed text-amber-950">
                     <strong className="font-semibold">Microphone and camera need a secure page.</strong> Use{' '}
@@ -2644,31 +2785,31 @@ export default function SkillTestClient() {
                     <code className="rounded bg-amber-100/80 px-1 py-0.5 text-xs">http://</code> (except localhost), the browser will block media.
                   </div>
                 ) : null}
-                <div className="rounded-xl border border-[#5c4033]/20 bg-[#291c15]/[0.03] p-4">
+                <div className="rounded-xl border border-[#1e293b]/20 bg-[#0f172a]/[0.03] p-4">
                   <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-soft">How this part works</p>
                   <p className="mt-2 font-sans text-sm leading-relaxed text-ink-soft">
                     <strong className="text-ink">Video interview:</strong> each question is played as audio only (nothing written on screen).
                     Reply by voice like a short call, then save each round to continue.
                   </p>
                   <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                    <div className="rounded-lg border border-[#5c4033]/20 bg-white/70 px-3 py-2">
+                    <div className="rounded-lg border border-[#1e293b]/20 bg-white/70 px-3 py-2">
                       <p className="font-sans text-xs font-semibold text-ink">1) Start session</p>
                       <p className="mt-1 text-xs leading-relaxed text-ink-soft">
                         The browser usually asks for the <strong className="font-semibold text-ink">microphone</strong> first; camera is optional for preview. Then click Start.
                       </p>
                     </div>
-                    <div className="rounded-lg border border-[#5c4033]/20 bg-white/70 px-3 py-2">
+                    <div className="rounded-lg border border-[#1e293b]/20 bg-white/70 px-3 py-2">
                       <p className="font-sans text-xs font-semibold text-ink">2) Listen then answer</p>
                       <p className="mt-1 text-xs leading-relaxed text-ink-soft">Wait for audio to finish, then speak clearly in one take.</p>
                     </div>
-                    <div className="rounded-lg border border-[#5c4033]/20 bg-white/70 px-3 py-2">
+                    <div className="rounded-lg border border-[#1e293b]/20 bg-white/70 px-3 py-2">
                       <p className="font-sans text-xs font-semibold text-ink">3) Save every round</p>
                       <p className="mt-1 text-xs leading-relaxed text-ink-soft">Use Save & next round until all rounds are completed.</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#5c4033]/20 bg-white/70 px-3.5 py-3">
+                <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#1e293b]/20 bg-white/70 px-3.5 py-3">
                   <label className="flex cursor-pointer items-center gap-2 font-sans text-sm font-medium text-ink">
                     <input
                       type="checkbox"
@@ -2698,7 +2839,7 @@ export default function SkillTestClient() {
                   </span>
                 </div>
 
-                <div className="mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-[#5c4033]/30 bg-stone-950 shadow-inner">
+                <div className="mx-auto w-full max-w-3xl overflow-hidden rounded-2xl border border-[#1e293b]/30 bg-stone-950 shadow-inner">
                   <video
                     ref={interviewVideoRef}
                     autoPlay
@@ -2713,7 +2854,7 @@ export default function SkillTestClient() {
                   <button
                     type="button"
                     onClick={startInterviewSession}
-                    className="inline-flex w-full max-w-3xl items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_22px_-12px_rgba(92,64,51,0.8)] transition hover:brightness-110"
+                    className="inline-flex w-full max-w-3xl items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_22px_-12px_rgba(92,64,51,0.8)] transition hover:brightness-110"
                   >
                     Start AI interview
                   </button>
@@ -2727,12 +2868,12 @@ export default function SkillTestClient() {
                   </div>
                 )}
                 {interviewStarted && (
-                  <div className="mt-3 space-y-3 rounded-xl border border-[#5c4033]/20 bg-white/70 px-3 py-3">
+                  <div className="mt-3 space-y-3 rounded-xl border border-[#1e293b]/20 bg-white/70 px-3 py-3">
                     <button
                       type="button"
                       disabled={interviewMediaPending}
                       onClick={retryInterviewMedia}
-                      className="inline-flex w-full max-w-md items-center justify-center rounded-lg bg-gradient-to-r from-[#5c4033] to-[#a07856] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                      className="inline-flex w-full max-w-md items-center justify-center rounded-lg bg-gradient-to-r from-[#1e293b] to-[#a07856] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
                     >
                       {interviewMediaPending ? 'Requesting access…' : 'Allow microphone (retry)'}
                     </button>
@@ -2746,11 +2887,11 @@ export default function SkillTestClient() {
               </div>
 
               {interviewStarted && interviewQuestions[interviewIndex] && (
-                <div className="space-y-4 rounded-xl border border-[#5c4033]/30 bg-parchment-50/75 p-4">
-                  <div className="flex flex-wrap items-center gap-3 border-b border-[#5c4033]/20 pb-3">
+                <div className="space-y-4 rounded-xl border border-[#1e293b]/30 bg-parchment-50/75 p-4">
+                  <div className="flex flex-wrap items-center gap-3 border-b border-[#1e293b]/20 pb-3">
                     <div className="flex flex-wrap gap-2 font-sans text-xs font-semibold">
                       <span
-                        className={`rounded-full px-3 py-1 ${interviewerSpeaking ? 'bg-[#5c4033] text-white' : 'bg-stone-200 text-stone-600'}`}
+                        className={`rounded-full px-3 py-1 ${interviewerSpeaking ? 'bg-[#1e293b] text-white' : 'bg-stone-200 text-stone-600'}`}
                       >
                         1 · Listen
                       </span>
@@ -2770,7 +2911,7 @@ export default function SkillTestClient() {
                         Mic on — your turn
                       </span>
                     )}
-                    <span className="ml-auto font-sans text-xs font-semibold text-[#6b5344]">
+                    <span className="ml-auto font-sans text-xs font-semibold text-[#4f46e5]">
                       Round {interviewIndex + 1} / {interviewQuestions.length}
                     </span>
                   </div>
@@ -2799,7 +2940,7 @@ export default function SkillTestClient() {
                             beginVoiceCapture();
                           }
                         }}
-                        className="rounded-md border border-[#5c4033]/40 px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:cursor-not-allowed disabled:opacity-50"
+                        className="rounded-md border border-[#1e293b]/40 px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {speechListening ? 'Stop microphone' : 'Speak your answer'}
                       </button>
@@ -2811,7 +2952,7 @@ export default function SkillTestClient() {
                           onComplete: () => maybeAutoListenAfterQuestion(),
                         })
                       }
-                      className="rounded-md border border-[#5c4033]/40 px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06]"
+                      className="rounded-md border border-[#1e293b]/40 px-4 py-2 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06]"
                     >
                       Play question audio again
                     </button>
@@ -2835,7 +2976,7 @@ export default function SkillTestClient() {
                             : 'Type your answer in the box below.'}
                   </div>
                   {!speechSupported ? (
-                    <div className="rounded-lg border border-[#5c4033]/25 bg-white/80 px-3 py-3 font-sans text-sm">
+                    <div className="rounded-lg border border-[#1e293b]/25 bg-white/80 px-3 py-3 font-sans text-sm">
                       <p className="text-xs font-semibold text-ink">This browser does not support voice capture — type your answer.</p>
                       <label htmlFor="interview-draft-type" className="mt-2 block text-xs font-medium text-ink-soft">
                         Your answer for this round
@@ -2846,12 +2987,12 @@ export default function SkillTestClient() {
                         value={interviewDraft}
                         onChange={(e) => setInterviewDraft(e.target.value)}
                         placeholder="Write your answer here."
-                        className="mt-1 w-full resize-y rounded-md border border-[#5c4033]/30 bg-white px-3 py-2 text-sm text-ink shadow-inner placeholder:text-stone-400 focus:border-[#5c4033]/60 focus:outline-none focus:ring-2 focus:ring-[#5c4033]/20"
+                        className="mt-1 w-full resize-y rounded-md border border-[#1e293b]/30 bg-white px-3 py-2 text-sm text-ink shadow-inner placeholder:text-stone-400 focus:border-[#1e293b]/60 focus:outline-none focus:ring-2 focus:ring-[#1e293b]/20"
                       />
                     </div>
                   ) : (
-                    <details className="group rounded-lg border border-[#5c4033]/25 bg-white/80 px-3 py-2 font-sans text-sm">
-                      <summary className="cursor-pointer select-none font-semibold text-ink hover:text-[#5c4033]">
+                    <details className="group rounded-lg border border-[#1e293b]/25 bg-white/80 px-3 py-2 font-sans text-sm">
+                      <summary className="cursor-pointer select-none font-semibold text-ink hover:text-[#1e293b]">
                         Type your answer instead (if the mic is blocked or you prefer typing)
                       </summary>
                       <label htmlFor="interview-draft-type" className="mt-2 block text-xs font-medium text-ink-soft">
@@ -2863,11 +3004,11 @@ export default function SkillTestClient() {
                         value={interviewDraft}
                         onChange={(e) => setInterviewDraft(e.target.value)}
                         placeholder="Write your spoken-style answer here. You can edit text from voice recognition too."
-                        className="mt-1 w-full resize-y rounded-md border border-[#5c4033]/30 bg-white px-3 py-2 text-sm text-ink shadow-inner placeholder:text-stone-400 focus:border-[#5c4033]/60 focus:outline-none focus:ring-2 focus:ring-[#5c4033]/20"
+                        className="mt-1 w-full resize-y rounded-md border border-[#1e293b]/30 bg-white px-3 py-2 text-sm text-ink shadow-inner placeholder:text-stone-400 focus:border-[#1e293b]/60 focus:outline-none focus:ring-2 focus:ring-[#1e293b]/20"
                       />
                     </details>
                   )}
-                  <div className="flex flex-wrap items-center justify-end gap-3 border-t border-[#5c4033]/25 pt-4">
+                  <div className="flex flex-wrap items-center justify-end gap-3 border-t border-[#1e293b]/25 pt-4">
                     <button
                       type="button"
                       onClick={() => {
@@ -2892,7 +3033,7 @@ export default function SkillTestClient() {
                           });
                         }
                       }}
-                      className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                      className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
                     >
                       {interviewIndex < interviewQuestions.length - 1 ? 'Save & next round' : 'Save final round'}
                     </button>
@@ -2901,20 +3042,20 @@ export default function SkillTestClient() {
               )}
 
               {interviewTurns.length > 0 && (
-                <div className="rounded-xl border border-[#5c4033]/25 bg-[#291c15]/[0.03] p-4">
+                <div className="rounded-xl border border-[#1e293b]/25 bg-[#0f172a]/[0.03] p-4">
                   <p className="font-sans text-sm font-semibold text-ink">
                     Rounds completed: {interviewTurns.length} / {interviewQuestions.length}
                   </p>
                 </div>
               )}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#5c4033]/25 pt-6">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#1e293b]/25 pt-6">
                 <button
                   type="button"
                   onClick={() => {
                     setActiveTestPart(4);
                     setErr(null);
                   }}
-                  className="rounded-md border border-[#5c4033]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#291c15]/[0.06] disabled:opacity-50"
+                  className="rounded-md border border-[#1e293b]/45 bg-transparent px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-[#0f172a]/[0.06] disabled:opacity-50"
                 >
                   ← Part 4
                 </button>
@@ -2922,7 +3063,7 @@ export default function SkillTestClient() {
                   type="button"
                   onClick={submit}
                   disabled={!canSubmitForGrading}
-                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#5c4033] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#1e293b] to-[#a07856] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Submit for grading
                 </button>
@@ -2935,9 +3076,9 @@ export default function SkillTestClient() {
       )}
 
       {phase === 'saving' && (
-        <div className="flex min-h-[min(60vh,520px)] flex-col items-center justify-center gap-5 rounded-xl border border-[#5c4033]/30 bg-parchment-100 px-6 py-14 text-center font-serif">
+        <div className="flex min-h-[min(60vh,520px)] flex-col items-center justify-center gap-5 rounded-xl border border-[#1e293b]/30 bg-parchment-100 px-6 py-14 text-center font-serif">
           <div
-            className="h-11 w-11 animate-spin rounded-full border-[3px] border-[#6b5344]/30 border-t-[#6b5344]"
+            className="h-11 w-11 animate-spin rounded-full border-[3px] border-[#4f46e5]/30 border-t-[#4f46e5]"
             aria-hidden
           />
           <div>

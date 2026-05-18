@@ -94,7 +94,7 @@ function AlumniEmployerTile({ name, domain }: { name: string; domain: string }) 
   }, [name]);
 
   return (
-    <div className="flex min-h-[88px] flex-col items-center justify-center gap-2 rounded-xl border border-parchment-300/55 bg-parchment-150/85 px-2 py-3 text-center shadow-[0_2px_8px_-4px_rgba(63,52,42,0.1)]">
+    <div className="flex min-h-[88px] flex-col items-center justify-center gap-2 rounded-xl border border-parchment-300/55 bg-parchment-150/85 px-2 py-3 text-center shadow-[0_2px_8px_-4px_rgba(30,41,59,0.1)]">
       {!iconFailed ? (
         <img
           src={faviconUrl(domain)}
@@ -354,9 +354,9 @@ export default function DashboardPage() {
                 <div className="mx-auto flex w-full max-w-[320px] flex-col items-center lg:sticky lg:top-28">
                   <figure className="m-0 w-full">
                     <img
-                      src="/skill-test-hero-illustration.png"
+                      src="/skill-test-side-illustration.png"
                       alt="Illustration for NFT certifications"
-                      className="h-auto w-full rounded-2xl bg-parchment-150/90 object-contain p-3 shadow-[0_12px_40px_-12px_rgba(63,52,42,0.35)]"
+                      className="h-auto w-full rounded-2xl bg-parchment-150/90 object-contain p-3 shadow-[0_12px_40px_-12px_rgba(30,41,59,0.35)]"
                     />
                     <figcaption className="mt-4 text-center text-xs leading-relaxed text-stone-600">
                       AI-assisted assessments and on-chain credentials—built for real hiring workflows.
@@ -404,7 +404,7 @@ export default function DashboardPage() {
                     <button
                       type="button"
                       onClick={() => setExplainTrack(track)}
-                      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-parchment-300/80 bg-gradient-to-b from-parchment-50 via-parchment-50 to-parchment-100 px-4 py-4 text-left shadow-[0_10px_26px_-18px_rgba(40,30,24,0.5)] ring-1 ring-parchment-200/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-parchment-500/60 hover:ring-parchment-400/40 hover:shadow-[0_18px_34px_-18px_rgba(40,30,24,0.56)] sm:px-5"
+                      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-parchment-300/80 bg-gradient-to-b from-parchment-50 via-parchment-50 to-parchment-100 px-4 py-4 text-left shadow-[0_10px_26px_-18px_rgba(15,23,42,0.5)] ring-1 ring-parchment-200/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-parchment-500/60 hover:ring-parchment-400/40 hover:shadow-[0_18px_34px_-18px_rgba(15,23,42,0.56)] sm:px-5"
                     >
                       <span
                         aria-hidden
@@ -618,10 +618,10 @@ export default function DashboardPage() {
               ].map((item) => (
                 <article
                   key={item.title}
-                  className="relative overflow-hidden rounded-2xl border border-parchment-300/70 bg-gradient-to-b from-parchment-50 to-parchment-100 p-4 shadow-[0_10px_24px_-18px_rgba(40,30,24,0.46)] transition-all duration-200 hover:-translate-y-0.5 hover:border-parchment-500/50 hover:shadow-[0_16px_32px_-20px_rgba(40,30,24,0.55)]"
+                  className="relative overflow-hidden rounded-2xl border border-parchment-300/70 bg-gradient-to-b from-parchment-50 to-parchment-100 p-4 shadow-[0_10px_24px_-18px_rgba(15,23,42,0.46)] transition-all duration-200 hover:-translate-y-0.5 hover:border-parchment-500/50 hover:shadow-[0_16px_32px_-20px_rgba(15,23,42,0.55)]"
                 >
                   <span
-                    className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#6b5344]/75 via-[#8b7355]/55 to-transparent"
+                    className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#4f46e5]/75 via-[#6366f1]/55 to-transparent"
                     aria-hidden
                   />
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-parchment-400/65 bg-parchment-150 text-parchment-900">

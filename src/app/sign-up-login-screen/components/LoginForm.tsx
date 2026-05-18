@@ -227,7 +227,7 @@ export default function LoginForm({ onSwitch }: LoginFormProps) {
               onClick={() => {
                 void onForgotPassword();
               }}
-              className="text-xs font-medium text-[#6b5344] hover:text-[#5c4033]"
+              className="text-xs font-medium text-[#4f46e5] hover:text-[#1e293b]"
             >
               Forgot password?
             </button>
@@ -263,7 +263,7 @@ export default function LoginForm({ onSwitch }: LoginFormProps) {
           <input
             id="remember-me"
             type="checkbox"
-            className="w-4 h-4 rounded border-slate-300 text-[#6b5344] focus:ring-[#8b7355]"
+            className="w-4 h-4 rounded border-slate-300 text-[#4f46e5] focus:ring-[#6366f1]"
             {...register('rememberMe')}
           />
           <label htmlFor="remember-me" className="text-sm text-slate-600">
@@ -275,7 +275,7 @@ export default function LoginForm({ onSwitch }: LoginFormProps) {
         <button
           type="submit"
           disabled={loading || oauthLoading !== null}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-stone-800 py-3 text-lg font-semibold text-white transition-all duration-150 hover:bg-stone-900 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-parchment-800 py-3 text-lg font-semibold text-white transition-all duration-150 hover:bg-parchment-900 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? (
             <>
@@ -296,7 +296,7 @@ export default function LoginForm({ onSwitch }: LoginFormProps) {
 
       <p className="mt-6 text-center text-sm text-slate-500">
         Don&apos;t have an account?{' '}
-        <button onClick={onSwitch} className="text-[#6b5344] font-semibold hover:text-[#5c4033]">
+        <button onClick={onSwitch} className="text-[#4f46e5] font-semibold hover:text-[#1e293b]">
           Create a free account
         </button>
       </p>

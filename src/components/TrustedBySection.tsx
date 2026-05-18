@@ -49,7 +49,7 @@ export default function TrustedBySection({ fullBleed = true, className = '' }: T
                     ? 'Program partner'
                     : 'Enterprise adoption'
               }
-              className="flex min-w-[190px] items-center justify-center gap-2 rounded-sm border border-parchment-300/85 bg-parchment-100/95 px-4 py-3.5 font-serif text-base font-semibold text-stone-700 shadow-[0_2px_8px_-4px_rgba(63,52,42,0.12)] transition-all duration-200 hover:border-parchment-500/45 hover:bg-parchment-50 hover:shadow-sm"
+              className="flex min-w-[190px] items-center justify-center gap-2 rounded-sm border border-parchment-300/85 bg-parchment-100/95 px-4 py-3.5 font-serif text-base font-semibold text-stone-700 shadow-[0_2px_8px_-4px_rgba(30,41,59,0.12)] transition-all duration-200 hover:border-parchment-500/45 hover:bg-parchment-50 hover:shadow-sm"
             >
               <TrustMark type={item.mark} />
               <span>{item.name}</span>

@@ -87,7 +87,7 @@ export default function CreateNFTAdminClient() {
     <div className="mx-auto max-w-2xl px-4 py-8 md:py-12">
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex gap-3">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#6b5344]/25 bg-[#f4ebe1] text-[#6b5344]">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#4f46e5]/25 bg-[#f4ebe1] text-[#4f46e5]">
             <ImagePlus className="h-6 w-6" aria-hidden />
           </span>
           <div>
@@ -129,7 +129,7 @@ export default function CreateNFTAdminClient() {
         </div>
       ) : null}
 
-      <div className="mt-6 space-y-4 rounded-xl border border-parchment-300/80 bg-parchment-150/95 p-6 shadow-[0_8px_28px_-12px_rgba(63,52,42,0.18)]">
+      <div className="mt-6 space-y-4 rounded-xl border border-parchment-300/80 bg-parchment-150/95 p-6 shadow-[0_8px_28px_-12px_rgba(30,41,59,0.18)]">
         <div>
           <label htmlFor="nft-recipient" className="block text-xs font-semibold uppercase tracking-wide text-stone-500">
             Recipient (optional)
@@ -141,7 +141,7 @@ export default function CreateNFTAdminClient() {
             placeholder="Defaults to your connected wallet"
             value={recipient}
             onChange={(e) => setRecipient(e.target.value)}
-            className="mt-1.5 w-full rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 placeholder:text-stone-400 focus:border-[#6b5344] focus:outline-none focus:ring-1 focus:ring-[#6b5344]"
+            className="mt-1.5 w-full rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 placeholder:text-stone-400 focus:border-[#4f46e5] focus:outline-none focus:ring-1 focus:ring-[#4f46e5]"
           />
         </div>
         <div>
@@ -154,7 +154,7 @@ export default function CreateNFTAdminClient() {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1.5 w-full rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 focus:border-[#6b5344] focus:outline-none focus:ring-1 focus:ring-[#6b5344]"
+            className="mt-1.5 w-full rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 focus:border-[#4f46e5] focus:outline-none focus:ring-1 focus:ring-[#4f46e5]"
           />
         </div>
         <div>
@@ -166,7 +166,7 @@ export default function CreateNFTAdminClient() {
             rows={3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="mt-1.5 w-full resize-y rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 focus:border-[#6b5344] focus:outline-none focus:ring-1 focus:ring-[#6b5344]"
+            className="mt-1.5 w-full resize-y rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 focus:border-[#4f46e5] focus:outline-none focus:ring-1 focus:ring-[#4f46e5]"
           />
         </div>
         <div>
@@ -179,7 +179,7 @@ export default function CreateNFTAdminClient() {
             placeholder="https://… or ipfs://…"
             value={image}
             onChange={(e) => setImage(e.target.value)}
-            className="mt-1.5 w-full rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 placeholder:text-stone-400 focus:border-[#6b5344] focus:outline-none focus:ring-1 focus:ring-[#6b5344]"
+            className="mt-1.5 w-full rounded-lg border border-parchment-300 bg-white px-3 py-2 text-sm text-parchment-950 placeholder:text-stone-400 focus:border-[#4f46e5] focus:outline-none focus:ring-1 focus:ring-[#4f46e5]"
           />
           <p className="mt-1 text-xs text-stone-500">
             thirdweb uploads metadata when minting; the image field should resolve publicly.
@@ -190,7 +190,7 @@ export default function CreateNFTAdminClient() {
           type="button"
           disabled={!configOk || !account || isPending || !clientId}
           onClick={handleMint}
-          className="w-full rounded-lg bg-[#6b5344] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#5a4639] disabled:cursor-not-allowed disabled:opacity-50"
+          className="w-full rounded-lg bg-[#4f46e5] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#5a4639] disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isPending ? 'Sending…' : 'Mint NFT'}
         </button>
@@ -198,7 +198,7 @@ export default function CreateNFTAdminClient() {
 
       <p className="mt-6 text-center text-xs text-stone-500">
         Selling on a marketplace uses a separate listing step (for example{' '}
-        <a href="https://thirdweb.com" className="text-[#6b5344] underline hover:no-underline" target="_blank" rel="noreferrer">
+        <a href="https://thirdweb.com" className="text-[#4f46e5] underline hover:no-underline" target="_blank" rel="noreferrer">
           thirdweb Marketplace
         </a>
         ).

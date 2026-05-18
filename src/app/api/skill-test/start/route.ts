@@ -2,6 +2,12 @@ import { NextResponse } from 'next/server';
 import { getSupabaseServer } from '@/lib/supabase/server';
 import { getSupabaseAdmin } from '@/lib/supabase/admin';
 import { askAI, parseJsonFromAI } from '@/lib/ai';
+import { isStripePaymentRequired } from '@/lib/stripe/config';
+import {
+  consumePayment,
+  findAvailableCredit,
+  isMissingPaymentsTable,
+} from '@/lib/stripe/payments';
 
 const MCQ_COUNT = 25;
 const MCQ_OPTIONS_PER_QUESTION = 10;
@@ -168,12 +174,17 @@ export async function POST(request: Request) {
   let topic = 'JavaScript & web fundamentals';
   let difficulty: 'beginner' | 'intermediate' | 'advanced' | 'expert' | 'master' = 'intermediate';
   let contentFocus = 'Core practical concepts and reasoning';
+  let paymentId: string | undefined;
   try {
     const b = (await request.json().catch(() => ({}))) as {
       topic?: string;
       difficulty?: 'beginner' | 'intermediate' | 'advanced' | 'expert' | 'master';
       contentFocus?: string;
+      paymentId?: string;
     };
+    if (typeof b.paymentId === 'string' && b.paymentId.trim()) {
+      paymentId = b.paymentId.trim();
+    }
     if (b.topic?.trim()) topic = b.topic.trim().slice(0, 120);
     if (b.difficulty && ['beginner', 'intermediate', 'advanced', 'expert', 'master'].includes(b.difficulty)) {
       difficulty = b.difficulty;
@@ -197,6 +208,51 @@ export async function POST(request: Request) {
   } catch (e) {
     const m = e instanceof Error ? e.message : 'Config error';
     return NextResponse.json({ error: m }, { status: 500 });
+  }
+
+  let resolvedPaymentId: string | null = null;
+  if (isStripePaymentRequired()) {
+    if (paymentId) {
+      const { data: paymentRow, error: payErr } = await admin
+        .from('skill_test_payments')
+        .select('id, user_id, status, consumed_at')
+        .eq('id', paymentId)
+        .maybeSingle();
+      if (payErr) {
+        if (isMissingPaymentsTable(payErr.message)) {
+          return NextResponse.json(
+            { error: 'Payments are not set up. Run supabase/stripe_payments.sql.', code: 'PAYMENT_SETUP' },
+            { status: 503 },
+          );
+        }
+        return NextResponse.json({ error: payErr.message }, { status: 500 });
+      }
+      if (!paymentRow || paymentRow.user_id !== user.id) {
+        return NextResponse.json(
+          { error: 'Valid payment required before starting a test.', code: 'PAYMENT_REQUIRED' },
+          { status: 402 },
+        );
+      }
+      if (paymentRow.status !== 'paid' || paymentRow.consumed_at) {
+        return NextResponse.json(
+          { error: 'Complete payment before entering the exam room.', code: 'PAYMENT_REQUIRED' },
+          { status: 402 },
+        );
+      }
+      resolvedPaymentId = paymentRow.id;
+    } else {
+      const credit = await findAvailableCredit(admin, user.id);
+      if (!credit) {
+        return NextResponse.json(
+          {
+            error: 'Pay the exam fee before starting your attempt.',
+            code: 'PAYMENT_REQUIRED',
+          },
+          { status: 402 },
+        );
+      }
+      resolvedPaymentId = credit.id;
+    }
   }
 
   const username = user.email?.split('@')[0] || `user_${user.id.slice(0, 8)}`;
@@ -308,6 +364,13 @@ Rules:
     .single();
 
   if (!error) {
+    if (resolvedPaymentId) {
+      const consumed = await consumePayment(admin, resolvedPaymentId, user.id, row.id);
+      if (!consumed.ok) {
+        await admin.from('test_attempts').delete().eq('id', row.id);
+        return NextResponse.json({ error: consumed.error, code: 'PAYMENT_REQUIRED' }, { status: 402 });
+      }
+    }
     return NextResponse.json({
       attemptId: row.id,
       topic: payload.topic || topic,
@@ -389,6 +452,14 @@ Rules:
     .single();
   if (aErr || !attemptRow) {
     return NextResponse.json({ error: aErr?.message || 'Failed to create attempt' }, { status: 500 });
+  }
+
+  if (resolvedPaymentId) {
+    const consumed = await consumePayment(admin, resolvedPaymentId, user.id, attemptRow.id);
+    if (!consumed.ok) {
+      await admin.from('test_attempts').delete().eq('id', attemptRow.id);
+      return NextResponse.json({ error: consumed.error, code: 'PAYMENT_REQUIRED' }, { status: 402 });
+    }
   }
 
   return NextResponse.json({

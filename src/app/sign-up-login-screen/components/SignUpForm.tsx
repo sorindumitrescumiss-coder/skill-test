@@ -274,7 +274,7 @@ export default function SignUpForm({ onSwitch }: SignUpFormProps) {
             <button
               type="submit"
               disabled={loading || oauthLoading !== null}
-              className="flex-1 rounded-xl bg-stone-800 py-3 text-sm font-semibold text-white hover:bg-stone-900 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="flex-1 rounded-xl bg-parchment-800 py-3 text-sm font-semibold text-white hover:bg-parchment-900 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {loading ? 'Creating account...' : 'Create account'}
             </button>
@@ -346,19 +346,19 @@ export default function SignUpForm({ onSwitch }: SignUpFormProps) {
                 onClick={() => setValue('role', r.value as 'candidate' | 'recruiter')}
                 className={`relative flex flex-col items-center gap-1.5 p-4 rounded-xl border-2 transition-all duration-150 ${
                   selectedRole === r.value
-                    ? 'border-[#6b5344] bg-parchment-100'
+                    ? 'border-[#4f46e5] bg-parchment-100'
                     : 'border-slate-200 hover:border-slate-300 bg-white'
                 }`}
               >
                 {selectedRole === r.value && (
-                  <span className="absolute top-2 right-2 w-5 h-5 bg-[#6b5344] rounded-full flex items-center justify-center">
+                  <span className="absolute top-2 right-2 w-5 h-5 bg-[#4f46e5] rounded-full flex items-center justify-center">
                     <Check size={11} className="text-white" />
                   </span>
                 )}
-                <span className={selectedRole === r.value ? 'text-[#6b5344]' : 'text-slate-500'}>
+                <span className={selectedRole === r.value ? 'text-[#4f46e5]' : 'text-slate-500'}>
                   {r.icon}
                 </span>
-                <span className={`text-sm font-semibold ${selectedRole === r.value ? 'text-[#5c4033]' : 'text-slate-700'}`}>
+                <span className={`text-sm font-semibold ${selectedRole === r.value ? 'text-[#1e293b]' : 'text-slate-700'}`}>
                   {r.label}
                 </span>
                 <span className="text-xs text-slate-500">{r.desc}</span>
@@ -520,14 +520,14 @@ export default function SignUpForm({ onSwitch }: SignUpFormProps) {
             <input
               id="agree-terms"
               type="checkbox"
-              className="w-4 h-4 rounded border-slate-300 text-[#6b5344] focus:ring-[#8b7355] mt-0.5"
+              className="w-4 h-4 rounded border-slate-300 text-[#4f46e5] focus:ring-[#6366f1] mt-0.5"
               {...register('agreeTerms', { required: 'You must agree to the terms to continue' })}
             />
             <label htmlFor="agree-terms" className="text-sm text-slate-600 leading-relaxed">
               I agree to TrueAssess&apos;s{' '}
-              <Link href="#" className="text-[#6b5344] hover:underline">Terms of Service</Link>
+              <Link href="#" className="text-[#4f46e5] hover:underline">Terms of Service</Link>
               {' '}and{' '}
-              <Link href="#" className="text-[#6b5344] hover:underline">Privacy Policy</Link>
+              <Link href="#" className="text-[#4f46e5] hover:underline">Privacy Policy</Link>
             </label>
           </div>
           {errors.agreeTerms && (
@@ -539,7 +539,7 @@ export default function SignUpForm({ onSwitch }: SignUpFormProps) {
         <button
           type="submit"
           disabled={loading || oauthLoading !== null}
-          className="w-full py-3 bg-stone-800 text-white font-semibold rounded-xl hover:bg-stone-900 active:scale-[0.99] transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
+          className="w-full py-3 bg-parchment-800 text-white font-semibold rounded-xl hover:bg-parchment-900 active:scale-[0.99] transition-all duration-150 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2"
         >
           {loading ? (
             <>
@@ -564,7 +564,7 @@ export default function SignUpForm({ onSwitch }: SignUpFormProps) {
 
       <p className="text-center text-sm text-slate-500 mt-6">
         Already have an account?{' '}
-        <button onClick={onSwitch} className="text-[#6b5344] font-semibold hover:text-[#5c4033]">
+        <button onClick={onSwitch} className="text-[#4f46e5] font-semibold hover:text-[#1e293b]">
           Sign in
         </button>
       </p>

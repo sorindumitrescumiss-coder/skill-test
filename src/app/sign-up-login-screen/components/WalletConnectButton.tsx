@@ -217,7 +217,7 @@ export default function WalletConnectButton({ className }: WalletConnectButtonPr
           onClick={() => setPickerOpen(false)}
         >
           <div
-            className="w-full max-w-md rounded-2xl border border-parchment-300/80 bg-parchment-50 p-4 shadow-[0_24px_48px_-20px_rgba(40,30,24,0.5)]"
+            className="w-full max-w-md rounded-2xl border border-parchment-300/80 bg-parchment-50 p-4 shadow-[0_24px_48px_-20px_rgba(15,23,42,0.5)]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-parchment-300/60 pb-3">

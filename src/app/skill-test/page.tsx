@@ -19,7 +19,7 @@ export default function SkillTestPage() {
           </header>
 
           {/* Bolder panel — content flows below the overlapping header */}
-          <div className="flex min-h-0 flex-1 flex-col rounded-xl border-2 border-stone-400/90 bg-gradient-to-b from-parchment-50 via-[#faf6ee] to-parchment-150/90 px-4 pb-6 pt-[7.25rem] shadow-[0_4px_24px_-4px_rgba(28,25,23,0.12)] ring-1 ring-stone-500/20 sm:px-6 md:pt-[8rem]">
+          <div className="flex min-h-0 flex-1 flex-col rounded-xl border-2 border-stone-400/90 bg-gradient-to-b from-parchment-50 via-[#f8fafc] to-parchment-150/90 px-4 pb-6 pt-[7.25rem] shadow-[0_4px_24px_-4px_rgba(28,25,23,0.12)] ring-1 ring-stone-500/20 sm:px-6 md:pt-[8rem]">
             <SkillTestClient />
           </div>
         </div>

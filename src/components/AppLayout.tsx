@@ -19,6 +19,7 @@ interface AppLayoutProps {
 const navItems = [
   { label: 'Dashboard', href: '/dashboard' },
   { label: 'Skill Tests', href: '/skill-test' },
+  { label: 'Billing', href: '/billing' },
   { label: 'Job Board', href: '/job-board' },
   { label: 'Candidates', href: '/candidates' },
   { label: 'Create NFT', href: '/admin/create-nft' },
@@ -243,9 +244,9 @@ export default function AppLayout({ children, activePath }: AppLayoutProps) {
 
   return (
     <div className="flex min-h-screen flex-col bg-transparent text-parchment-950">
-      <div className="sticky top-0 z-50 shadow-[0_1px_0_rgba(74,56,41,0.06)]">
-      {/* Brown tagline strip */}
-      <div className="border-b border-parchment-700/40 bg-parchment-800 text-parchment-50">
+      <div className="sticky top-0 z-50 shadow-[0_1px_0_rgba(15,23,42,0.06)]">
+      {/* Top tagline strip */}
+      <div className="border-b border-slate-700/50 bg-slate-900 text-white">
         <div className="mx-auto flex h-10 w-full max-w-[1200px] items-center px-5 sm:h-11 sm:px-6 lg:px-8">
           <p className="w-full truncate text-center text-[10px] font-medium uppercase tracking-[0.18em] sm:text-[11px] sm:tracking-[0.2em]">
             TrueAssess — AI skill tests & verifiable credentials

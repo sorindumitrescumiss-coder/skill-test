@@ -11,7 +11,7 @@ const DEFAULT_DESCRIPTION = (
   <>
     A new standard for professional credibility: rigorous assessments, secure credentials, and verification at scale—for
     individuals and organizations alike.
-    <span className="ml-1 font-semibold text-indigo-200">Trusted. Scalable. Verifiable.</span>
+    <span className="ml-1 font-semibold text-amber-200/95">Trusted. Scalable. Verifiable.</span>
   </>
 );
 
@@ -130,48 +130,58 @@ export default function CredentialingHero({
   return (
     <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden text-white">
       <HeroBackgroundVideo src="/hero-side-video.mp4" playbackRate={0.5} />
-      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(118deg,rgba(15,23,42,0.88),rgba(49,46,129,0.82),rgba(30,41,59,0.9))]" />
-      <div className={contentShell}>
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(125deg,rgba(2,6,23,0.92)_0%,rgba(30,27,75,0.86)_42%,rgba(15,23,42,0.9)_100%)]" />
+      <div className="hero-stars pointer-events-none absolute inset-0 z-[1] opacity-60" aria-hidden />
+      <div
+        className="pointer-events-none absolute -left-24 top-1/4 z-[1] h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-hero-float"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-16 bottom-1/4 z-[1] h-80 w-80 rounded-full bg-violet-500/15 blur-3xl animate-hero-float [animation-delay:1.2s]"
+        aria-hidden
+      />
+      <div className={`${contentShell} relative z-10`}>
         <div
           className={`grid items-center gap-6 lg:gap-8 ${hasRightVisual ? 'lg:grid-cols-[1.05fr_0.95fr]' : ''} ${relaxedTop ? 'mt-2 md:mt-3' : 'mt-5'}`}
         >
           <div
             className={`max-w-xl ${hasRightVisual ? (heroImage ? 'lg:max-w-none' : 'lg:max-w-2xl') : 'lg:max-w-3xl'}`}
           >
-            <p className="mb-3 animate-hero-eyebrow text-[11px] font-semibold uppercase tracking-[0.28em] text-indigo-200/95 opacity-0 drop-shadow-[0_1px_12px_rgba(129,140,248,0.35)]">
+            <p className="mb-3 animate-hero-eyebrow font-display text-[11px] font-bold uppercase tracking-[0.32em] text-cyan-200/90 opacity-0 drop-shadow-[0_0_20px_rgba(34,211,238,0.35)]">
               {eyebrow}
             </p>
             <h1
-              className={`relative animate-hero-title font-script text-[2.1rem] font-semibold leading-[1.2] tracking-wide opacity-0 sm:text-4xl md:text-[2.75rem] md:leading-[1.15] lg:text-[2.95rem] ${
+              className={`relative animate-hero-title font-display text-[2.15rem] font-extrabold leading-[1.08] tracking-[-0.03em] opacity-0 sm:text-4xl md:text-[2.85rem] md:leading-[1.06] lg:text-[3.05rem] ${
                 heroImage
-                  ? 'max-w-[min(100%,44rem)] text-balance md:leading-[1.2]'
+                  ? 'max-w-[min(100%,44rem)] text-balance md:leading-[1.12]'
                   : 'max-w-2xl'
               }`}
             >
-              <span className="relative z-10 bg-gradient-to-br from-white via-slate-100 to-indigo-200/90 bg-clip-text text-transparent drop-shadow-[0_4px_28px_rgba(129,140,248,0.25)]">
+              <span className="hero-title-gradient relative z-10 animate-hero-title-shimmer drop-shadow-[0_4px_32px_rgba(129,140,248,0.35)]">
                 {title}
               </span>
             </h1>
-            <p className="mt-6 max-w-xl animate-hero-body text-base leading-relaxed text-slate-200/95 opacity-0 md:mt-8 md:text-lg md:leading-relaxed [&_span]:font-semibold [&_span]:text-indigo-200 [&_span]:drop-shadow-[0_0_12px_rgba(129,140,248,0.2)]">
+            <p className="mt-6 max-w-xl animate-hero-body font-sans text-base font-normal leading-relaxed text-slate-300/95 opacity-0 md:mt-8 md:text-lg md:leading-[1.65] [&_span]:font-semibold [&_span]:text-amber-200/95 [&_span]:drop-shadow-[0_0_14px_rgba(251,191,36,0.25)]">
               {description}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 opacity-0 animate-hero-cta">
               <Link
                 href={primaryCta.href}
-                className="rounded-sm border border-parchment-300/80 bg-parchment-50 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-parchment-950 shadow-sm transition-all duration-200 hover:border-parchment-400 hover:shadow-md"
+                className="group relative overflow-hidden rounded-md border border-white/90 bg-white px-6 py-2.5 text-[13px] font-display font-bold uppercase tracking-[0.12em] text-indigo-950 shadow-[0_4px_24px_rgba(255,255,255,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:shadow-[0_8px_32px_rgba(255,255,255,0.35)] active:translate-y-0"
               >
-                {primaryCta.label}
+                <span className="relative z-10">{primaryCta.label}</span>
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-500 group-hover:translate-x-full" aria-hidden />
               </Link>
               <Link
                 href={secondaryCta.href}
-                className="rounded-sm border border-parchment-300/70 bg-white/10 px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-parchment-50 shadow-sm backdrop-blur-[2px] transition hover:border-parchment-300/90 hover:bg-white/15"
+                className="rounded-md border border-white/50 bg-white/5 px-6 py-2.5 text-[13px] font-display font-semibold uppercase tracking-[0.1em] text-white shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-200/60 hover:bg-white/15 hover:shadow-[0_0_24px_rgba(34,211,238,0.2)] active:translate-y-0"
               >
                 {secondaryCta.label}
               </Link>
               {tertiaryCta ? (
                 <Link
                   href={tertiaryCta.href}
-                  className="text-[13px] font-semibold uppercase tracking-[0.06em] text-amber-100/95 underline decoration-amber-400/50 underline-offset-4 transition hover:text-amber-50 hover:decoration-amber-200/80"
+                  className="animate-hero-link-pulse text-[13px] font-display font-semibold uppercase tracking-[0.08em] text-amber-200/90 underline decoration-amber-400/60 underline-offset-[5px] transition hover:text-amber-100 hover:decoration-amber-300"
                 >
                   {tertiaryCta.label}
                 </Link>
@@ -233,7 +243,7 @@ export default function CredentialingHero({
               <img
                 src="/hero-certificate-center.png"
                 alt="Certificate of achievement"
-                className="pointer-events-none absolute left-1/2 top-[48%] z-30 h-[168px] w-[168px] -translate-x-1/2 -translate-y-1/2 object-contain shadow-[0_0_30px_rgba(250,204,21,0.25)] sm:h-[184px] sm:w-[184px] md:h-[206px] md:w-[206px]"
+                className="pointer-events-none absolute left-1/2 top-[48%] z-30 h-[168px] w-[168px] -translate-x-1/2 -translate-y-1/2 animate-hero-cert-glow object-contain sm:h-[184px] sm:w-[184px] md:h-[206px] md:w-[206px]"
               />
             </div>
           ) : heroImage ? (
@@ -284,13 +294,14 @@ export default function CredentialingHero({
         {showMetricsAndCampaigns ? (
           <>
             <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {STATS.map((s) => (
+              {STATS.map((s, i) => (
                 <div
                   key={s.label}
-                  className="rounded-lg border border-white/15 bg-white/10 p-4 backdrop-blur-[2px]"
+                  className="animate-hero-stats rounded-lg border border-white/20 bg-white/10 p-4 opacity-0 backdrop-blur-md transition duration-300 hover:border-cyan-300/30 hover:bg-white/15"
+                  style={{ animationDelay: `${0.55 + i * 0.1}s` }}
                 >
-                  <p className="font-serif text-xl font-semibold tabular-nums text-white">{s.value}</p>
-                  <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-300/90">{s.label}</p>
+                  <p className="font-display text-xl font-bold tabular-nums text-white">{s.value}</p>
+                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-cyan-100/80">{s.label}</p>
                 </div>
               ))}
             </div>

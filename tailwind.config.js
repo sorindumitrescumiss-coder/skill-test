@@ -8,9 +8,10 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          sans: ['Source Sans 3', 'system-ui', 'sans-serif'],
-          serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-          script: ['Dancing Script', 'cursive', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+          serif: ['Inter', 'system-ui', 'sans-serif'],
+          script: ['Inter', 'system-ui', 'sans-serif'],
           mono: ['IBM Plex Mono', 'monospace'],
         },
         colors: {
@@ -54,10 +55,16 @@ module.exports = {
           'slide-up': 'slideUp 0.3s ease-out',
           'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
           'shimmer': 'shimmer 1.5s infinite',
-          'hero-eyebrow': 'heroEyebrow 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-          'hero-title': 'heroTitle 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards',
-          'hero-body': 'heroBody 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.22s forwards',
-          'hero-cta': 'heroBody 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards',
+          'hero-eyebrow': 'heroEyebrow 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+          'hero-title': 'heroTitle 1s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards',
+          'hero-body': 'heroBody 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards',
+          'hero-cta': 'heroCta 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.42s forwards',
+          'hero-stats': 'heroStats 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+          'hero-title-shimmer': 'heroTitleShimmer 6s ease-in-out infinite',
+          'hero-float': 'heroFloat 5s ease-in-out infinite',
+          'hero-cert-glow': 'heroCertGlow 3.5s ease-in-out infinite',
+          'hero-twinkle': 'heroTwinkle 4s ease-in-out infinite',
+          'hero-link-pulse': 'heroLinkPulse 2.5s ease-in-out infinite',
         },
         keyframes: {
           fadeIn: {
@@ -85,8 +92,36 @@ module.exports = {
             '100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' },
           },
           heroBody: {
-            '0%': { opacity: '0', transform: 'translateY(12px)' },
+            '0%': { opacity: '0', transform: 'translateY(14px)' },
             '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+          heroCta: {
+            '0%': { opacity: '0', transform: 'translateY(16px) scale(0.98)' },
+            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+          },
+          heroStats: {
+            '0%': { opacity: '0', transform: 'translateY(20px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+          heroTitleShimmer: {
+            '0%, 100%': { backgroundPosition: '0% 50%' },
+            '50%': { backgroundPosition: '100% 50%' },
+          },
+          heroFloat: {
+            '0%, 100%': { transform: 'translateY(0)' },
+            '50%': { transform: 'translateY(-10px)' },
+          },
+          heroCertGlow: {
+            '0%, 100%': { filter: 'drop-shadow(0 0 22px rgba(251, 191, 36, 0.35))' },
+            '50%': { filter: 'drop-shadow(0 0 40px rgba(251, 191, 36, 0.6))' },
+          },
+          heroTwinkle: {
+            '0%, 100%': { opacity: '0.25' },
+            '50%': { opacity: '0.9' },
+          },
+          heroLinkPulse: {
+            '0%, 100%': { opacity: '0.85' },
+            '50%': { opacity: '1' },
           },
         },
         boxShadow: {

@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
 
 @keyframes fadeInUpSoft {
   from {
@@ -122,11 +122,11 @@
   }
 
   body {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     color: rgb(var(--foreground));
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.011em;
     background-color: rgb(var(--background));
     /* Light mottling only — keeps the page airy */
     background-image:
@@ -140,9 +140,9 @@
   h2,
   h3,
   h4 {
-    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-family: 'Inter', system-ui, sans-serif;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
   .font-mono {
@@ -225,6 +225,63 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .hero-title-gradient {
+    background-image: linear-gradient(
+      115deg,
+      #ffffff 0%,
+      #e0f2fe 28%,
+      #c7d2fe 52%,
+      #a5b4fc 72%,
+      #f0e6ff 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-stars {
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.55), transparent),
+      radial-gradient(1px 1px at 28% 72%, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 45% 35%, rgba(186, 230, 253, 0.65), transparent),
+      radial-gradient(1px 1px at 62% 12%, rgba(255, 255, 255, 0.5), transparent),
+      radial-gradient(1px 1px at 78% 58%, rgba(255, 255, 255, 0.35), transparent),
+      radial-gradient(1.5px 1.5px at 88% 28%, rgba(199, 210, 254, 0.6), transparent),
+      radial-gradient(1px 1px at 6% 48%, rgba(255, 255, 255, 0.45), transparent),
+      radial-gradient(1px 1px at 92% 82%, rgba(255, 255, 255, 0.3), transparent);
+    animation: heroTwinkle 5s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-eyebrow,
+    .animate-hero-title,
+    .animate-hero-body,
+    .animate-hero-cta,
+    .animate-hero-stats,
+    .animate-hero-title-shimmer,
+    .animate-hero-float,
+    .animate-hero-cert-glow,
+    .hero-stars,
+    .animate-hero-twinkle,
+    .animate-hero-link-pulse {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+}
+
+@keyframes heroTwinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
   }
 }
 

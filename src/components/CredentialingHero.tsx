@@ -11,7 +11,7 @@ const DEFAULT_DESCRIPTION = (
   <>
     A new standard for professional credibility: rigorous assessments, secure credentials, and verification at scale—for
     individuals and organizations alike.
-    <span className="ml-1 font-semibold text-amber-200/95">Trusted. Scalable. Verifiable.</span>
+    <span className="ml-1 font-semibold text-white">Trusted. Scalable. Verifiable.</span>
   </>
 );
 
@@ -147,41 +147,38 @@ export default function CredentialingHero({
           <div
             className={`max-w-xl ${hasRightVisual ? (heroImage ? 'lg:max-w-none' : 'lg:max-w-2xl') : 'lg:max-w-3xl'}`}
           >
-            <p className="mb-3 animate-hero-eyebrow font-display text-[11px] font-bold uppercase tracking-[0.32em] text-cyan-200/90 opacity-0 drop-shadow-[0_0_20px_rgba(34,211,238,0.35)]">
+            <p className="mb-3 animate-hero-eyebrow text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-300/95 opacity-0">
               {eyebrow}
             </p>
             <h1
-              className={`relative animate-hero-title font-display text-[2.15rem] font-extrabold leading-[1.08] tracking-[-0.03em] opacity-0 sm:text-4xl md:text-[2.85rem] md:leading-[1.06] lg:text-[3.05rem] ${
+              className={`relative animate-hero-title font-display text-[2.1rem] font-semibold leading-[1.12] tracking-tight text-white opacity-0 sm:text-4xl md:text-[2.75rem] md:leading-[1.1] lg:text-[3rem] ${
                 heroImage
-                  ? 'max-w-[min(100%,44rem)] text-balance md:leading-[1.12]'
+                  ? 'max-w-[min(100%,44rem)] text-balance md:leading-[1.15]'
                   : 'max-w-2xl'
               }`}
             >
-              <span className="hero-title-gradient relative z-10 animate-hero-title-shimmer drop-shadow-[0_4px_32px_rgba(129,140,248,0.35)]">
-                {title}
-              </span>
+              {title}
             </h1>
-            <p className="mt-6 max-w-xl animate-hero-body font-sans text-base font-normal leading-relaxed text-slate-300/95 opacity-0 md:mt-8 md:text-lg md:leading-[1.65] [&_span]:font-semibold [&_span]:text-amber-200/95 [&_span]:drop-shadow-[0_0_14px_rgba(251,191,36,0.25)]">
+            <p className="mt-6 max-w-xl animate-hero-body font-sans text-base leading-relaxed text-slate-200/95 opacity-0 md:mt-8 md:text-lg md:leading-relaxed [&_span]:font-semibold [&_span]:text-white">
               {description}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3 opacity-0 animate-hero-cta">
               <Link
                 href={primaryCta.href}
-                className="group relative overflow-hidden rounded-md border border-white/90 bg-white px-6 py-2.5 text-[13px] font-display font-bold uppercase tracking-[0.12em] text-indigo-950 shadow-[0_4px_24px_rgba(255,255,255,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:border-white hover:shadow-[0_8px_32px_rgba(255,255,255,0.35)] active:translate-y-0"
+                className="rounded-sm border border-white bg-white px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.1em] text-slate-900 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md active:translate-y-0"
               >
-                <span className="relative z-10">{primaryCta.label}</span>
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-500 group-hover:translate-x-full" aria-hidden />
+                {primaryCta.label}
               </Link>
               <Link
                 href={secondaryCta.href}
-                className="rounded-md border border-white/50 bg-white/5 px-6 py-2.5 text-[13px] font-display font-semibold uppercase tracking-[0.1em] text-white shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-200/60 hover:bg-white/15 hover:shadow-[0_0_24px_rgba(34,211,238,0.2)] active:translate-y-0"
+                className="rounded-sm border border-white/70 bg-transparent px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.08em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-white hover:bg-white/10 active:translate-y-0"
               >
                 {secondaryCta.label}
               </Link>
               {tertiaryCta ? (
                 <Link
                   href={tertiaryCta.href}
-                  className="animate-hero-link-pulse text-[13px] font-display font-semibold uppercase tracking-[0.08em] text-amber-200/90 underline decoration-amber-400/60 underline-offset-[5px] transition hover:text-amber-100 hover:decoration-amber-300"
+                  className="text-[13px] font-semibold uppercase tracking-[0.06em] text-amber-200/95 underline decoration-amber-400/50 underline-offset-4 transition hover:text-amber-50 hover:decoration-amber-200/80"
                 >
                   {tertiaryCta.label}
                 </Link>
@@ -300,8 +297,8 @@ export default function CredentialingHero({
                   className="animate-hero-stats rounded-lg border border-white/20 bg-white/10 p-4 opacity-0 backdrop-blur-md transition duration-300 hover:border-cyan-300/30 hover:bg-white/15"
                   style={{ animationDelay: `${0.55 + i * 0.1}s` }}
                 >
-                  <p className="font-display text-xl font-bold tabular-nums text-white">{s.value}</p>
-                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-cyan-100/80">{s.label}</p>
+                  <p className="font-display text-xl font-semibold tabular-nums text-white">{s.value}</p>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-slate-300/90">{s.label}</p>
                 </div>
               ))}
             </div>

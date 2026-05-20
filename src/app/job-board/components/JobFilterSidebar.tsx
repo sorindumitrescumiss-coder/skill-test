@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Filters } from './JobBoardClient';
+import type { Filters } from '@/lib/jobs/types';
 
 const locationTypes = [
   { value: 'remote', label: 'Remote', count: 847 },

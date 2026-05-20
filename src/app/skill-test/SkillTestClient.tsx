@@ -7,6 +7,7 @@ import { getSupabaseBrowser } from '@/lib/supabase/client';
 import { useSessionScreenRecording } from '@/app/skill-test/useSessionScreenRecording';
 import type { User } from '@supabase/supabase-js';
 import { FIELD_OPTIONS } from '@/app/skill-test/fieldOptions';
+import { formatSkillPrice, getSkillTestAmountCentsForDifficulty } from '@/lib/stripe/pricing';
 import { SkillFieldIcon } from '@/app/skill-test/SkillFieldIcon';
 
 type MCQQuestion = { id: string; text: string; options: string[] };
@@ -452,7 +453,7 @@ export default function SkillTestClient() {
   const [phase, setPhase] = useState<Phase>('idle');
   const [err, setErr] = useState<string | null>(null);
   const [stripePaymentRequired, setStripePaymentRequired] = useState(false);
-  const [examFeeLabel, setExamFeeLabel] = useState('$19');
+  const [examFeeLabel, setExamFeeLabel] = useState('$30');
   const [paymentCreditId, setPaymentCreditId] = useState<string | null>(null);
   const [paymentBusy, setPaymentBusy] = useState(false);
   const [paymentStatusLoading, setPaymentStatusLoading] = useState(false);
@@ -1098,7 +1099,6 @@ export default function SkillTestClient() {
         formattedPrice?: string;
       };
       setStripePaymentRequired(Boolean(config.paymentRequired));
-      if (config.formattedPrice) setExamFeeLabel(config.formattedPrice);
 
       const credits = (await creditsRes.json().catch(() => ({}))) as {
         credit?: { id: string } | null;
@@ -1119,6 +1119,10 @@ export default function SkillTestClient() {
   React.useEffect(() => {
     void refreshPaymentCredit();
   }, [refreshPaymentCredit]);
+
+  React.useEffect(() => {
+    setExamFeeLabel(formatSkillPrice(getSkillTestAmountCentsForDifficulty(difficulty)));
+  }, [difficulty]);
 
   React.useEffect(() => {
     if (setupStep !== 5) return;
@@ -1151,7 +1155,7 @@ export default function SkillTestClient() {
       const res = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fieldId: selectedField }),
+        body: JSON.stringify({ fieldId: selectedField, difficulty }),
       });
       const j = (await res.json().catch(() => ({}))) as { error?: string; url?: string };
       if (!res.ok || !j.url) {

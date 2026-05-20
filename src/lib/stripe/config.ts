@@ -1,3 +1,10 @@
+import {
+  getSkillTestAmountCentsForDifficulty,
+  SKILL_DIFFICULTY_LEVELS,
+  SKILL_DIFFICULTY_PRICING,
+  type SkillDifficulty,
+} from '@/lib/stripe/pricing';
+
 function parseBool(raw: string | undefined, defaultValue: boolean): boolean {
   if (raw === undefined || raw === '') return defaultValue;
   const s = raw.trim().toLowerCase();
@@ -27,8 +34,8 @@ export function isStripePaymentRequired(): boolean {
   return parseBool(process.env.STRIPE_PAYMENT_REQUIRED, true);
 }
 
-export function getSkillTestAmountCents(): number {
-  return parseIntEnv(process.env.STRIPE_SKILL_TEST_AMOUNT_CENTS, 1900);
+export function getSkillTestAmountCents(difficulty: SkillDifficulty = 'intermediate'): number {
+  return getSkillTestAmountCentsForDifficulty(difficulty);
 }
 
 export function getStripeCurrency(): string {
@@ -47,14 +54,24 @@ export function formatPrice(amountCents: number, currency: string): string {
 }
 
 export function getStripePublicConfig() {
-  const amountCents = getSkillTestAmountCents();
   const currency = getStripeCurrency();
+  const pricingTiers = SKILL_DIFFICULTY_LEVELS.map((id) => {
+    const amountCents = getSkillTestAmountCents(id);
+    return {
+      id,
+      label: SKILL_DIFFICULTY_PRICING[id].label,
+      amountCents,
+      formattedPrice: formatPrice(amountCents, currency),
+    };
+  });
+  const defaultTier = pricingTiers.find((t) => t.id === 'intermediate') ?? pricingTiers[0]!;
   return {
     paymentRequired: isStripePaymentRequired(),
     stripeConfigured: isStripeConfigured(),
-    amountCents,
+    amountCents: defaultTier.amountCents,
     currency,
-    formattedPrice: formatPrice(amountCents, currency),
+    formattedPrice: defaultTier.formattedPrice,
+    pricingTiers,
     publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '',
   };
 }

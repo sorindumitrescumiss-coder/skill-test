@@ -1,3 +1,5 @@
+import { PEOPLE_AVATARS } from '@/data/peopleAvatars';
+
 /** Structured profile for verified candidates who passed the AI skill test. Hook `recordingUrl` to signed storage URLs in production. */
 
 export type CandidateRecord = {
@@ -33,7 +35,7 @@ export const CANDIDATE_SEED: CandidateRecord[] = [
     id: 'cand-001',
     displayId: 'CERT-2026-A7F3B2E1',
     fullName: 'Sarah Chen',
-    avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&q=80',
+    avatarUrl: PEOPLE_AVATARS.sarahChen,
     badge: 'Top Rated',
     headline: 'Web development · Full-stack AI Skill Test',
     testDetails: 'Field: Web development · Difficulty: Advanced · Languages: TypeScript, English · Parts: MCQ, written, corrections, practical, AI interview.',
@@ -52,7 +54,7 @@ export const CANDIDATE_SEED: CandidateRecord[] = [
     id: 'cand-002',
     displayId: 'CERT-2026-91C4D8AA',
     fullName: 'Marcus Webb',
-    avatarUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=120&h=120&fit=crop&q=80',
+    avatarUrl: PEOPLE_AVATARS.marcusWebb,
     badge: 'Verified',
     headline: 'Blockchain · Smart contracts AI Skill Test',
     testDetails: 'Field: Blockchain · Difficulty: Expert · Focus: Solidity, security patterns · Full five-part assessment completed.',
@@ -71,7 +73,7 @@ export const CANDIDATE_SEED: CandidateRecord[] = [
     id: 'cand-003',
     displayId: 'CERT-2026-55E902FD',
     fullName: 'Elena Vasquez',
-    avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&q=80',
+    avatarUrl: PEOPLE_AVATARS.elenaVasquez,
     badge: 'Top Rated',
     headline: 'AI / ML · Applied reasoning Skill Test',
     testDetails: 'Field: AI · Difficulty: Intermediate · Subtopics: NLP, evaluation metrics · Interview conducted via voice + camera.',
@@ -90,7 +92,7 @@ export const CANDIDATE_SEED: CandidateRecord[] = [
     id: 'cand-004',
     displayId: 'CERT-2026-B12A9988',
     fullName: 'James Okonkwo',
-    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&q=80',
+    avatarUrl: PEOPLE_AVATARS.jamesOkonkwo,
     badge: 'Level 1',
     headline: 'Mobile development · Cross-platform Skill Test',
     testDetails: 'Field: Mobile · Flutter & Dart · Intermediate difficulty · All sections submitted within session limit.',
@@ -109,7 +111,7 @@ export const CANDIDATE_SEED: CandidateRecord[] = [
     id: 'cand-005',
     displayId: 'CERT-2026-CC771200',
     fullName: 'Priya Natarajan',
-    avatarUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&q=80',
+    avatarUrl: PEOPLE_AVATARS.priyaNatarajan,
     badge: 'Verified',
     headline: 'Architecture · BIM & visualization Skill Test',
     testDetails: 'Field: Architecture · Master difficulty · Subtopics: BIM, structural coordination.',
@@ -128,7 +130,7 @@ export const CANDIDATE_SEED: CandidateRecord[] = [
     id: 'cand-006',
     displayId: 'CERT-2026-D9013344',
     fullName: 'Alex Rivera',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&q=80',
+    avatarUrl: PEOPLE_AVATARS.alexRivera,
     badge: 'Top Rated',
     headline: 'Game development · Unity AI Skill Test',
     testDetails: 'Field: Game dev · Difficulty: Advanced · C#, gameplay networking emphasis.',

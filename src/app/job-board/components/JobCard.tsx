@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { MapPin, Clock, Users, Award, Shield, Star } from 'lucide-react';
-import { Job } from './JobBoardClient';
+import type { Job } from '@/lib/jobs/types';
 import StatusBadge from '@/components/ui/StatusBadge';
 import AppImage from '@/components/ui/AppImage';
 
@@ -33,7 +33,10 @@ const expLabels: Record<string, string> = {
 };
 
 export default function JobCard({ job, featured, onClick }: JobCardProps) {
-  const salaryStr = `$${(job.salaryMin / 1000).toFixed(0)}K – $${(job.salaryMax / 1000).toFixed(0)}K`;
+  const salaryStr =
+    job.salaryMax > 0
+      ? `$${(job.salaryMin / 1000).toFixed(0)}K – $${(job.salaryMax / 1000).toFixed(0)}K`
+      : 'Salary not listed';
 
   return (
     <div
@@ -121,19 +124,37 @@ export default function JobCard({ job, featured, onClick }: JobCardProps) {
               <Clock size={12} />
               {job.postedAt}
             </span>
-            <span className="flex items-center gap-1">
-              <Users size={12} />
-              {job.applicants} applicants
-            </span>
+            {job.applicants > 0 && (
+              <span className="flex items-center gap-1">
+                <Users size={12} />
+                {job.applicants} applicants
+              </span>
+            )}
+            {job.source === 'adzuna' && (
+              <span className="text-[10px] font-medium uppercase tracking-wide text-slate-400">Adzuna</span>
+            )}
           </div>
           <div className="flex items-center gap-3">
             <span className="text-sm font-bold text-slate-900 tabular-nums">{salaryStr}</span>
-            <button
-              onClick={(e) => { e.stopPropagation(); }}
-              className="btn-primary text-xs px-3 py-1.5"
-            >
-              Apply Now
-            </button>
+            {job.applyUrl ? (
+              <a
+                href={job.applyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="btn-primary text-xs px-3 py-1.5"
+              >
+                Apply
+              </a>
+            ) : (
+              <button
+                type="button"
+                onClick={(e) => e.stopPropagation()}
+                className="btn-primary text-xs px-3 py-1.5"
+              >
+                Apply Now
+              </button>
+            )}
           </div>
         </div>
       </div>

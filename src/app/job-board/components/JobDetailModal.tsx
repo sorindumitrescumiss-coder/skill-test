@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { X, MapPin, Clock, Users, Award, Shield, Briefcase, CheckCircle, ExternalLink, ChevronRight } from 'lucide-react';
-import { Job } from './JobBoardClient';
+import type { Job } from '@/lib/jobs/types';
 import StatusBadge from '@/components/ui/StatusBadge';
 import AppImage from '@/components/ui/AppImage';
 import { toast } from 'sonner';
@@ -37,7 +37,11 @@ export default function JobDetailModal({ job, onClose }: JobDetailModalProps) {
     defaultValues: { useNFTCredential: true },
   });
 
-  const salaryStr = `$${(job.salaryMin / 1000).toFixed(0)}K – $${(job.salaryMax / 1000).toFixed(0)}K`;
+  const salaryStr =
+    job.salaryMax > 0
+      ? `$${(job.salaryMin / 1000).toFixed(0)}K – $${(job.salaryMax / 1000).toFixed(0)}K`
+      : 'Salary not listed';
+  const externalApply = Boolean(job.applyUrl);
 
   const onSubmit = async (data: ApplicationForm) => {
     setSubmitting(true);
@@ -99,7 +103,7 @@ export default function JobDetailModal({ job, onClose }: JobDetailModalProps) {
         <div className="flex border-b border-slate-200 shrink-0">
           {([
             { id: 'overview', label: 'Job Overview' },
-            { id: 'apply', label: applied ? '✓ Applied' : 'Apply Now' },
+            { id: 'apply', label: applied ? '✓ Applied' : externalApply ? 'Apply externally' : 'Apply Now' },
           ] as { id: Tab; label: string }[]).map((tab) => (
             <button
               key={`modal-tab-${tab.id}`}
@@ -124,7 +128,9 @@ export default function JobDetailModal({ job, onClose }: JobDetailModalProps) {
                 {[
                   { icon: <MapPin size={14} />, label: 'Location', value: job.location },
                   { icon: <Clock size={14} />, label: 'Posted', value: job.postedAt },
-                  { icon: <Users size={14} />, label: 'Applicants', value: `${job.applicants}` },
+                  ...(job.applicants > 0
+                    ? [{ icon: <Users size={14} />, label: 'Applicants', value: `${job.applicants}` }]
+                    : []),
                   { icon: <Briefcase size={14} />, label: 'Experience', value: job.experienceLevel.charAt(0).toUpperCase() + job.experienceLevel.slice(1) },
                 ].map((info) => (
                   <div key={`info-${info.label}`} className="bg-slate-50 rounded-xl p-3">
@@ -205,18 +211,47 @@ export default function JobDetailModal({ job, onClose }: JobDetailModalProps) {
                 </div>
               </div>
 
-              <button
-                onClick={() => setActiveTab('apply')}
-                className="w-full btn-primary py-3 text-base font-semibold mt-2"
-              >
-                Apply to {job.company}
-              </button>
+              {externalApply ? (
+                <a
+                  href={job.applyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full btn-primary py-3 text-base font-semibold mt-2 inline-flex items-center justify-center gap-2"
+                >
+                  View & apply on employer site
+                  <ExternalLink size={16} />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('apply')}
+                  className="w-full btn-primary py-3 text-base font-semibold mt-2"
+                >
+                  Apply to {job.company}
+                </button>
+              )}
             </div>
           )}
 
           {activeTab === 'apply' && (
             <div className="animate-fade-in">
-              {applied ? (
+              {externalApply ? (
+                <div className="flex flex-col items-center justify-center py-16 text-center px-4">
+                  <p className="text-sm text-slate-600 max-w-md mb-6">
+                    This listing is hosted on Adzuna. You will complete your application on the employer&apos;s
+                    website.
+                  </p>
+                  <a
+                    href={job.applyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex items-center gap-2 px-8 py-3"
+                  >
+                    Continue to application
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
+              ) : applied ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
                     <CheckCircle size={32} className="text-emerald-600" />
